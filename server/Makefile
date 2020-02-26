@@ -6,4 +6,3 @@ run:
 
 test:
 	./gradlew clean test
-
