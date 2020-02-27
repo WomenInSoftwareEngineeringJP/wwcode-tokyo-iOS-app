@@ -1,7 +1,12 @@
-import XCTest
+import Quick
+import Nimble
 
-final class WiringTest: XCTestCase {
-    func testWiringTest() {
-        XCTAssertTrue(true)
+final class WiringSpec: QuickSpec {
+    override func spec() {
+        describe("wiringTest") {
+            it("it just works") {
+                expect(true).to(beTrue())
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-github "Thomvis/BrightFutures"
+github "Thomvis/BrightFutures" == 8.0.1
 github "antitypical/Result"
 github "PureLayout/PureLayout"
 
