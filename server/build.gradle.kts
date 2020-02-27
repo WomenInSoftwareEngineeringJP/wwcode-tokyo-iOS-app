@@ -21,9 +21,23 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign:2.2.1.RELEASE")
+//	implementation("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR2")
+//	implementation("io.github.openfeign:feign-core:9.3.1")
+//	implementation("io.github.openfeign:feign-okhttp:9.3.1")
+//	implementation("io.github.openfeign:feign-gson:9.3.1")
+//	implementation("io.github.openfeign:feign-slf4j:9.3.1")
+
 	// runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+	}
+	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+}
+
+dependencyManagement {
+	dependencies {
+		dependency("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR2")
 	}
 }
 
