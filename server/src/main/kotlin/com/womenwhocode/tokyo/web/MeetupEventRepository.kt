@@ -1,8 +1,11 @@
 package com.womenwhocode.tokyo.web
 
-class MeetupEventRepository(val meetupClient: MeetupClient) {
-    fun getEvents(): List<MeetupEvent> {
-        return meetupClient.getEvents(true, "public", "recent_past", 20)
-    }
+import org.springframework.stereotype.Repository
 
+@Repository
+class MeetupEventRepository(val meetupClient: MeetupClient) {
+    fun getEvents(): List<Event> {
+        val meetupEvents = meetupClient.getEvents(true, "public", "recent_past", 20)
+        return meetupEvents.map { meetupEvent -> Event(meetupEvent.name) }
+    }
 }

@@ -44,16 +44,5 @@ internal class MeetupEventRepositoryTest {
         val response = subject.getEvents()
 
         assertThat(response[0].name, equalTo("name"))
-        assertThat(response[0].local_date, equalTo("local_date"))
-        assertThat(response[0].local_time, equalTo("local_time"))
-        assertThat(response[0].waitlist_count, equalTo(1))
-        assertThat(response[0].yes_rsvp_count, equalTo(2))
-        assertThat(response[0].link, equalTo("link"))
-        assertThat(response[0].description, equalTo("description"))
-        assertThat(response[0].venue.name, equalTo("name"))
-        assertThat(response[0].venue.lat, equalTo(1.23))
-        assertThat(response[0].venue.lon, equalTo(4.56))
-        assertThat(response[0].venue.address_1, equalTo("address_1"))
-        assertThat(response[0].venue.city, equalTo("city"))
     }
 }
