@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11C8DF924078A5B00E4446B /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = F11C8DF824078A5B00E4446B /* Makefile */; };
 		F1BF0E1C2404AFFF00ED1639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */; };
 		F1BF0E1F2404AFFF00ED1639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1BF0E1D2404AFFF00ED1639 /* LaunchScreen.storyboard */; };
 		F1BF0E4B2404B58E00ED1639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF0E482404B58E00ED1639 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11C8DF824078A5B00E4446B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../Makefile; sourceTree = "<group>"; };
 		F1BF0E0F2404AFFD00ED1639 /* WWCode_Tokyo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWCode_Tokyo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1BF0E1E2404AFFF00ED1639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		F1BF0E062404AFFD00ED1639 = {
 			isa = PBXGroup;
 			children = (
+				F11C8DF824078A5B00E4446B /* Makefile */,
 				F1BF0E112404AFFD00ED1639 /* WWCode_Tokyo_iOS */,
 				F1BF0E282404AFFF00ED1639 /* WWCode_Tokyo_iOSTests */,
 				F1BF0E102404AFFD00ED1639 /* Products */,
@@ -240,6 +243,7 @@
 			files = (
 				F1BF0E4B2404B58E00ED1639 /* AppDelegate.swift in Sources */,
 				F1BF0E4D2404B58E00ED1639 /* SceneDelegate.swift in Sources */,
+				F11C8DF924078A5B00E4446B /* Makefile in Sources */,
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
