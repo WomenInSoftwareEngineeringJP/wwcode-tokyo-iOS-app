@@ -11,10 +11,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         
         window = UIWindow(windowScene: windowScene)
-     
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = UIColor.red
         
+        let viewController = EventTableViewController(fakeRepo: FakeEventRepo())
+
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
