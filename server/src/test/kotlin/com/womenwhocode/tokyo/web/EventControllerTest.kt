@@ -25,7 +25,7 @@ class EventControllerTest {
     @BeforeEach
     internal fun setUp() {
         val events = listOf(
-                Event("WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic"))
+                Event("WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic", "2020-02-05", "19:30", "Code Chrysalis"))
 
         `when`(repository.getEvents()).thenReturn(events)
     }

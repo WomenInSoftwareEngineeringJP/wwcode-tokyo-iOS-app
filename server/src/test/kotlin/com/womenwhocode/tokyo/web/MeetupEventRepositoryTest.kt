@@ -16,14 +16,14 @@ internal class MeetupEventRepositoryTest {
     @BeforeEach
     internal fun setUp() {
         val meetupVenue = MeetupEvent.MeetupVenue(
-                "name",
+                "venueName",
                 1.23,
                 4.56,
                 "address_1",
                 "city")
 
         val meetupEvent = MeetupEvent(
-                "name",
+                "eventName",
                 "local_date",
                 "local_time",
                 1,
@@ -43,6 +43,9 @@ internal class MeetupEventRepositoryTest {
     fun `get events returns events from meetup`() {
         val response = subject.getEvents()
 
-        assertThat(response[0].name, equalTo("name"))
+        assertThat(response[0].name, equalTo("eventName"))
+        assertThat(response[0].date, equalTo("local_date"))
+        assertThat(response[0].time, equalTo("local_time"))
+        assertThat(response[0].venueName, equalTo("venueName"))
     }
 }
