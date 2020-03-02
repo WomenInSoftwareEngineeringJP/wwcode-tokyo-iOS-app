@@ -36,4 +36,3 @@ matrix:
         api: https://api.run.pivotal.io
         organization: labs-tokyo
         space: summer
-        manifest: server/wwcode-tokyo-server_manifest.yml
