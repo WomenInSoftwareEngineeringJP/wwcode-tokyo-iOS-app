@@ -1,10 +1,11 @@
 applications:
-- name: wwcode-tokyo-server
-  buildpacks:
-  - java_buildpack
-  disk_quota: 1G
-  instances: 1
-  memory: 1G
-  routes:
-  - route: wwcode-tokyo-server.cfapps.io
-  stack: cflinuxfs3
+  - name: wwcode-tokyo-server
+    path: build/libs/web-0.0.1-SNAPSHOT.jar
+    routes:
+      - route: wwcode-tokyo-server.cfapps.io
+    buildpacks:
+      - java_buildpack
+    disk_quota: 1G
+    instances: 1
+    memory: 1G
+    stack: cflinuxfs3
