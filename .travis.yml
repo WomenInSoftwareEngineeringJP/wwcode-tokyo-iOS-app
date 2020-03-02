@@ -1,6 +1,11 @@
 # Specify the operating system that we want Travis to use for our build
 os: osx
 
+# Cache iOS project dependencies to speed up builds by only building new dependencies
+cache:
+  directories:
+    - ./ios/Carthage
+
 name: "iOS Unit Tests"
 language: swift
 osx_image: xcode11.3
