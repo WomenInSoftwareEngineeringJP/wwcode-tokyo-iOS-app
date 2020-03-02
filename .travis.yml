@@ -28,13 +28,12 @@ matrix:
       install:
         - cd server
         - make test
-
-deploy:
-  provider: cloudfoundry
-  username: xuli@pivotal.io
-  password:
-    secure: MatamgNk4/0MniBAzed8/0g64YSvg+c44YLXfSI5+DLaQ5tK3Jf7v0MhP0dTpE3zu25FvPmLDFtcuauzO0vT8KBi0B8iA+WIaLd/GYwebbvVYC/XQfn35dLaD3clq76wfstQ62c1NlX/SWwMhoBuziMeqyW5L8+FjeltUB5+DTBQe3z4Lf/ULHpe3Q37rN1Cijkq9AzxMxw4abg7ojMQu83GIzkflGZBw4qkyroCdlkT1GDHfIybtZsNJidj7xt3HWkszHZ2xJU+U2Mz3UZs9w2UgWvfy8s5NtVrrsG/gJqBq1NbNTAgGVN7d0NRWrc7dMrCCrWYPvuXOYeFCseQfOqvqK8s71mUxwzXXayUnDiMw7YvP0l6wY8lNZNE+dfXQ5/caRz6csBQulpVwEk70qDj4IRuhVccRzEidUYRwZ/2Rs2zFjGT50r0th9JBHW0JMojv/SBpkDr0d/MAxx5bhm+jayxbw3U8klOwx9bVMn02RMvl8/FPegZqc5HrlM5xS77fO5bO+gzyBauqWOV8XGnjX3V1E/gGPUlTCnrlHgeQLMdYRJcrxy9uMFTH4g7OkBNSXRj9qJJ9HJDGJkLWC678eBkHihWteN48Tn+josByL8kNaIeOTEKUccuBJrlfQxbpVKgYF8SrPdi6jJ3WJKZfVW0PXegvHZg53xxLkM=
-  api: https://api.run.pivotal.io
-  organization: labs-tokyo
-  space: summer
-  manifest: wwcode-tokyo-server_manifest
+      deploy:
+        provider: cloudfoundry
+        username: xuli@pivotal.io
+        password:
+          secure: MatamgNk4/0MniBAzed8/0g64YSvg+c44YLXfSI5+DLaQ5tK3Jf7v0MhP0dTpE3zu25FvPmLDFtcuauzO0vT8KBi0B8iA+WIaLd/GYwebbvVYC/XQfn35dLaD3clq76wfstQ62c1NlX/SWwMhoBuziMeqyW5L8+FjeltUB5+DTBQe3z4Lf/ULHpe3Q37rN1Cijkq9AzxMxw4abg7ojMQu83GIzkflGZBw4qkyroCdlkT1GDHfIybtZsNJidj7xt3HWkszHZ2xJU+U2Mz3UZs9w2UgWvfy8s5NtVrrsG/gJqBq1NbNTAgGVN7d0NRWrc7dMrCCrWYPvuXOYeFCseQfOqvqK8s71mUxwzXXayUnDiMw7YvP0l6wY8lNZNE+dfXQ5/caRz6csBQulpVwEk70qDj4IRuhVccRzEidUYRwZ/2Rs2zFjGT50r0th9JBHW0JMojv/SBpkDr0d/MAxx5bhm+jayxbw3U8klOwx9bVMn02RMvl8/FPegZqc5HrlM5xS77fO5bO+gzyBauqWOV8XGnjX3V1E/gGPUlTCnrlHgeQLMdYRJcrxy9uMFTH4g7OkBNSXRj9qJJ9HJDGJkLWC678eBkHihWteN48Tn+josByL8kNaIeOTEKUccuBJrlfQxbpVKgYF8SrPdi6jJ3WJKZfVW0PXegvHZg53xxLkM=
+        api: https://api.run.pivotal.io
+        organization: labs-tokyo
+        space: summer
+        manifest: server/wwcode-tokyo-server_manifest.yml
