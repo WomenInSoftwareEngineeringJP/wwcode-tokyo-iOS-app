@@ -6,12 +6,21 @@ cache:
   directories:
     - ./ios/Carthage
 
-name: "iOS Unit Tests"
-language: swift
-osx_image: xcode11.3
-xcode_project: WWCode_Tokyo_iOS.xcodeproj
-xcode_scheme: WWCode_Tokyo_iOS
-xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 11
-install:
-  - cd ios
-  - make bootstrap
+matrix:
+  include:
+    - name: "iOS Unit Tests"
+      language: swift
+      osx_image: xcode11.3
+      xcode_project: WWCode_Tokyo_iOS.xcodeproj
+      xcode_scheme: WWCode_Tokyo_iOS
+      xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 11
+      install:
+        - cd ios
+        - make bootstrap
+
+    - name: "Spring Server Unit Tests"
+      language: java
+      jdk: openjdk8
+      install:
+        - cd server
+        - make test
