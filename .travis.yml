@@ -4,7 +4,11 @@ os: osx
 # Cache iOS project dependencies to speed up builds by only building new dependencies
 cache:
   directories:
+    # iOS Cache
     - ./ios/Carthage
+    # Gradle Cache
+    - $HOME/.gradle/caches
+    - $HOME/.gradle/wrapper
 
 matrix:
   include:
