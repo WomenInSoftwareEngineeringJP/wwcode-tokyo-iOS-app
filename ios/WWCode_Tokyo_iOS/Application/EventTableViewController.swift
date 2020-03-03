@@ -5,6 +5,7 @@ class EventTableViewController: UITableViewController {
     
     init(fakeRepo: FakeEventRepo) {
         super.init(nibName: nil, bundle: nil)
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         events = fakeRepo.getEvents()
     }
     
@@ -21,6 +22,10 @@ class EventTableViewController: UITableViewController {
         return 1
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
