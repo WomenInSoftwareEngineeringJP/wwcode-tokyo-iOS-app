@@ -13,11 +13,13 @@ final class EventsTableViewControllerTest: QuickSpec {
         }
         
         describe("EventsTableViewController") {
-            it("shows events") {
-                expect(subject.hasLabel(withExactText: "PAL training!")).to(beTrue())
-                expect(subject.hasLabel(withExactText: "Lunch and learn")).to(beTrue())
-                expect(subject.hasLabel(withExactText: "Tokyo Olympics")).to(beTrue())
+            it("shows event description"){
+                expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).to(beTrue())
+                expect(subject.hasLabel(withExactText: "7:30 PM - 9:30 PM")).to(beTrue())
+                expect(subject.hasLabel(withExactText: "WED 05 FEB")).to(beTrue())
+                expect(subject.hasLabel(withExactText: "Code Chrysalis")).to(beTrue())
             }
         }
+        
     }
 }

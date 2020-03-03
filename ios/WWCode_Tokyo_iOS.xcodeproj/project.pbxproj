@@ -17,6 +17,7 @@
 		F1104D4A2407A1BE00B38D11 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1104D472407A1BE00B38D11 /* Quick.framework */; };
 		F1104D4D2407A20300B38D11 /* Nimble.framework in Carthage: Copy Files */ = {isa = PBXBuildFile; fileRef = F1104D462407A1BE00B38D11 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1104D4E2407A21500B38D11 /* Quick.framework in Carthage: Copy Files */ = {isa = PBXBuildFile; fileRef = F1104D472407A1BE00B38D11 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1291752240DE953002B0352 /* EventTableViewCell.swift */; };
 		F174F50A2408A4210070C353 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5092408A4210070C353 /* EventTableViewController.swift */; };
 		F174F50C2408A4330070C353 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50B2408A4330070C353 /* Event.swift */; };
 		F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */; };
@@ -83,6 +84,7 @@
 		F1104D462407A1BE00B38D11 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		F1104D472407A1BE00B38D11 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		F1104D482407A1BE00B38D11 /* Succinct.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Succinct.framework; path = Carthage/Build/iOS/Succinct.framework; sourceTree = "<group>"; };
+		F1291752240DE953002B0352 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		F174F5092408A4210070C353 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		F174F50B2408A4330070C353 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewControllerTest.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				F1BF0E482404B58E00ED1639 /* AppDelegate.swift */,
 				F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */,
 				F174F50B2408A4330070C353 /* Event.swift */,
+				F1291752240DE953002B0352 /* EventTableViewCell.swift */,
 				F174F5092408A4210070C353 /* EventTableViewController.swift */,
 				F174F50F2408A84D0070C353 /* EventViewController.swift */,
 				F174F5182408B4310070C353 /* FakeEventRepo.swift */,
@@ -362,6 +365,7 @@
 				F1BF0E4D2404B58E00ED1639 /* SceneDelegate.swift in Sources */,
 				F174F50A2408A4210070C353 /* EventTableViewController.swift in Sources */,
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
+				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
 				F174F5192408B4310070C353 /* FakeEventRepo.swift in Sources */,
 				F174F50C2408A4330070C353 /* Event.swift in Sources */,
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,

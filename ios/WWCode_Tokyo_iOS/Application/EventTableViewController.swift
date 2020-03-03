@@ -26,13 +26,13 @@ class EventTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         var cell : UITableViewCell!
-         cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier")
+         var cell : EventTableViewCell!
+         cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier") as? EventTableViewCell
          if cell == nil {
-             cell = UITableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
+             cell = EventTableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
          }
+        cell.configure(event: events[indexPath.row])
 
-        cell.textLabel?.text = events[indexPath.row].name
         return cell
     }
 }
