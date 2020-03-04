@@ -1,12 +1,13 @@
 import UIKit
 
 class EventTableViewController: UITableViewController {
-    private var events: [Event]!
+    private var events: [Event]?
+    private var eventRepository: EventRepository?
     
-    init(fakeRepo: FakeEventRepo) {
+    init(eventRepository: EventRepository? = nil) {
         super.init(nibName: nil, bundle: nil)
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        events = fakeRepo.getEvents()
+        
+        self.eventRepository = eventRepository
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -15,9 +16,14 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
 
-    // MARK: - Table view data source
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        events = eventRepository?.getEvents()
+    }
+}
+
+// MARK: - Table view data source
+extension EventTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -27,17 +33,20 @@ class EventTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return events?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         var cell : EventTableViewCell!
-         cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier") as? EventTableViewCell
-         if cell == nil {
-             cell = EventTableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
-         }
+        var cell : EventTableViewCell!
+        cell = tableView.dequeueReusableCell(withIdentifier: "event") as? EventTableViewCell
+
+        if cell == nil {
+            cell = EventTableViewCell(style: .default, reuseIdentifier: "event")
+        }
         
-        cell.configure(event: events[indexPath.row])
+        if let events = events {
+            cell.configure(event: events[indexPath.row])
+        }
 
         return cell
     }

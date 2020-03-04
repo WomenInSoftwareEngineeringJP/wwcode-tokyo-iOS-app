@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let viewController = EventTableViewController(fakeRepo: FakeEventRepo())
+        let viewController = EventTableViewController()
 
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()

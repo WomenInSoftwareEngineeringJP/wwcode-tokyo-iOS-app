@@ -2,7 +2,6 @@ import UIKit
 import PureLayout
 
 class EventTableViewCell: UITableViewCell {
-    
     private var containerView: UIView!
     private var titleLabel: UILabel!
     private var dateLabel: UILabel!

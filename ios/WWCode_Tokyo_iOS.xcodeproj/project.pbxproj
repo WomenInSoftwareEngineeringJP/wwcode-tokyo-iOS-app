@@ -26,6 +26,8 @@
 		F174F5162408B1440070C353 /* Succinct.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1104D482407A1BE00B38D11 /* Succinct.framework */; };
 		F174F5172408B1490070C353 /* Succinct.framework in Carthage: Copy Files */ = {isa = PBXBuildFile; fileRef = F1104D482407A1BE00B38D11 /* Succinct.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F174F5192408B4310070C353 /* FakeEventRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5182408B4310070C353 /* FakeEventRepo.swift */; };
+		F1BC49D2240F4C9400D26637 /* EventRepoSpyStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */; };
+		F1BC49D4240F4E4300D26637 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC49D3240F4E4300D26637 /* EventRepository.swift */; };
 		F1BF0E1C2404AFFF00ED1639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */; };
 		F1BF0E1F2404AFFF00ED1639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1BF0E1D2404AFFF00ED1639 /* LaunchScreen.storyboard */; };
 		F1BF0E4B2404B58E00ED1639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF0E482404B58E00ED1639 /* AppDelegate.swift */; };
@@ -90,6 +92,8 @@
 		F174F50F2408A84D0070C353 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		F174F5112408A8650070C353 /* EventViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewControllerTest.swift; sourceTree = "<group>"; };
 		F174F5182408B4310070C353 /* FakeEventRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventRepo.swift; sourceTree = "<group>"; };
+		F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepoSpyStub.swift; sourceTree = "<group>"; };
+		F1BC49D3240F4E4300D26637 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
 		F1BF0E0F2404AFFD00ED1639 /* WWCode_Tokyo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWCode_Tokyo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1BF0E1E2404AFFF00ED1639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				F174F5182408B4310070C353 /* FakeEventRepo.swift */,
 				F174F50B2408A4330070C353 /* Event.swift */,
+				F1BC49D3240F4E4300D26637 /* EventRepository.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 		F129175B240F45C7002B0352 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				F174F5192408B4310070C353 /* FakeEventRepo.swift in Sources */,
 				F174F50C2408A4330070C353 /* Event.swift in Sources */,
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,
+				F1BC49D4240F4E4300D26637 /* EventRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */,
+				F1BC49D2240F4C9400D26637 /* EventRepoSpyStub.swift in Sources */,
 				F174F5122408A8650070C353 /* EventViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
