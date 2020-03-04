@@ -18,6 +18,10 @@
 		F1104D4D2407A20300B38D11 /* Nimble.framework in Carthage: Copy Files */ = {isa = PBXBuildFile; fileRef = F1104D462407A1BE00B38D11 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1104D4E2407A21500B38D11 /* Quick.framework in Carthage: Copy Files */ = {isa = PBXBuildFile; fileRef = F1104D472407A1BE00B38D11 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1291752240DE953002B0352 /* EventTableViewCell.swift */; };
+		F14B0B8A240F9761004E277A /* NetworkEventRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */; };
+		F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */; };
+		F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8F240F9C4D004E277A /* SpyHttp.swift */; };
+		F14B0B92240F9DF4004E277A /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B91240F9DF4004E277A /* Http.swift */; };
 		F174F50A2408A4210070C353 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5092408A4210070C353 /* EventTableViewController.swift */; };
 		F174F50C2408A4330070C353 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50B2408A4330070C353 /* Event.swift */; };
 		F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */; };
@@ -86,6 +90,10 @@
 		F1104D472407A1BE00B38D11 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		F1104D482407A1BE00B38D11 /* Succinct.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Succinct.framework; path = Carthage/Build/iOS/Succinct.framework; sourceTree = "<group>"; };
 		F1291752240DE953002B0352 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepositoryTest.swift; sourceTree = "<group>"; };
+		F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepository.swift; sourceTree = "<group>"; };
+		F14B0B8F240F9C4D004E277A /* SpyHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyHttp.swift; sourceTree = "<group>"; };
+		F14B0B91240F9DF4004E277A /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		F174F5092408A4210070C353 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		F174F50B2408A4330070C353 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewControllerTest.swift; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 				F174F5182408B4310070C353 /* FakeEventRepo.swift */,
 				F174F50B2408A4330070C353 /* Event.swift */,
 				F1BC49D3240F4E4300D26637 /* EventRepository.swift */,
+				F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -172,6 +181,7 @@
 		F1291757240F4571002B0352 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F14B0B8D240F9C27004E277A /* Http */,
 				F129175B240F45C7002B0352 /* Events */,
 			);
 			path = Components;
@@ -206,8 +216,25 @@
 			isa = PBXGroup;
 			children = (
 				F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */,
+				F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		F14B0B8D240F9C27004E277A /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				F14B0B8F240F9C4D004E277A /* SpyHttp.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		F14B0B8E240F9C3B004E277A /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				F14B0B91240F9DF4004E277A /* Http.swift */,
+			);
+			path = Http;
 			sourceTree = "<group>";
 		};
 		F1BF0E062404AFFD00ED1639 = {
@@ -278,6 +305,7 @@
 		F1BF0E452404B36700ED1639 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F14B0B8E240F9C3B004E277A /* Http */,
 				F1291756240F406F002B0352 /* Events */,
 			);
 			path = Components;
@@ -424,7 +452,9 @@
 				F1BF0E4D2404B58E00ED1639 /* SceneDelegate.swift in Sources */,
 				F174F50A2408A4210070C353 /* EventTableViewController.swift in Sources */,
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
+				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
+				F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */,
 				F174F5192408B4310070C353 /* FakeEventRepo.swift in Sources */,
 				F174F50C2408A4330070C353 /* Event.swift in Sources */,
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,
@@ -438,6 +468,8 @@
 			files = (
 				F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */,
 				F1BC49D2240F4C9400D26637 /* EventRepoSpyStub.swift in Sources */,
+				F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */,
+				F14B0B8A240F9761004E277A /* NetworkEventRepositoryTest.swift in Sources */,
 				F174F5122408A8650070C353 /* EventViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
