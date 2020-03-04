@@ -31,7 +31,6 @@
 		F1BF0E4B2404B58E00ED1639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF0E482404B58E00ED1639 /* AppDelegate.swift */; };
 		F1BF0E4D2404B58E00ED1639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF0E4A2404B58E00ED1639 /* SceneDelegate.swift */; };
 		F1BF0E502404BE8800ED1639 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF0E4F2404BE8800ED1639 /* main.swift */; };
-		F1E9C52F2404C4510012C1A4 /* WiringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9C52E2404C4510012C1A4 /* WiringTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +98,6 @@
 		F1BF0E492404B58E00ED1639 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1BF0E4A2404B58E00ED1639 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F1BF0E4F2404BE8800ED1639 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		F1E9C52E2404C4510012C1A4 /* WiringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiringTest.swift; sourceTree = "<group>"; };
 		F1E9C5302404C5260012C1A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +164,46 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		F1291757240F4571002B0352 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F129175B240F45C7002B0352 /* Events */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F1291758240F4584002B0352 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F129175A240F459C002B0352 /* EventList */,
+				F1291759240F4593002B0352 /* EventDetail */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F1291759240F4593002B0352 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */,
+			);
+			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		F129175A240F459C002B0352 /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				F174F5112408A8650070C353 /* EventViewControllerTest.swift */,
+			);
+			path = EventList;
+			sourceTree = "<group>";
+		};
+		F129175B240F45C7002B0352 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		F1BF0E062404AFFD00ED1639 = {
 			isa = PBXGroup;
 			children = (
@@ -203,9 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				F1BF0E4E2404BA5100ED1639 /* Application */,
-				F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */,
-				F174F5112408A8650070C353 /* EventViewControllerTest.swift */,
-				F1E9C52E2404C4510012C1A4 /* WiringTest.swift */,
+				F1291757240F4571002B0352 /* Components */,
+				F1291758240F4584002B0352 /* UI */,
 			);
 			path = WWCode_Tokyo_iOSTests;
 			sourceTree = "<group>";
@@ -394,7 +431,6 @@
 			files = (
 				F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */,
 				F174F5122408A8650070C353 /* EventViewControllerTest.swift in Sources */,
-				F1E9C52F2404C4510012C1A4 /* WiringTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
