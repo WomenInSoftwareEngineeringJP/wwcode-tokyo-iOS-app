@@ -28,11 +28,11 @@ matrix:
       install:
         - cd server
         - make test
-      deploy:
-        provider: cloudfoundry
-        username: $CF_USERNAME
-        password:
-          secure: $CF_SECURED_PASSWORD
-        api: $CF_URL
-        organization: $CF_ORG
-        space: $CF_SPACE
+#      deploy:
+#        provider: cloudfoundry
+#        username: $CF_USERNAME
+#        password:
+#          secure: $CF_SECURED_PASSWORD
+#        api: $CF_URL
+#        organization: $CF_ORG
+#        space: $CF_SPACE
