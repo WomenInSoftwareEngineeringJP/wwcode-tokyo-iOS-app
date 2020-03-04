@@ -21,6 +21,17 @@ class EventTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(event: Event) {
+        titleLabel.text = event.name
+        dateLabel.text = event.date
+        timeLabel.text = event.time
+        venueNameLabel.text = event.venueName
+    }
+       
+}
+
+fileprivate extension EventTableViewCell {
+    
     func initializeViews() {
         containerView = UIView()
         containerView.configureForAutoLayout()
@@ -36,13 +47,6 @@ class EventTableViewCell: UITableViewCell {
         
         venueNameLabel = UILabel()
         venueNameLabel.configureForAutoLayout()
-    }
-    
-    func configure(event: Event) {
-        titleLabel.text = event.name
-        dateLabel.text = event.date
-        timeLabel.text = event.time
-        venueNameLabel.text = event.venueName
     }
     
     func addSubviews() {

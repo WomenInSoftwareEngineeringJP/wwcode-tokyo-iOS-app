@@ -36,6 +36,7 @@ class EventTableViewController: UITableViewController {
          if cell == nil {
              cell = EventTableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
          }
+        
         cell.configure(event: events[indexPath.row])
 
         return cell

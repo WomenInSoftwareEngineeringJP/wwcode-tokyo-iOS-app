@@ -140,6 +140,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F1291754240F402D002B0352 /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				F174F5092408A4210070C353 /* EventTableViewController.swift */,
+				F1291752240DE953002B0352 /* EventTableViewCell.swift */,
+			);
+			path = EventList;
+			sourceTree = "<group>";
+		};
+		F1291755240F403F002B0352 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F174F50F2408A84D0070C353 /* EventViewController.swift */,
+			);
+			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		F1291756240F406F002B0352 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				F174F5182408B4310070C353 /* FakeEventRepo.swift */,
+				F174F50B2408A4330070C353 /* Event.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		F1BF0E062404AFFD00ED1639 = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +194,6 @@
 			children = (
 				F1BF0E432404B36700ED1639 /* Application */,
 				F1BF0E452404B36700ED1639 /* Components */,
-				F1BF0E422404B36700ED1639 /* Frameworks */,
 				F1BF0E442404B36700ED1639 /* UI */,
 			);
 			path = WWCode_Tokyo_iOS;
@@ -185,23 +210,11 @@
 			path = WWCode_Tokyo_iOSTests;
 			sourceTree = "<group>";
 		};
-		F1BF0E422404B36700ED1639 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		F1BF0E432404B36700ED1639 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				F1BF0E482404B58E00ED1639 /* AppDelegate.swift */,
 				F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */,
-				F174F50B2408A4330070C353 /* Event.swift */,
-				F1291752240DE953002B0352 /* EventTableViewCell.swift */,
-				F174F5092408A4210070C353 /* EventTableViewController.swift */,
-				F174F50F2408A84D0070C353 /* EventViewController.swift */,
-				F174F5182408B4310070C353 /* FakeEventRepo.swift */,
 				F1BF0E492404B58E00ED1639 /* Info.plist */,
 				F1BF0E1D2404AFFF00ED1639 /* LaunchScreen.storyboard */,
 				F1BF0E4F2404BE8800ED1639 /* main.swift */,
@@ -213,6 +226,8 @@
 		F1BF0E442404B36700ED1639 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F1291755240F403F002B0352 /* EventDetail */,
+				F1291754240F402D002B0352 /* EventList */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -220,6 +235,7 @@
 		F1BF0E452404B36700ED1639 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F1291756240F406F002B0352 /* Events */,
 			);
 			path = Components;
 			sourceTree = "<group>";
