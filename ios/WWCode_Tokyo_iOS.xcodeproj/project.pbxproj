@@ -28,6 +28,8 @@
 		F16B44BF24109011001E37C7 /* SpySessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44BE24109011001E37C7 /* SpySessionDataTask.swift */; };
 		F16B44C1241090C7001E37C7 /* FakeNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C0241090C7001E37C7 /* FakeNetworkSession.swift */; };
 		F16B44C4241097EA001E37C7 /* AsyncExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C3241097EA001E37C7 /* AsyncExpectation.swift */; };
+		F16B44C72410C5AC001E37C7 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C62410C5AC001E37C7 /* Configuration.swift */; };
+		F16B44C92410C5D9001E37C7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C82410C5D9001E37C7 /* Environment.swift */; };
 		F174F50A2408A4210070C353 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5092408A4210070C353 /* EventTableViewController.swift */; };
 		F174F50C2408A4330070C353 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50B2408A4330070C353 /* Event.swift */; };
 		F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */; };
@@ -105,6 +107,8 @@
 		F16B44BE24109011001E37C7 /* SpySessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpySessionDataTask.swift; sourceTree = "<group>"; };
 		F16B44C0241090C7001E37C7 /* FakeNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkSession.swift; sourceTree = "<group>"; };
 		F16B44C3241097EA001E37C7 /* AsyncExpectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncExpectation.swift; sourceTree = "<group>"; };
+		F16B44C62410C5AC001E37C7 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		F16B44C82410C5D9001E37C7 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F174F5092408A4210070C353 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		F174F50B2408A4330070C353 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewControllerTest.swift; sourceTree = "<group>"; };
@@ -260,6 +264,15 @@
 			path = "Asynchronous Testing";
 			sourceTree = "<group>";
 		};
+		F16B44C52410C592001E37C7 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				F16B44C62410C5AC001E37C7 /* Configuration.swift */,
+				F16B44C82410C5D9001E37C7 /* Environment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		F1BF0E062404AFFD00ED1639 = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +319,7 @@
 		F1BF0E432404B36700ED1639 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				F16B44C52410C592001E37C7 /* Environment */,
 				F1BF0E482404B58E00ED1639 /* AppDelegate.swift */,
 				F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */,
 				F1BF0E492404B58E00ED1639 /* Info.plist */,
@@ -477,7 +491,9 @@
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
 				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
+				F16B44C72410C5AC001E37C7 /* Configuration.swift in Sources */,
 				F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */,
+				F16B44C92410C5D9001E37C7 /* Environment.swift in Sources */,
 				F174F50C2408A4330070C353 /* Event.swift in Sources */,
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,
 				F16B44B9241088CE001E37C7 /* NetworkHttp.swift in Sources */,

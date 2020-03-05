@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let http = NetworkHttp(baseUrl: "http://localhost:8080", networkSession: URLSession.shared)
+        let http = NetworkHttp(baseUrl: Configuration.environment.baseURL, networkSession: URLSession.shared)
         let eventRepo = NetworkEventRepository(http: http)
         let viewController = EventTableViewController(eventRepository: eventRepo)
 
