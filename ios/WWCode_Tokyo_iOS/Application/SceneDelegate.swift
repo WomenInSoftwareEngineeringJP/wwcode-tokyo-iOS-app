@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let http = NetworkHttp(baseUrl: Configuration.environment.baseURL, networkSession: URLSession.shared)
         let eventRepo = NetworkEventRepository(http: http)
-        let viewController = EventTableViewController(eventRepository: eventRepo)
+        let viewController = EventListViewController(eventRepository: eventRepo)
 
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()

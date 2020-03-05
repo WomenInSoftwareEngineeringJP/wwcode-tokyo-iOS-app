@@ -6,7 +6,7 @@ import Succinct
 
 final class EventsTableViewControllerTest: QuickSpec {
     override func spec() {
-        var subject: EventTableViewController!
+        var subject: EventListViewController!
         var eventRepoSpyStub: SpyStubEventRepo!
         let events = [
             Event(name: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic", date: "WED 05 FEB", time: "7:30 PM - 9:30 PM", venueName: "Code Chrysalis"),
@@ -17,7 +17,7 @@ final class EventsTableViewControllerTest: QuickSpec {
             beforeEach {
                 eventRepoSpyStub = SpyStubEventRepo()
                 eventRepoSpyStub.getEvents_returnEvents.success(events)
-                subject = EventTableViewController(eventRepository: eventRepoSpyStub)
+                subject = EventListViewController(eventRepository: eventRepoSpyStub)
                 subject.viewDidLoad()
             }
             

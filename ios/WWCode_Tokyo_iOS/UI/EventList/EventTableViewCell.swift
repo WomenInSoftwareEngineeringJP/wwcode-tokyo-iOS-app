@@ -57,13 +57,11 @@ fileprivate extension EventTableViewCell {
     }
     
     func configureSubviews() {
-        containerView.autoPinEdge(.top, to: .top, of: contentView, withOffset: 20)
+        containerView.autoPinEdge(.top, to: .top, of: contentView, withOffset: 80)
         containerView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20)
         containerView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20)
         containerView.autoPinEdge(.bottom, to: .bottom, of: contentView, withOffset: -20)
-        
-        containerView.autoCenterInSuperview()
-        
+                
         dateLabel.autoPinEdge(.top, to: .top, of: containerView, withOffset: 20)
         dateLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
         dateLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
@@ -82,8 +80,8 @@ fileprivate extension EventTableViewCell {
     }
     
     func styleSubviews() {
-        containerView.backgroundColor = UIColor.gray
-        
+        backgroundColor = UIColor.lightGray
+
         containerView.layer.cornerRadius = 10.0
         containerView.layer.shadowColor = UIColor.black.cgColor
         containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
