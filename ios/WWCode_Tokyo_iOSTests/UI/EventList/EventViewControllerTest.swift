@@ -9,8 +9,8 @@ final class EventViewControllerTest: QuickSpec {
         var subject: EventViewController!
         
         beforeEach {
-            let fakeRepo = FakeEventRepo()
-            subject = EventViewController(fakeRepo: fakeRepo)
+            let eventRepo = SpyStubEventRepo()
+            subject = EventViewController(repo: eventRepo)
         }
         
         describe("EventViewController") {

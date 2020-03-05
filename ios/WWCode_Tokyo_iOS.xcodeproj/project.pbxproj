@@ -22,6 +22,11 @@
 		F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */; };
 		F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8F240F9C4D004E277A /* SpyHttp.swift */; };
 		F14B0B92240F9DF4004E277A /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B91240F9DF4004E277A /* Http.swift */; };
+		F16B44B9241088CE001E37C7 /* NetworkHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44B8241088CE001E37C7 /* NetworkHttp.swift */; };
+		F16B44BB24108ECD001E37C7 /* NetworkHttpSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44BA24108ECD001E37C7 /* NetworkHttpSpec.swift */; };
+		F16B44BD24108FE1001E37C7 /* SpyNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44BC24108FE1001E37C7 /* SpyNetworkSession.swift */; };
+		F16B44BF24109011001E37C7 /* SpySessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44BE24109011001E37C7 /* SpySessionDataTask.swift */; };
+		F16B44C1241090C7001E37C7 /* FakeNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C0241090C7001E37C7 /* FakeNetworkSession.swift */; };
 		F174F50A2408A4210070C353 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5092408A4210070C353 /* EventTableViewController.swift */; };
 		F174F50C2408A4330070C353 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50B2408A4330070C353 /* Event.swift */; };
 		F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */; };
@@ -29,8 +34,7 @@
 		F174F5122408A8650070C353 /* EventViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5112408A8650070C353 /* EventViewControllerTest.swift */; };
 		F174F5162408B1440070C353 /* Succinct.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1104D482407A1BE00B38D11 /* Succinct.framework */; };
 		F174F5172408B1490070C353 /* Succinct.framework in Carthage: Copy Files */ = {isa = PBXBuildFile; fileRef = F1104D482407A1BE00B38D11 /* Succinct.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F174F5192408B4310070C353 /* FakeEventRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5182408B4310070C353 /* FakeEventRepo.swift */; };
-		F1BC49D2240F4C9400D26637 /* EventRepoSpyStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */; };
+		F1BC49D2240F4C9400D26637 /* SpyStubEventRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC49D1240F4C9400D26637 /* SpyStubEventRepo.swift */; };
 		F1BC49D4240F4E4300D26637 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC49D3240F4E4300D26637 /* EventRepository.swift */; };
 		F1BF0E1C2404AFFF00ED1639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */; };
 		F1BF0E1F2404AFFF00ED1639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1BF0E1D2404AFFF00ED1639 /* LaunchScreen.storyboard */; };
@@ -94,13 +98,17 @@
 		F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepository.swift; sourceTree = "<group>"; };
 		F14B0B8F240F9C4D004E277A /* SpyHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyHttp.swift; sourceTree = "<group>"; };
 		F14B0B91240F9DF4004E277A /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		F16B44B8241088CE001E37C7 /* NetworkHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHttp.swift; sourceTree = "<group>"; };
+		F16B44BA24108ECD001E37C7 /* NetworkHttpSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHttpSpec.swift; sourceTree = "<group>"; };
+		F16B44BC24108FE1001E37C7 /* SpyNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyNetworkSession.swift; sourceTree = "<group>"; };
+		F16B44BE24109011001E37C7 /* SpySessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpySessionDataTask.swift; sourceTree = "<group>"; };
+		F16B44C0241090C7001E37C7 /* FakeNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkSession.swift; sourceTree = "<group>"; };
 		F174F5092408A4210070C353 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		F174F50B2408A4330070C353 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F174F50D2408A5E10070C353 /* EventTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewControllerTest.swift; sourceTree = "<group>"; };
 		F174F50F2408A84D0070C353 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		F174F5112408A8650070C353 /* EventViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewControllerTest.swift; sourceTree = "<group>"; };
-		F174F5182408B4310070C353 /* FakeEventRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventRepo.swift; sourceTree = "<group>"; };
-		F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepoSpyStub.swift; sourceTree = "<group>"; };
+		F1BC49D1240F4C9400D26637 /* SpyStubEventRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyStubEventRepo.swift; sourceTree = "<group>"; };
 		F1BC49D3240F4E4300D26637 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
 		F1BF0E0F2404AFFD00ED1639 /* WWCode_Tokyo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWCode_Tokyo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BF0E1B2404AFFF00ED1639 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,7 +178,6 @@
 		F1291756240F406F002B0352 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				F174F5182408B4310070C353 /* FakeEventRepo.swift */,
 				F174F50B2408A4330070C353 /* Event.swift */,
 				F1BC49D3240F4E4300D26637 /* EventRepository.swift */,
 				F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */,
@@ -215,7 +222,7 @@
 		F129175B240F45C7002B0352 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				F1BC49D1240F4C9400D26637 /* EventRepoSpyStub.swift */,
+				F1BC49D1240F4C9400D26637 /* SpyStubEventRepo.swift */,
 				F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */,
 			);
 			path = Events;
@@ -224,7 +231,11 @@
 		F14B0B8D240F9C27004E277A /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				F16B44BA24108ECD001E37C7 /* NetworkHttpSpec.swift */,
 				F14B0B8F240F9C4D004E277A /* SpyHttp.swift */,
+				F16B44BC24108FE1001E37C7 /* SpyNetworkSession.swift */,
+				F16B44BE24109011001E37C7 /* SpySessionDataTask.swift */,
+				F16B44C0241090C7001E37C7 /* FakeNetworkSession.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -233,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				F14B0B91240F9DF4004E277A /* Http.swift */,
+				F16B44B8241088CE001E37C7 /* NetworkHttp.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -455,9 +467,9 @@
 				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
 				F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */,
-				F174F5192408B4310070C353 /* FakeEventRepo.swift in Sources */,
 				F174F50C2408A4330070C353 /* Event.swift in Sources */,
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,
+				F16B44B9241088CE001E37C7 /* NetworkHttp.swift in Sources */,
 				F1BC49D4240F4E4300D26637 /* EventRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,9 +478,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F16B44C1241090C7001E37C7 /* FakeNetworkSession.swift in Sources */,
+				F16B44BF24109011001E37C7 /* SpySessionDataTask.swift in Sources */,
 				F174F50E2408A5E10070C353 /* EventTableViewControllerTest.swift in Sources */,
-				F1BC49D2240F4C9400D26637 /* EventRepoSpyStub.swift in Sources */,
+				F16B44BD24108FE1001E37C7 /* SpyNetworkSession.swift in Sources */,
+				F1BC49D2240F4C9400D26637 /* SpyStubEventRepo.swift in Sources */,
 				F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */,
+				F16B44BB24108ECD001E37C7 /* NetworkHttpSpec.swift in Sources */,
 				F14B0B8A240F9761004E277A /* NetworkEventRepositoryTest.swift in Sources */,
 				F174F5122408A8650070C353 /* EventViewControllerTest.swift in Sources */,
 			);

@@ -1,6 +1,6 @@
 @testable import WWCode_Tokyo_iOS
 
-class EventRepoSpyStub: EventRepository {
+class SpyStubEventRepo: EventRepository {
     var getEvents_wasCalled: Bool = false
     var events: [Event] = []
     
