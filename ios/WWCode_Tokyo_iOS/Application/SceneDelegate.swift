@@ -12,7 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let viewController = EventTableViewController()
+        let http = NetworkHttp(baseUrl: "http://localhost:8080/", networkSession: URLSession.shared)
+        let eventRepo = NetworkEventRepository(http: http)
+        let viewController = EventTableViewController(eventRepository: eventRepo)
 
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()

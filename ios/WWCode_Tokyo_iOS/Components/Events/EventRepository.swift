@@ -1,3 +1,5 @@
+import BrightFutures
+
 protocol EventRepository {
-    func getEvents() -> [Event]
+    func getEvents() -> Future<[Event], RepoError>
 }

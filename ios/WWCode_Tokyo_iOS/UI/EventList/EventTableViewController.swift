@@ -2,12 +2,16 @@ import UIKit
 
 class EventTableViewController: UITableViewController {
     private var events: [Event]?
-    private var eventRepository: EventRepository?
+    private var eventRepository: EventRepository!
     
     init(eventRepository: EventRepository? = nil) {
         super.init(nibName: nil, bundle: nil)
-        
         self.eventRepository = eventRepository
+        self.eventRepository.getEvents()
+            .onSuccess { events in
+                self.events = events
+                self.tableView.reloadData()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -16,9 +20,7 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        events = eventRepository?.getEvents()
     }
 }
 
