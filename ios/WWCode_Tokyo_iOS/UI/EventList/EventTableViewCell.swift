@@ -21,8 +21,8 @@ class EventTableViewCell: UITableViewCell {
     }
     
     func configure(event: Event) {
-        titleLabel.text = event.name
         dateLabel.text = event.date
+        titleLabel.text = event.name
         timeLabel.text = event.time
         venueNameLabel.text = event.venueName
     }
@@ -35,52 +35,51 @@ fileprivate extension EventTableViewCell {
         containerView = UIView()
         containerView.configureForAutoLayout()
         
+        dateLabel = UILabel()
+        dateLabel.configureForAutoLayout()
+
         titleLabel = UILabel()
         titleLabel.configureForAutoLayout()
         
-        dateLabel = UILabel()
-        dateLabel.configureForAutoLayout()
-        
         timeLabel = UILabel()
         timeLabel.configureForAutoLayout()
-        
+
         venueNameLabel = UILabel()
         venueNameLabel.configureForAutoLayout()
     }
     
     func addSubviews() {
-        containerView.addSubview(titleLabel)
         containerView.addSubview(dateLabel)
+        containerView.addSubview(titleLabel)
         containerView.addSubview(timeLabel)
         containerView.addSubview(venueNameLabel)
         addSubview(containerView)
     }
     
     func configureSubviews() {
-        containerView.autoPinEdge(.top, to: .top, of: contentView, withOffset: 80)
-        containerView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20)
-        containerView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20)
-        containerView.autoPinEdge(.bottom, to: .bottom, of: contentView, withOffset: -20)
-                
+        containerView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+
         dateLabel.autoPinEdge(.top, to: .top, of: containerView, withOffset: 20)
         dateLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
         dateLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
         
-        titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 4)
-        titleLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
-        titleLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
+        titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 10)
+        titleLabel.autoPinEdge(.bottom, to: .top, of: timeLabel, withOffset: -20)
+        titleLabel.autoPinEdge(.left, to: .left, of: dateLabel)
+        titleLabel.autoPinEdge(.right, to: .right, of: dateLabel)
 
         timeLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
         timeLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
-        timeLabel.autoPinEdge(.bottom, to: .top, of: venueNameLabel, withOffset: 4)
-        
-        venueNameLabel.autoPinEdge(.bottom, to: .bottom, of: containerView, withOffset: -20)
+        timeLabel.autoPinEdge(.bottom, to: .top, of: venueNameLabel, withOffset: -4)
+
         venueNameLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
         venueNameLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
+        venueNameLabel.autoPinEdge(.bottom, to: .bottom, of: containerView, withOffset: -20)
     }
     
     func styleSubviews() {
-        backgroundColor = UIColor.lightGray
+        backgroundColor = UIColor.white
+        containerView.backgroundColor = UIColor.white
 
         containerView.layer.cornerRadius = 10.0
         containerView.layer.shadowColor = UIColor.black.cgColor

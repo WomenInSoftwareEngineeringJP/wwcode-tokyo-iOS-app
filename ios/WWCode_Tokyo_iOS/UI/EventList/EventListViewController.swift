@@ -51,7 +51,6 @@ fileprivate extension EventListViewController {
     }
     
     func configureSubviews() {
-        tableView.backgroundColor = UIColor.lightGray
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         tableView.dataSource = self
