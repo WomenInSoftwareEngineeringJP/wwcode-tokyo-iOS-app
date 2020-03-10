@@ -6,9 +6,12 @@ class EventListViewController: UIViewController {
     private var tableView: UITableView!
     private var didSetupConstraints: Bool = false
 
+    private var eventsLabel: UILabel!
+    private var upcomingLabel: UILabel!
+
     init(eventRepository: EventRepository) {
         self.eventRepository = eventRepository
-
+    
         super.init(nibName: nil, bundle: nil)
         
         view.setNeedsUpdateConstraints()
@@ -31,8 +34,22 @@ class EventListViewController: UIViewController {
     
     override func updateViewConstraints() {
           if (!didSetupConstraints) {
-              tableView.autoPinEdgesToSuperviewSafeArea()
+              eventsLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
+              eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+              eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+              
+              upcomingLabel.autoPinEdge(.top, to: .bottom, of: eventsLabel)
+              upcomingLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+              upcomingLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
 
+            //              tableView.autoPinEdgesToSuperviewSafeArea()
+            
+            
+            tableView.autoPinEdge(.top, to: .bottom, of: upcomingLabel)
+            tableView.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+            tableView.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            tableView.autoPinEdge(toSuperviewEdge: .bottom, withInset: 15.0)
+            
               didSetupConstraints = true
           }
 
@@ -44,21 +61,28 @@ class EventListViewController: UIViewController {
 fileprivate extension EventListViewController {
     func initializeViews() {
         tableView = UITableView(frame: CGRect.zero)
+        eventsLabel = UILabel.newAutoLayout()
+        upcomingLabel = UILabel.newAutoLayout()
     }
     
     func addSubview() {
         view.addSubview(tableView)
+        view.addSubview(eventsLabel)
+        view.addSubview(upcomingLabel)
     }
     
     func configureSubviews() {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
         tableView.dataSource = self
-        
         tableView.register(
                    EventTableViewCell.self,
                    forCellReuseIdentifier: String(describing: EventTableViewCell.self)
                )
+
+        eventsLabel.text = "Events"
+        upcomingLabel.text = "Upcoming"
+        
+        self.view.backgroundColor = .white
     }
 }
 

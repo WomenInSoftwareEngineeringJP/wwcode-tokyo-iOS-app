@@ -26,6 +26,8 @@ final class EventListViewControllerTest: QuickSpec {
             }
             
             it("display events from repo") {
+                expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "7:30 PM - 9:30 PM")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "WED 05 FEB")).toEventually(beTrue())
