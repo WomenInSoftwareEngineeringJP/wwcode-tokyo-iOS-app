@@ -23,6 +23,7 @@ internal class MeetupEventRepositoryTest {
                 "city")
 
         val meetupEvent = MeetupEvent(
+                7200000,
                 "eventName",
                 "local_date",
                 "local_time",
@@ -45,6 +46,7 @@ internal class MeetupEventRepositoryTest {
 
         assertThat(response[0].name, equalTo("eventName"))
         assertThat(response[0].date, equalTo("local_date"))
+        assertThat(response[0].duration, equalTo(7200000))
         assertThat(response[0].time, equalTo("local_time"))
         assertThat(response[0].venueName, equalTo("venueName"))
     }

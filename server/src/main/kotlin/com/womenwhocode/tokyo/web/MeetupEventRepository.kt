@@ -10,6 +10,7 @@ class MeetupEventRepository(val meetupClient: MeetupClient) {
                 meetupEvent.name,
                 meetupEvent.local_date,
                 meetupEvent.local_time,
+                meetupEvent.duration,
                 meetupEvent.venue.name
             )
         }

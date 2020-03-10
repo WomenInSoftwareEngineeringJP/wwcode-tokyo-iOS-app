@@ -20,14 +20,18 @@ class EventControllerTest {
     private lateinit var mvc: MockMvc
 
     @MockBean
-    private lateinit var repository: MeetupEventRepository
+    private lateinit var service: EventService
 
     @BeforeEach
     internal fun setUp() {
         val events = listOf(
-                Event("WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic", "2020-02-05", "19:30", "Code Chrysalis"))
+                WWCEvent(
+                        "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic",
+                        "Feb 2, Wed",
+                        "19:30-21:30",
+                        "Code Chrysalis"))
 
-        `when`(repository.getEvents()).thenReturn(events)
+        `when`(service.getEvents()).thenReturn(events)
     }
 
     @Test
@@ -45,6 +49,9 @@ class EventControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$").isArray)
                 .andExpect(jsonPath("$[0].name", `is`("WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")))
+                .andExpect(jsonPath("$[0].date", `is`("Feb 2, Wed")))
+                .andExpect(jsonPath("$[0].time", `is`("19:30-21:30")))
+                .andExpect(jsonPath("$[0].venueName", `is`("Code Chrysalis")))
     }
 
 }

@@ -1,9 +1,8 @@
 package com.womenwhocode.tokyo.web
 
-data class Event(
+data class WWCEvent(
         val name: String,
         val date: String,
         val time: String,
-        val duration: Int,
         val venueName: String
 )

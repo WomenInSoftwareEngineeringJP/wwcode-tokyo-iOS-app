@@ -1,6 +1,7 @@
 package com.womenwhocode.tokyo.web
 
 data class MeetupEvent(
+        val duration: Int,
         val name: String,
         val local_date: String,
         val local_time: String,
