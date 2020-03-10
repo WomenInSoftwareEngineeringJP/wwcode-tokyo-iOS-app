@@ -4,7 +4,7 @@ import Succinct
 
 @testable import WWCode_Tokyo_iOS
 
-final class EventsTableViewControllerTest: QuickSpec {
+final class EventListViewControllerTest: QuickSpec {
     override func spec() {
         var subject: EventListViewController!
         var eventRepoSpyStub: SpyStubEventRepo!

@@ -20,7 +20,7 @@ class EventListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialzeViews()
+        initializeViews()
         addSubview()
         configureSubviews()
         self.eventRepository.getEvents().onSuccess { events in
@@ -42,7 +42,7 @@ class EventListViewController: UIViewController {
 
 // MARK: - View Setup
 fileprivate extension EventListViewController {
-    func initialzeViews() {
+    func initializeViews() {
         tableView = UITableView(frame: CGRect.zero)
     }
     
