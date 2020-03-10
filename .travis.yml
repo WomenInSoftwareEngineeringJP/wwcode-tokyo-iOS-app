@@ -19,21 +19,19 @@ matrix:
       xcode_scheme: WWCode_Tokyo_iOS
       xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 11
       install:
-        - cd ios
-        - make bootstrap
+        - make ios
 
     - name: "Spring Server Unit Tests"
       language: java
       jdk: openjdk8
       install:
-        - cd server
-        - make test
-      deploy:
-        provider: cloudfoundry
-        username: $CF_USERNAME
-        password:
-          secure: $CF_SECURED_PASSWORD
-        api: $CF_URL
-        organization: $CF_ORG
-        space: $CF_SPACE
-        manifest: server/manifest.yml
+        - make server
+#      deploy:
+#        provider: cloudfoundry
+#        username: $CF_USERNAME
+#        password:
+#          secure: $CF_SECURED_PASSWORD
+#        api: $CF_URL
+#        organization: $CF_ORG
+#        space: $CF_SPACE
+#        manifest: server/manifest.yml

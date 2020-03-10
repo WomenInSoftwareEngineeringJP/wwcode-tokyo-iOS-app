@@ -1,7 +1,5 @@
 ios:
-	cd ios
-	make bootstrap
+	cd ios && make bootstrap
 
 server:
-	cd server
-	make test
+	cd server && make test
