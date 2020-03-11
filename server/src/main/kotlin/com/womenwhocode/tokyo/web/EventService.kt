@@ -19,9 +19,9 @@ class EventService(val repo: MeetupEventRepository) {
     }
 
     private fun formatDate(date: String): String {
-        val date = LocalDate.parse(date)
+        val localDate = LocalDate.parse(date)
         val formatter = DateTimeFormatter.ofPattern("MMM dd, EEE")
-        return date.format(formatter)
+        return localDate.format(formatter)
     }
 
     private fun formatTime(duration: Int, date: String, time: String): String {

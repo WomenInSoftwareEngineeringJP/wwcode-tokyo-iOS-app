@@ -9,6 +9,7 @@ interface MeetupClient {
     @GetMapping("/events")
     fun getEvents(@RequestParam(name = "sign") sign: Boolean,
                   @RequestParam(name = "photo-host") photoHost: String,
-                  @RequestParam(name = "scroll") scroll: String,
+                  @RequestParam(name = "status") status: String,
+                  @RequestParam(name = "no_earlier_than") noEarlierThan: String,
                   @RequestParam(name = "page") page: Int): List<MeetupEvent>
 }

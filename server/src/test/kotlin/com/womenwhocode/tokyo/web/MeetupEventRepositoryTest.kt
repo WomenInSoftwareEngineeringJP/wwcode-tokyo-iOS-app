@@ -22,7 +22,7 @@ internal class MeetupEventRepositoryTest {
                 "address_1",
                 "city")
 
-        val meetupEvent = MeetupEvent(
+        val upcomingMeetupEvent = MeetupEvent(
                 7200000,
                 "eventName",
                 "local_date",
@@ -34,14 +34,14 @@ internal class MeetupEventRepositoryTest {
                 "description")
 
         client = mock {
-            on { getEvents(true, "public", "recent_past", 20) } doReturn listOf(meetupEvent)
+            on { getEvents(true, "public", "upcoming", "2019-06-01T00:00:00.000",20) } doReturn listOf(upcomingMeetupEvent)
         }
 
         subject = MeetupEventRepository(client)
     }
 
     @Test
-    fun `get events returns events from meetup`() {
+    fun `get events returns upcoming events from meetup if status is upcoming`() {
         val response = subject.getEvents()
 
         assertThat(response[0].name, equalTo("eventName"))
@@ -50,4 +50,5 @@ internal class MeetupEventRepositoryTest {
         assertThat(response[0].time, equalTo("local_time"))
         assertThat(response[0].venueName, equalTo("venueName"))
     }
+
 }

@@ -4,8 +4,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class MeetupEventRepository(val meetupClient: MeetupClient) {
-    fun getEvents(): List<Event> {
-        val meetupEvents = meetupClient.getEvents(true, "public", "recent_past", 20)
+    fun getEvents(status: String = "upcoming"): List<Event> {
+        val meetupEvents = meetupClient.getEvents(true, "public", status, "2019-06-01T00:00:00.000",20)
         return meetupEvents.map { meetupEvent -> Event(
                 meetupEvent.name,
                 meetupEvent.local_date,
