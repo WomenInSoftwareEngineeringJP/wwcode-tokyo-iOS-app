@@ -33,8 +33,20 @@ internal class MeetupEventRepositoryTest {
                 "link",
                 "description")
 
+        val pastMeetupEvent = MeetupEvent(
+                10800000,
+                "Strawberry Festival",
+                "2020-02-15",
+                "10:00",
+                10,
+                99,
+                meetupVenue,
+                "link",
+                "Yokohama")
+
         client = mock {
-            on { getEvents(true, "public", "upcoming", "2019-06-01T00:00:00.000",20) } doReturn listOf(upcomingMeetupEvent)
+            on { getEvents(true, "public", "upcoming", "2019-06-01T00:00:00.000",30) } doReturn listOf(upcomingMeetupEvent)
+            on { getEvents(true, "public", "past", "2019-06-01T00:00:00.000",30) } doReturn listOf(pastMeetupEvent)
         }
 
         subject = MeetupEventRepository(client)
@@ -42,12 +54,23 @@ internal class MeetupEventRepositoryTest {
 
     @Test
     fun `get events returns upcoming events from meetup if status is upcoming`() {
-        val response = subject.getEvents()
+        val response = subject.getEvents("upcoming")
 
         assertThat(response[0].name, equalTo("eventName"))
         assertThat(response[0].date, equalTo("local_date"))
         assertThat(response[0].duration, equalTo(7200000))
         assertThat(response[0].time, equalTo("local_time"))
+        assertThat(response[0].venueName, equalTo("venueName"))
+    }
+
+    @Test
+    fun `get events returns past events from meetup if status is past`() {
+        val response = subject.getEvents("past")
+
+        assertThat(response[0].name, equalTo("Strawberry Festival"))
+        assertThat(response[0].date, equalTo("2020-02-15"))
+        assertThat(response[0].duration, equalTo(10800000))
+        assertThat(response[0].time, equalTo("10:00"))
         assertThat(response[0].venueName, equalTo("venueName"))
     }
 
