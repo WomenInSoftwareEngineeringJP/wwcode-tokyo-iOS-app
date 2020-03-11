@@ -23,7 +23,7 @@ class EventServiceTest {
                         "Pivotal Japan")
         )
         meetupEventRepository = mock {
-            on { getEvents() } doReturn eventList
+            on { getEvents("upcoming") } doReturn eventList
         }
 
         subject = EventService(meetupEventRepository)
@@ -31,7 +31,7 @@ class EventServiceTest {
 
     @Test
     fun `get events return WWCEvents`() {
-        val events = subject.getEvents()
+        val events = subject.getEvents("upcoming")
 
         assertThat(events[0].date, equalTo("Dec 24, Thu"))
         assertThat(events[0].time, equalTo("19:30 - 21:30"))

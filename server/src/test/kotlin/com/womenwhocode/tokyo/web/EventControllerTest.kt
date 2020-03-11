@@ -31,7 +31,7 @@ class EventControllerTest {
                         "19:30-21:30",
                         "Code Chrysalis"))
 
-        `when`(service.getEvents()).thenReturn(events)
+        `when`(service.getEvents("upcoming")).thenReturn(events)
     }
 
     @Test
