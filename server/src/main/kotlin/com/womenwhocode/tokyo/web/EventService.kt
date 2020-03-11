@@ -10,26 +10,28 @@ class EventService(val repo: MeetupEventRepository) {
     fun getEvents(): List<WWCEvent> {
         return repo.getEvents()
                 .map {
-                    val date = LocalDate.parse(it.date)
-                    val formatter = DateTimeFormatter.ofPattern("MMM dd, EEE")
-                    val formattedDate = date.format(formatter)
-
-                    // minutes
-                    val duration = it.duration / 1000 / 60
-
-                    val dateTime = LocalDateTime.parse("${it.date}T${it.time}:00")
-                    val endDateTime = dateTime.plusMinutes(duration.toLong())
-
-                    val endDateFormatter = DateTimeFormatter.ofPattern("kk:mm")
-                    val endDate = endDateTime.format(endDateFormatter)
-
-                    val formattedTime = "${it.time} - $endDate"
-
                     WWCEvent(
                             it.name,
-                            formattedDate,
-                            formattedTime,
+                            formatDate(it.date),
+                            formatTime(it.duration, it.date, it.time),
                             it.venueName)
                 }
+    }
+
+    private fun formatDate(date: String): String {
+        val date = LocalDate.parse(date)
+        val formatter = DateTimeFormatter.ofPattern("MMM dd, EEE")
+        return date.format(formatter)
+    }
+
+    private fun formatTime(duration: Int, date: String, time: String): String {
+        val durationInMinutes = duration / 1000 / 60
+
+        val dateTime = LocalDateTime.parse("${date}T${time}:00")
+        val endDateTime = dateTime.plusMinutes(durationInMinutes.toLong())
+
+        val endTimeFormatter = DateTimeFormatter.ofPattern("kk:mm")
+        val endTime = endDateTime.format(endTimeFormatter)
+        return "$time - $endTime"
     }
 }
