@@ -5,4 +5,4 @@ run:
 	./gradlew bootRun
 
 test:
-	./gradlew clean test
+	@./gradlew clean test

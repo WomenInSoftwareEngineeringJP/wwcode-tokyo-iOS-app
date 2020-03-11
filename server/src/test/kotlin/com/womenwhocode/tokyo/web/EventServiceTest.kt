@@ -1,7 +1,7 @@
 package com.womenwhocode.tokyo.web
 
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.BeforeEach
@@ -15,6 +15,12 @@ class EventServiceTest {
 
     @BeforeEach
     internal fun setUp() {
+        meetupEventRepository = mock { }
+        subject = EventService(meetupEventRepository)
+    }
+
+    @Test
+    fun `get events return upcoming WWCEvents`() {
         val eventList = listOf<Event>(
                 Event("PAL training!",
                         "2020-12-24",
@@ -22,20 +28,32 @@ class EventServiceTest {
                         7200000,
                         "Pivotal Japan")
         )
-        meetupEventRepository = mock {
-            on { getEvents("upcoming") } doReturn eventList
-        }
-
-        subject = EventService(meetupEventRepository)
-    }
-
-    @Test
-    fun `get events return WWCEvents`() {
+        whenever(meetupEventRepository.getEvents("upcoming")).thenReturn(eventList)
         val events = subject.getEvents("upcoming")
 
         assertThat(events[0].date, equalTo("Dec 24, Thu"))
         assertThat(events[0].time, equalTo("19:30 - 21:30"))
         assertThat(events[0].name, equalTo("PAL training!"))
         assertThat(events[0].venueName, equalTo("Pivotal Japan"))
+    }
+
+    @Test
+    fun `get events return past WWCEvents`() {
+        val pastEvents = listOf(
+                Event(
+                        "past event name",
+                        "2019-10-31",
+                        "18:00",
+                        10800000,
+                        "past event venue"
+                )
+        )
+        whenever(meetupEventRepository.getEvents("past")).thenReturn(pastEvents)
+        val events = subject.getEvents("past")
+
+        assertThat(events[0].date, equalTo("Oct 31, Thu"))
+        assertThat(events[0].time, equalTo("18:00 - 21:00"))
+        assertThat(events[0].name, equalTo("past event name"))
+        assertThat(events[0].venueName, equalTo("past event venue"))
     }
 }
