@@ -1,5 +1,6 @@
 package com.womenwhocode.tokyo.event
 
+import com.womenwhocode.tokyo.meetupapi.EventType
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.time.LocalDateTime

@@ -2,7 +2,7 @@ package com.womenwhocode.tokyo.event
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import com.womenwhocode.tokyo.event.EventType.*
+import com.womenwhocode.tokyo.meetupapi.EventType.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.BeforeEach

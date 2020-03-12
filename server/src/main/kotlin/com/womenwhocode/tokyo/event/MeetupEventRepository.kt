@@ -1,5 +1,6 @@
 package com.womenwhocode.tokyo.event
 
+import com.womenwhocode.tokyo.meetupapi.EventType
 import com.womenwhocode.tokyo.meetupapi.MeetupAPIClient
 import org.springframework.stereotype.Repository
 
@@ -9,7 +10,7 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
         val meetupEvents = meetupAPIClient.getEvents(
                 true,
                 "public",
-                status.eventTypeCode,
+                status.meetupAPIEventTypeCode,
                 "2019-06-01T00:00:00.000",
                 30
         )

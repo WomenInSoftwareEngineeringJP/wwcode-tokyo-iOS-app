@@ -2,7 +2,7 @@ package com.womenwhocode.tokyo.event
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import com.womenwhocode.tokyo.event.EventType.*
+import com.womenwhocode.tokyo.meetupapi.EventType.*
 import com.womenwhocode.tokyo.meetupapi.MeetupAPIClient
 import com.womenwhocode.tokyo.meetupapi.MeetupAPIEvent
 import org.hamcrest.CoreMatchers.equalTo

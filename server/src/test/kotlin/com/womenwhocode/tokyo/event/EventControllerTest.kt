@@ -1,7 +1,7 @@
 package com.womenwhocode.tokyo.event
 
 import com.nhaarman.mockitokotlin2.whenever
-import com.womenwhocode.tokyo.event.EventType.*
+import com.womenwhocode.tokyo.meetupapi.EventType.*
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
