@@ -8,8 +8,6 @@ class EventListViewController: UIViewController {
     private var didSetupConstraints: Bool = false
 
     private var eventsLabel: UILabel!
-    private var upcomingLabel: UILabel!
-    private var pastLabel: UILabel!
 
     init(eventRepository: EventRepository) {
         self.eventRepository = eventRepository
@@ -44,14 +42,8 @@ class EventListViewController: UIViewController {
               eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
               eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
               
-              upcomingLabel.autoPinEdge(.top, to: .bottom, of: eventsLabel)
-              upcomingLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-              upcomingLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
-
-            //              tableView.autoPinEdgesToSuperviewSafeArea()
             
-            
-            tableView.autoPinEdge(.top, to: .bottom, of: upcomingLabel)
+            tableView.autoPinEdge(.top, to: .bottom, of: eventsLabel)
             tableView.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
             tableView.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
             tableView.autoPinEdge(toSuperviewEdge: .bottom, withInset: 15.0)
@@ -68,25 +60,23 @@ fileprivate extension EventListViewController {
     func initializeViews() {
         tableView = UITableView(frame: CGRect.zero)
         eventsLabel = UILabel.newAutoLayout()
-        upcomingLabel = UILabel.newAutoLayout()
     }
     
     func addSubview() {
         view.addSubview(tableView)
         view.addSubview(eventsLabel)
-        view.addSubview(upcomingLabel)
     }
     
     func configureSubviews() {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(
                    EventTableViewCell.self,
                    forCellReuseIdentifier: String(describing: EventTableViewCell.self)
                )
 
         eventsLabel.text = "Events"
-        upcomingLabel.text = "Upcoming"
         
         self.view.backgroundColor = .white
     }
@@ -97,7 +87,7 @@ extension EventListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upcomingEvents.count
     }
@@ -114,5 +104,12 @@ extension EventListViewController: UITableViewDataSource {
         cell.configure(event: upcomingEvents[indexPath.row])
 
         return cell
+    }
+}
+
+// MARK: - Table view delegate
+extension EventListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return EventListHeaderView()
     }
 }

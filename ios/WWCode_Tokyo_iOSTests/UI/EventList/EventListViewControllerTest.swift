@@ -25,10 +25,16 @@ final class EventListViewControllerTest: QuickSpec {
             it("get upcoming events from repo") {
                 expect(eventRepoSpyStub.getUpcomingEvents_wasCalled).to(beTrue())
             }
-            
-            it("display upcoming events from repo") {
+
+            it("displays screen title") {
                 expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
+            }
+
+            it("displays section titles") {
                 expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
+            }
+
+            it("display upcoming events from repo") {
                 expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "7:30 PM - 9:30 PM")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "WED 11 MAR")).toEventually(beTrue())
@@ -38,7 +44,6 @@ final class EventListViewControllerTest: QuickSpec {
             it("get past events from repo") {
                 expect(eventRepoSpyStub.getPastEvents_wasCalled).to(beTrue())
             }
-            
         }
     }
 }
