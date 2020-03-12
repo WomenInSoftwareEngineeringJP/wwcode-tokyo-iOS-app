@@ -19,13 +19,15 @@ matrix:
       xcode_scheme: WWCode_Tokyo_iOS
       xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 11
       install:
-        - make ios
+        - cd ios
+        - make bootstrap
 
     - name: "Spring Server Unit Tests"
       language: java
       jdk: openjdk8
       install:
-        - make server
+        - cd server
+        - make test
 #      deploy:
 #        provider: cloudfoundry
 #        username: $CF_USERNAME
