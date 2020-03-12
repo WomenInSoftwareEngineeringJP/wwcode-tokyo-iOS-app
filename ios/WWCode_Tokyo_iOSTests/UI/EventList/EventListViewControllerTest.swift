@@ -8,31 +8,37 @@ final class EventListViewControllerTest: QuickSpec {
     override func spec() {
         var subject: EventListViewController!
         var eventRepoSpyStub: SpyStubEventRepo!
-        let events = [
-            Event(name: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic", date: "WED 05 FEB", time: "7:30 PM - 9:30 PM", venueName: "Code Chrysalis"),
-            Event(name: "Hackathon 101 with Junction Tokyo", date: "WED 05 FEB", time: "7:30 PM - 9:30 PM", venueName: "Code Chrysalis")
-        ]
+        let upcomingEvents = [
+            Event(name: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic", date: "WED 11 MAR", time: "7:30 PM - 9:30 PM", venueName: "Code Chrysalis")]
+        let pastEvents = [
+             Event(name: "Hackathon 101 with Junction Tokyo", date: "WED 05 FEB", time: "6:30 PM - 9:30 PM", venueName: "Mercari")]
 
-        describe("EventsTableViewController") {
+        describe("EventsListViewController") {
             beforeEach {
                 eventRepoSpyStub = SpyStubEventRepo()
-                eventRepoSpyStub.getEvents_returnEvents.success(events)
+                eventRepoSpyStub.getUpcomingEvents_returnUpcomingEvents.success(upcomingEvents)
+                eventRepoSpyStub.getPastEvents_returnPastEvents.success(pastEvents)
                 subject = EventListViewController(eventRepository: eventRepoSpyStub)
                 subject.viewDidLoad()
             }
             
-            it("get events from repo") {
-                expect(eventRepoSpyStub.getEvents_wasCalled).to(beTrue())
+            it("get upcoming events from repo") {
+                expect(eventRepoSpyStub.getUpcomingEvents_wasCalled).to(beTrue())
             }
             
-            it("display events from repo") {
+            it("display upcoming events from repo") {
                 expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "7:30 PM - 9:30 PM")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "WED 05 FEB")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "WED 11 MAR")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Code Chrysalis")).toEventually(beTrue())
             }
+            
+            it("get past events from repo") {
+                expect(eventRepoSpyStub.getPastEvents_wasCalled).to(beTrue())
+            }
+            
         }
     }
 }

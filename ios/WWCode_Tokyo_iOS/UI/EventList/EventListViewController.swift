@@ -1,13 +1,15 @@
 import UIKit
 
 class EventListViewController: UIViewController {
-    private var events: [Event] = []
+    private var upcomingEvents: [Event] = []
+    private var pastEvents: [Event] = []
     private var eventRepository: EventRepository
     private var tableView: UITableView!
     private var didSetupConstraints: Bool = false
 
     private var eventsLabel: UILabel!
     private var upcomingLabel: UILabel!
+    private var pastLabel: UILabel!
 
     init(eventRepository: EventRepository) {
         self.eventRepository = eventRepository
@@ -26,8 +28,12 @@ class EventListViewController: UIViewController {
         initializeViews()
         addSubview()
         configureSubviews()
-        self.eventRepository.getEvents().onSuccess { events in
-                self.events = events
+        eventRepository.getUpcomingEvents().onSuccess { events in
+                self.upcomingEvents = events
+                self.tableView.reloadData()
+        }
+        eventRepository.getPastEvents().onSuccess { events in
+                self.pastEvents = events
                 self.tableView.reloadData()
         }
     }
@@ -93,7 +99,7 @@ extension EventListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return upcomingEvents.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -105,7 +111,7 @@ extension EventListViewController: UITableViewDataSource {
             return EventTableViewCell()
         }
         
-        cell.configure(event: events[indexPath.row])
+        cell.configure(event: upcomingEvents[indexPath.row])
 
         return cell
     }
