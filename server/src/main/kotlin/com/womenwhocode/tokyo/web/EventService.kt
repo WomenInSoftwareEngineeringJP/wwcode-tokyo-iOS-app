@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 
 @Service
 class EventService(val repo: MeetupEventRepository) {
-    fun getEvents(status: String): List<WWCEvent> {
+    fun getEvents(status: EventType): List<WWCEvent> {
         return repo.getEvents(status)
                 .map {
                     WWCEvent(

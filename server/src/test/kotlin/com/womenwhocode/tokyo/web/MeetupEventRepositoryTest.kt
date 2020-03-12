@@ -2,6 +2,7 @@ package com.womenwhocode.tokyo.web
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.womenwhocode.tokyo.web.EventType.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.BeforeEach
@@ -54,7 +55,7 @@ internal class MeetupEventRepositoryTest {
 
     @Test
     fun `get events returns upcoming events from meetup if status is upcoming`() {
-        val response = subject.getEvents("upcoming")
+        val response = subject.getEvents(UPCOMING)
 
         assertThat(response[0].name, equalTo("eventName"))
         assertThat(response[0].date, equalTo("local_date"))
@@ -65,7 +66,7 @@ internal class MeetupEventRepositoryTest {
 
     @Test
     fun `get events returns past events from meetup if status is past`() {
-        val response = subject.getEvents("past")
+        val response = subject.getEvents(PAST)
 
         assertThat(response[0].name, equalTo("Strawberry Festival"))
         assertThat(response[0].date, equalTo("2020-02-15"))

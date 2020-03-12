@@ -1,6 +1,7 @@
 package com.womenwhocode.tokyo.web
 
 import com.nhaarman.mockitokotlin2.whenever
+import com.womenwhocode.tokyo.web.EventType.*
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -38,8 +39,8 @@ class EventControllerTest {
                         "18:00-21:30",
                         "Mercari"))
 
-        whenever(service.getEvents("upcoming")).thenReturn(upcomingEvents)
-        whenever(service.getEvents("past")).thenReturn(pastEvents)
+        whenever(service.getEvents(UPCOMING)).thenReturn(upcomingEvents)
+        whenever(service.getEvents(PAST)).thenReturn(pastEvents)
     }
 
     @Test

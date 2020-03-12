@@ -2,6 +2,7 @@ package com.womenwhocode.tokyo.web
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
+import com.womenwhocode.tokyo.web.EventType.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.BeforeEach
@@ -28,8 +29,8 @@ class EventServiceTest {
                         7200000,
                         "Pivotal Japan")
         )
-        whenever(meetupEventRepository.getEvents("upcoming")).thenReturn(eventList)
-        val events = subject.getEvents("upcoming")
+        whenever(meetupEventRepository.getEvents(UPCOMING)).thenReturn(eventList)
+        val events = subject.getEvents(UPCOMING)
 
         assertThat(events[0].date, equalTo("Dec 24, Thu"))
         assertThat(events[0].time, equalTo("19:30 - 21:30"))
@@ -48,8 +49,8 @@ class EventServiceTest {
                         "past event venue"
                 )
         )
-        whenever(meetupEventRepository.getEvents("past")).thenReturn(pastEvents)
-        val events = subject.getEvents("past")
+        whenever(meetupEventRepository.getEvents(PAST)).thenReturn(pastEvents)
+        val events = subject.getEvents(PAST)
 
         assertThat(events[0].date, equalTo("Oct 31, Thu"))
         assertThat(events[0].time, equalTo("18:00 - 21:00"))
