@@ -121,7 +121,9 @@ extension EventListViewController: UITableViewDataSource {
 extension EventListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = EventListHeaderView()
-        let title = section == Sections.upcoming.rawValue ? "Upcoming" : "Past"
+        let title = section == Sections.upcoming.rawValue ?
+            NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title") :
+            NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
         headerView.configure(title: title)
         return headerView
     }
