@@ -1,4 +1,4 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

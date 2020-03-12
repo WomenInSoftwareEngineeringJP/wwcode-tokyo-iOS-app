@@ -1,4 +1,4 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo.event
 
 data class WWCEvent(
         val name: String,

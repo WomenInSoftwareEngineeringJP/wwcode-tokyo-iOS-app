@@ -1,6 +1,6 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo.event
 
-data class Event(
+data class RepositoryEvent(
         val name: String,
         val date: String,
         val time: String,

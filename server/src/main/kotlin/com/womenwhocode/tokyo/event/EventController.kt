@@ -1,6 +1,6 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo.event
 
-import com.womenwhocode.tokyo.web.EventType.*
+import com.womenwhocode.tokyo.event.EventType.*
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 

@@ -1,4 +1,4 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

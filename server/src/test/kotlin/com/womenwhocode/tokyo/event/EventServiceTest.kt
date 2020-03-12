@@ -1,8 +1,8 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo.event
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import com.womenwhocode.tokyo.web.EventType.*
+import com.womenwhocode.tokyo.event.EventType.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.BeforeEach
@@ -22,8 +22,8 @@ class EventServiceTest {
 
     @Test
     fun `get events return upcoming WWCEvents`() {
-        val eventList = listOf<Event>(
-                Event("PAL training!",
+        val eventList = listOf<RepositoryEvent>(
+                RepositoryEvent("PAL training!",
                         "2020-12-24",
                         "19:30",
                         7200000,
@@ -41,7 +41,7 @@ class EventServiceTest {
     @Test
     fun `get events return past WWCEvents`() {
         val pastEvents = listOf(
-                Event(
+                RepositoryEvent(
                         "past event name",
                         "2019-10-31",
                         "18:00",

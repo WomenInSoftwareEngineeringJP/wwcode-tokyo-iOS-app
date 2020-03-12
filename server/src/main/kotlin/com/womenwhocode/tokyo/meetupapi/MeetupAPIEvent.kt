@@ -1,17 +1,17 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo.meetupapi
 
-data class MeetupEvent(
+data class MeetupAPIEvent(
         val duration: Int,
         val name: String,
         val local_date: String,
         val local_time: String,
         val waitlist_count: Int,
         val yes_rsvp_count: Int,
-        val venue: MeetupVenue,
+        val venue: MeetupAPIEventVenue,
         val link: String,
         val description: String
 ) {
-    data class MeetupVenue(
+    data class MeetupAPIEventVenue(
             val name: String,
             val lat: Double,
             val lon: Double,

@@ -1,4 +1,4 @@
-package com.womenwhocode.tokyo.web
+package com.womenwhocode.tokyo.event
 
 import org.springframework.stereotype.Service
 import java.time.LocalDate
