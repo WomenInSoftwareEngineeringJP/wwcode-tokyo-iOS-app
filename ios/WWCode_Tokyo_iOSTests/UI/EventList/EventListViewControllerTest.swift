@@ -32,6 +32,7 @@ final class EventListViewControllerTest: QuickSpec {
 
             it("displays section titles") {
                 expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "Past")).toEventually(beTrue())
             }
 
             it("display upcoming events from repo") {
@@ -43,6 +44,13 @@ final class EventListViewControllerTest: QuickSpec {
             
             it("get past events from repo") {
                 expect(eventRepoSpyStub.getPastEvents_wasCalled).to(beTrue())
+            }
+
+            it("display past events from repo") {
+                expect(subject.hasLabel(withExactText: "Hackathon 101 with Junction Tokyo")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "6:30 PM - 9:30 PM")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "WED 05 FEB")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "Mercari")).toEventually(beTrue())
             }
         }
     }

@@ -2,7 +2,7 @@ import PureLayout
 import UIKit
 
 class EventListHeaderView: UIView {
-    private var upcomingLabel: UILabel!
+    private var headerTitle: UILabel!
     
     init() {
         super.init(frame: CGRect.zero)
@@ -15,16 +15,21 @@ class EventListHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initializeViews() {
-        upcomingLabel = UILabel.newAutoLayout()
-        upcomingLabel.text = "Upcoming"
+    func configure(title: String) {
+        headerTitle.text = title
     }
-    
-    func constrainSubviews() {
-        upcomingLabel.autoPinEdgesToSuperviewEdges()
+}
+
+fileprivate extension EventListHeaderView {
+    func initializeViews() {
+        headerTitle = UILabel.newAutoLayout()
     }
     
     func addSubviews() {
-        addSubview(upcomingLabel)
+        addSubview(headerTitle)
+    }
+    
+    func constrainSubviews() {
+        headerTitle.autoPinEdgesToSuperviewEdges()
     }
 }

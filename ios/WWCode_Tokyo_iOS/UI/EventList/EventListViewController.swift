@@ -85,11 +85,11 @@ fileprivate extension EventListViewController {
 // MARK: - Table view data source
 extension EventListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return upcomingEvents.count
+        return section == 0 ? upcomingEvents.count : pastEvents.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,7 +101,11 @@ extension EventListViewController: UITableViewDataSource {
             return EventTableViewCell()
         }
         
-        cell.configure(event: upcomingEvents[indexPath.row])
+        if (indexPath.section == 0) {
+            cell.configure(event: upcomingEvents[indexPath.row])
+        } else {
+            cell.configure(event: pastEvents[indexPath.row])
+        }
 
         return cell
     }
@@ -110,6 +114,9 @@ extension EventListViewController: UITableViewDataSource {
 // MARK: - Table view delegate
 extension EventListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return EventListHeaderView()
+        let headerView = EventListHeaderView()
+        let title = section == 0 ? "Upcoming" : "Past"
+        headerView.configure(title: title)
+        return headerView
     }
 }
