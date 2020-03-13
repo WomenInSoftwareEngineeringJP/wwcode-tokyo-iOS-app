@@ -34,14 +34,14 @@ class NetworkEventRepositoryTest: QuickSpec {
                         [
                           {
                             "name": "Tokyo Livehouse",
-                            "date": "2021/04/10",
-                            "time": "19:30 - 21:30",
+                            "startDateTime": "2021-06-12T18:30:00",
+                            "endDateTime": "2021-06-12T21:30:00",
                             "venueName": "Tokyo Dome"
                           },
                           {
                           "name": "Future Event",
-                          "date": "2023/06/30",
-                          "time": "10:30 - 21:30",
+                          "startDateTime": "2020-06-12T10:30:00",
+                          "endDateTime": "2020-06-12T18:30:00",
                           "venueName": "Yokohama Park"
                           }
                         ]
@@ -51,8 +51,8 @@ class NetworkEventRepositoryTest: QuickSpec {
 
                 expect(events?.count).to(equal(2))
                 expect(events?.first?.name).to(equal("Tokyo Livehouse"))
-                expect(events?.first?.date).to(equal("2021/04/10"))
-                expect(events?.first?.time).to(equal("19:30 - 21:30"))
+                expect(events?.first?.startDateTime).to(equal("2021-06-12T18:30:00"))
+                expect(events?.first?.endDateTime).to(equal("2021-06-12T21:30:00"))
                 expect(events?.first?.venueName).to(equal("Tokyo Dome"))
 
             }
@@ -92,8 +92,8 @@ class NetworkEventRepositoryTest: QuickSpec {
 
                 expect(events?.count).to(equal(1))
                 expect(events?.first?.name).to(equal("PAL training"))
-                expect(events?.first?.date).to(equal("2020/02/29"))
-                expect(events?.first?.time).to(equal("19:30 - 21:30"))
+                expect(events?.first?.startDateTime).to(equal("2020/02/29"))
+                expect(events?.first?.endDateTime).to(equal("19:30 - 21:30"))
                 expect(events?.first?.venueName).to(equal("Code Chrysalis"))
 
             }

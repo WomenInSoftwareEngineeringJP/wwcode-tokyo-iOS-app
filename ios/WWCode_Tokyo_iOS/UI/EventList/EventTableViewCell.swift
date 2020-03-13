@@ -21,9 +21,22 @@ class EventTableViewCell: UITableViewCell {
     }
     
     func configure(event: Event) {
-        dateLabel.text = event.date
+        let startDateFormatter = DateFormatter()
+        startDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let startDateTime = startDateFormatter.date(from: event.startDateTime)!
+        
+        let dateLabelFormatter = DateFormatter()
+        dateLabelFormatter.dateFormat = "MMM d, E"
+        
+        dateLabel.text = dateLabelFormatter.string(from: startDateTime)
         titleLabel.text = event.name
-        timeLabel.text = event.time
+        
+        let endDateTime = startDateFormatter.date(from: event.endDateTime)!
+        let timeLabelFormatter = DateFormatter()
+        timeLabelFormatter.dateFormat = "HH:mm"
+        
+        
+        timeLabel.text = "\(timeLabelFormatter.string(from: startDateTime)) - \(timeLabelFormatter.string(from: endDateTime))"
         venueNameLabel.text = event.venueName
     }
        

@@ -35,8 +35,8 @@ final class EventListViewControllerTest: QuickSpec {
 
             it("display upcoming events from repo") {
                 expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "7:30 PM - 9:30 PM")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "WED 11 MAR")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "18:30 - 21:30")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "Jun 12, Sat")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Code Chrysalis")).toEventually(beTrue())
             }
             
@@ -46,8 +46,8 @@ final class EventListViewControllerTest: QuickSpec {
 
             it("display past events from repo") {
                 expect(subject.hasLabel(withExactText: "Hackathon 101 with Junction Tokyo")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "6:30 PM - 9:30 PM")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "WED 05 FEB")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "18:30 - 21:30")).toEventually(beTrue())
+                expect(subject.hasLabel(withExactText: "Jun 12, Sat")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Mercari")).toEventually(beTrue())
             }
         }

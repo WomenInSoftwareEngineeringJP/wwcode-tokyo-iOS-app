@@ -23,7 +23,6 @@
 		F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8F240F9C4D004E277A /* SpyHttp.swift */; };
 		F14B0B92240F9DF4004E277A /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B91240F9DF4004E277A /* Http.swift */; };
 		F14F4DB82419E3FC0045426E /* EventListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4DB72419E3FC0045426E /* EventListHeaderView.swift */; };
-		F14F4DBA241A0B4E0045426E /* TestDataEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4DB9241A0B4E0045426E /* TestDataEventRepository.swift */; };
 		F14F4DBE241A278D0045426E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14F4DBC241A278D0045426E /* Localizable.strings */; };
 		F14F4DC0241A2B620045426E /* EventFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4DBF241A2B620045426E /* EventFixture.swift */; };
 		F16B44B9241088CE001E37C7 /* NetworkHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44B8241088CE001E37C7 /* NetworkHttp.swift */; };
@@ -106,7 +105,6 @@
 		F14B0B8F240F9C4D004E277A /* SpyHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyHttp.swift; sourceTree = "<group>"; };
 		F14B0B91240F9DF4004E277A /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		F14F4DB72419E3FC0045426E /* EventListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListHeaderView.swift; sourceTree = "<group>"; };
-		F14F4DB9241A0B4E0045426E /* TestDataEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataEventRepository.swift; sourceTree = "<group>"; };
 		F14F4DBD241A278D0045426E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		F14F4DBF241A2B620045426E /* EventFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFixture.swift; sourceTree = "<group>"; };
 		F16B44B8241088CE001E37C7 /* NetworkHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHttp.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 				F174F50B2408A4330070C353 /* Event.swift */,
 				F1BC49D3240F4E4300D26637 /* EventRepository.swift */,
 				F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */,
-				F14F4DB9241A0B4E0045426E /* TestDataEventRepository.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -512,7 +509,6 @@
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
 				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
-				F14F4DBA241A0B4E0045426E /* TestDataEventRepository.swift in Sources */,
 				F16B44C72410C5AC001E37C7 /* Configuration.swift in Sources */,
 				F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */,
 				F16B44C92410C5D9001E37C7 /* Environment.swift in Sources */,
