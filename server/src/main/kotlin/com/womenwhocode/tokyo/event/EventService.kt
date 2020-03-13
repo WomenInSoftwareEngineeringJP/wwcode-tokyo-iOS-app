@@ -2,9 +2,7 @@ package com.womenwhocode.tokyo.event
 
 import com.womenwhocode.tokyo.meetupapi.EventType
 import org.springframework.stereotype.Service
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 @Service
 class EventService(val repo: MeetupEventRepository) {
@@ -13,26 +11,19 @@ class EventService(val repo: MeetupEventRepository) {
                 .map {
                     WWCEvent(
                             it.name,
-                            formatDate(it.date),
-                            formatTime(it.duration, it.date, it.time),
+                            parseStartDateTime(it.date, it.time),
+                            parseEndDateTime(it.duration, it.date, it.time),
                             it.venueName)
                 }
     }
 
-    private fun formatDate(date: String): String {
-        val localDate = LocalDate.parse(date)
-        val formatter = DateTimeFormatter.ofPattern("MMM dd, EEE")
-        return localDate.format(formatter)
+    private fun parseStartDateTime(date: String, time: String): LocalDateTime {
+        return LocalDateTime.parse("${date}T${time}:00")
     }
 
-    private fun formatTime(duration: Int, date: String, time: String): String {
+    private fun parseEndDateTime(duration: Int, date: String, time: String): LocalDateTime {
         val durationInMinutes = duration / 1000 / 60
-
         val dateTime = LocalDateTime.parse("${date}T${time}:00")
-        val endDateTime = dateTime.plusMinutes(durationInMinutes.toLong())
-
-        val endTimeFormatter = DateTimeFormatter.ofPattern("kk:mm")
-        val endTime = endDateTime.format(endTimeFormatter)
-        return "$time - $endTime"
+        return dateTime.plusMinutes(durationInMinutes.toLong())
     }
 }

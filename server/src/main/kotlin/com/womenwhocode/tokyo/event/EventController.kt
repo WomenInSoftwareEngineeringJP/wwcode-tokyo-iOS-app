@@ -1,6 +1,7 @@
 package com.womenwhocode.tokyo.event
 
-import com.womenwhocode.tokyo.meetupapi.EventType.*
+import com.womenwhocode.tokyo.meetupapi.EventType.PAST
+import com.womenwhocode.tokyo.meetupapi.EventType.UPCOMING
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 

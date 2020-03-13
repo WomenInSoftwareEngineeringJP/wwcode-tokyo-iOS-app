@@ -12,8 +12,7 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
                 "public",
                 status.meetupAPIEventTypeCode,
                 "2019-06-01T00:00:00.000",
-                30
-        )
+                30)
         return meetupEvents.map { meetupEvent ->
             RepositoryEvent(
                     meetupEvent.name,
