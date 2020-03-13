@@ -48,8 +48,8 @@ internal class MeetupEventRepositoryTest {
                 "Yokohama")
 
         APIClient = mock {
-            on { getEvents(true, "public", "upcoming", "2019-06-01T00:00:00.000",30) } doReturn listOf(upcomingMeetupEvent)
-            on { getEvents(true, "public", "past", "2019-06-01T00:00:00.000",30) } doReturn listOf(pastMeetupEvent)
+            on { getEvents(true, "public", "upcoming", false,"2019-06-01T00:00:00.000",30) } doReturn listOf(upcomingMeetupEvent)
+            on { getEvents(true, "public", "past", true, "2019-06-01T00:00:00.000",30) } doReturn listOf(pastMeetupEvent)
         }
 
         subject = MeetupEventRepository(APIClient)

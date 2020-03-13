@@ -11,6 +11,7 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
                 true,
                 "public",
                 status.meetupAPIEventTypeCode,
+                status == EventType.PAST,
                 "2019-06-01T00:00:00.000",
                 30)
         return meetupEvents.map { meetupEvent ->

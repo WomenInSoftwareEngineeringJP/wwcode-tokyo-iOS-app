@@ -10,6 +10,7 @@ interface MeetupAPIClient {
     fun getEvents(@RequestParam(name = "sign") sign: Boolean,
                   @RequestParam(name = "photo-host") photoHost: String,
                   @RequestParam(name = "status") status: String,
+                  @RequestParam(name = "desc") descending: Boolean,
                   @RequestParam(name = "no_earlier_than") noEarlierThan: String,
                   @RequestParam(name = "page") page: Int): List<MeetupAPIEvent>
 }
