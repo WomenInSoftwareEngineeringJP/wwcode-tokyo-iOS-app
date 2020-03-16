@@ -6,14 +6,15 @@ import Nimble
 class NetworkEventRepositoryTest: QuickSpec {
     override func spec() {
         var eventRepository: NetworkEventRepository!
+        var spyHttp: SpyHttp!
         
         describe("the network EventRepository") {
-            var spyHttp: SpyHttp!
+            beforeEach {
+              spyHttp = SpyHttp()
+              eventRepository = NetworkEventRepository(http: spyHttp)
+            }
 
             it("getUpcomingEvents requests GET /api/events/upcoming") {
-                spyHttp = SpyHttp()
-                eventRepository = NetworkEventRepository(http: spyHttp)
-
                 let _ = eventRepository.getUpcomingEvents()
                 
                 expect(spyHttp.get_argument_endpoint).to(equal("/api/events/upcoming"))
@@ -58,16 +59,13 @@ class NetworkEventRepositoryTest: QuickSpec {
             }
             
             it("getPastEvents requests GET /api/events/past") {
-                spyHttp = SpyHttp()
-                eventRepository = NetworkEventRepository(http: spyHttp)
-
                 let _ = eventRepository.getPastEvents()
                 
                 expect(spyHttp.get_argument_endpoint).to(equal("/api/events/past"))
             }
             
             it("get past events return past events") {
-                var events: [Event]? = nil
+                var events: [Event]? = nil                
                 AsyncExpectation.execute() { expectation in
                     eventRepository
                         .getPastEvents()
@@ -81,8 +79,8 @@ class NetworkEventRepositoryTest: QuickSpec {
                         [
                           {
                             "name": "PAL training",
-                            "date": "2020/02/29",
-                            "time": "19:30 - 21:30",
+                            "startDateTime": "2020-02-29T19:30:00",
+                            "endDateTime": "2020-02-29T21:30:00",
                             "venueName": "Code Chrysalis"
                           }
                         ]
@@ -92,10 +90,9 @@ class NetworkEventRepositoryTest: QuickSpec {
 
                 expect(events?.count).to(equal(1))
                 expect(events?.first?.name).to(equal("PAL training"))
-                expect(events?.first?.startDateTime).to(equal("2020/02/29"))
-                expect(events?.first?.endDateTime).to(equal("19:30 - 21:30"))
+                expect(events?.first?.startDateTime).to(equal("2020-02-29T19:30:00"))
+                expect(events?.first?.endDateTime).to(equal("2020-02-29T21:30:00"))
                 expect(events?.first?.venueName).to(equal("Code Chrysalis"))
-
             }
         }
     }
