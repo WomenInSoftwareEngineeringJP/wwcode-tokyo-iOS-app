@@ -6,6 +6,7 @@ class EventListViewController: UIViewController {
     private var eventRepository: EventRepository
     private var tableView: UITableView!
     private var didSetupConstraints: Bool = false
+    private var eventSegments: UISegmentedControl!
 
     private var eventsLabel: UILabel!
 
@@ -42,8 +43,9 @@ class EventListViewController: UIViewController {
               eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
               eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
               
-            
-            tableView.autoPinEdge(.top, to: .bottom, of: eventsLabel)
+            eventSegments.autoPinEdge(.top, to: .bottom, of: eventsLabel)
+
+            tableView.autoPinEdge(.top, to: .bottom, of: eventSegments)
             tableView.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
             tableView.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
             tableView.autoPinEdge(toSuperviewEdge: .bottom, withInset: 15.0)
@@ -60,11 +62,15 @@ fileprivate extension EventListViewController {
     func initializeViews() {
         tableView = UITableView(frame: CGRect.zero)
         eventsLabel = UILabel.newAutoLayout()
+        let upcomingSegmentTitle = NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title")
+        let pastSegmentTitle = NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
+        eventSegments = UISegmentedControl.init(items: [upcomingSegmentTitle, pastSegmentTitle])
     }
     
     func addSubview() {
         view.addSubview(tableView)
         view.addSubview(eventsLabel)
+        view.addSubview(eventSegments)
     }
     
     func configureSubviews() {
@@ -77,7 +83,7 @@ fileprivate extension EventListViewController {
                )
 
         eventsLabel.text = "Events"
-        
+
         self.view.backgroundColor = .white
     }
 }
