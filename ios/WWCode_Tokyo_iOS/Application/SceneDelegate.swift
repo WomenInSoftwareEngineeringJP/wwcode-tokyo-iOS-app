@@ -12,11 +12,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
+        let navigationController = UINavigationController()
+        
+        let router = Router(navigationController: navigationController)
+        
         let http = NetworkHttp(baseUrl: Configuration.environment.baseURL, networkSession: URLSession.shared)
         let eventRepo = NetworkEventRepository(http: http)
-        let viewController = EventListViewController(eventRepository: eventRepo)
+        let viewController = EventListViewController(router: router, eventRepository: eventRepo)
 
-        window?.rootViewController = viewController
+        navigationController.viewControllers = [viewController]
+        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 }

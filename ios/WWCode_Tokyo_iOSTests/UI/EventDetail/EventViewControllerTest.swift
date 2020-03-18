@@ -10,7 +10,7 @@ final class EventViewControllerTest: QuickSpec {
         
         beforeEach {
             let eventRepo = SpyStubEventRepo()
-            subject = EventViewController(repo: eventRepo)
+            subject = EventViewController(event: EventFixture.JavaScript())
         }
         
         describe("EventViewController") {

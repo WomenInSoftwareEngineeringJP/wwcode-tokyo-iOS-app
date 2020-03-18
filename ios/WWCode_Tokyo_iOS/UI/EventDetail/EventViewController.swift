@@ -5,11 +5,11 @@ class EventViewController: UIViewController {
     
     private var titleLabel: UILabel!
     private var didSetupConstraints = false
-    private var eventRepo: EventRepository!
+    private var event: Event!
     
-    init(repo: EventRepository) {
+    init(event: Event) {
         super.init(nibName: nil, bundle: nil)
-        eventRepo = repo
+        self.event = event
         view.setNeedsUpdateConstraints()
     }
     

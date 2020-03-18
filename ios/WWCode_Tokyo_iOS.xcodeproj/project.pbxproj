@@ -29,6 +29,8 @@
 		F14F4E062420BDB60045426E /* PastViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E052420BDB60045426E /* PastViewControllerTest.swift */; };
 		F14F4E082420C04B0045426E /* UpcomingEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */; };
 		F14F4E0A2420C09F0045426E /* PastEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E092420C09F0045426E /* PastEventsViewController.swift */; };
+		F14F4E0C2421BB6F0045426E /* SpyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E0B2421BB6F0045426E /* SpyRouter.swift */; };
+		F14F4E0E2421BBA40045426E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E0D2421BBA40045426E /* Router.swift */; };
 		F16B44B9241088CE001E37C7 /* NetworkHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44B8241088CE001E37C7 /* NetworkHttp.swift */; };
 		F16B44BB24108ECD001E37C7 /* NetworkHttpSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44BA24108ECD001E37C7 /* NetworkHttpSpec.swift */; };
 		F16B44BD24108FE1001E37C7 /* SpyNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44BC24108FE1001E37C7 /* SpyNetworkSession.swift */; };
@@ -115,6 +117,8 @@
 		F14F4E052420BDB60045426E /* PastViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastViewControllerTest.swift; sourceTree = "<group>"; };
 		F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsViewController.swift; sourceTree = "<group>"; };
 		F14F4E092420C09F0045426E /* PastEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventsViewController.swift; sourceTree = "<group>"; };
+		F14F4E0B2421BB6F0045426E /* SpyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRouter.swift; sourceTree = "<group>"; };
+		F14F4E0D2421BBA40045426E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F16B44B8241088CE001E37C7 /* NetworkHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHttp.swift; sourceTree = "<group>"; };
 		F16B44BA24108ECD001E37C7 /* NetworkHttpSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHttpSpec.swift; sourceTree = "<group>"; };
 		F16B44BC24108FE1001E37C7 /* SpyNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyNetworkSession.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				F174F50B2408A4330070C353 /* Event.swift */,
 				F1BC49D3240F4E4300D26637 /* EventRepository.swift */,
 				F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */,
+				F14F4E0D2421BBA40045426E /* Router.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				F1BC49D1240F4C9400D26637 /* SpyStubEventRepo.swift */,
 				F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */,
 				F14F4DBF241A2B620045426E /* EventFixture.swift */,
+				F14F4E0B2421BB6F0045426E /* SpyRouter.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
 				F16B44C72410C5AC001E37C7 /* Configuration.swift in Sources */,
 				F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */,
+				F14F4E0E2421BBA40045426E /* Router.swift in Sources */,
 				F16B44C92410C5D9001E37C7 /* Environment.swift in Sources */,
 				F174F50C2408A4330070C353 /* Event.swift in Sources */,
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,
@@ -547,6 +554,7 @@
 				F16B44BD24108FE1001E37C7 /* SpyNetworkSession.swift in Sources */,
 				F1BC49D2240F4C9400D26637 /* SpyStubEventRepo.swift in Sources */,
 				F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */,
+				F14F4E0C2421BB6F0045426E /* SpyRouter.swift in Sources */,
 				F16B44C4241097EA001E37C7 /* AsyncExpectation.swift in Sources */,
 				F16B44BB24108ECD001E37C7 /* NetworkHttpSpec.swift in Sources */,
 				F14B0B8A240F9761004E277A /* NetworkEventRepositoryTest.swift in Sources */,

@@ -7,7 +7,7 @@ class EventTableViewCell: UITableViewCell {
     private var dateLabel: UILabel!
     private var timeLabel: UILabel!
     private var venueNameLabel: UILabel!
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initializeViews()
@@ -35,11 +35,9 @@ class EventTableViewCell: UITableViewCell {
         let timeLabelFormatter = DateFormatter()
         timeLabelFormatter.dateFormat = "HH:mm"
         
-        
         timeLabel.text = "\(timeLabelFormatter.string(from: startDateTime)) - \(timeLabelFormatter.string(from: endDateTime))"
         venueNameLabel.text = event.venueName
     }
-       
 }
 
 fileprivate extension EventTableViewCell {
@@ -99,9 +97,5 @@ fileprivate extension EventTableViewCell {
         containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         containerView.layer.shadowRadius = 12.0
         containerView.layer.shadowOpacity = 0.7
-        
-        // todo:
-        let myFont = UIFont.init(name: "Noto Sans JP", size: 20)
-        titleLabel.font = myFont
     }
 }

@@ -4,15 +4,16 @@ class EventListViewController: UIViewController {
     private var upcomingEvents: [Event] = []
     private var pastEvents: [Event] = []
     private var eventRepository: EventRepository
-    private var tableView: UITableView!
+    private var router: Router
+    var tableView: UITableView!
     private var didSetupConstraints: Bool = false
     private var eventSegments: UISegmentedControl!
 
     private var eventsLabel: UILabel!
 
-    init(eventRepository: EventRepository) {
+    init(router: Router, eventRepository: EventRepository) {
         self.eventRepository = eventRepository
-    
+        self.router = router
         super.init(nibName: nil, bundle: nil)
         
         view.setNeedsUpdateConstraints()
@@ -113,11 +114,15 @@ extension EventListViewController: UITableViewDataSource {
             return EventTableViewCell()
         }
         
+        var event: Event
+        
         if (indexPath.section == Sections.upcoming.rawValue) {
-            cell.configure(event: upcomingEvents[indexPath.row])
+            event = upcomingEvents[indexPath.row]
         } else {
-            cell.configure(event: pastEvents[indexPath.row])
+            event = pastEvents[indexPath.row]
         }
+        
+        cell.configure(event: event)
 
         return cell
     }
@@ -132,5 +137,17 @@ extension EventListViewController: UITableViewDelegate {
             NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
         headerView.configure(title: title)
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var event: Event
+        
+        if (indexPath.section == Sections.upcoming.rawValue) {
+            event = upcomingEvents[indexPath.row]
+        } else {
+            event = pastEvents[indexPath.row]
+        }
+        
+        router.showEventDetail(event: event)
     }
 }
