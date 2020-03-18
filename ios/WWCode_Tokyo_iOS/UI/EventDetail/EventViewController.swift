@@ -44,7 +44,7 @@ class EventViewController: UIViewController {
     }
     
     func configureNavigationBar() {
-        titleLabel.text = "PAL training!"
+        titleLabel.text = event.name
     }
     
     func addSubviews() {

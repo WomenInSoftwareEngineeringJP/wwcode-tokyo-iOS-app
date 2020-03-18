@@ -9,13 +9,12 @@ final class EventViewControllerTest: QuickSpec {
         var subject: EventViewController!
         
         beforeEach {
-            let eventRepo = SpyStubEventRepo()
             subject = EventViewController(event: EventFixture.JavaScript())
         }
         
         describe("EventViewController") {
-            it("shows event") {
-                expect(subject.hasLabel(withExactText: "PAL training!")).to(beTrue())
+            it("shows event title") {
+                expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).to(beTrue())
             }
         }
     }
