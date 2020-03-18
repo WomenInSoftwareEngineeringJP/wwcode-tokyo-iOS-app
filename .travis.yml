@@ -24,7 +24,7 @@ matrix:
 
     - name: "Spring Server Unit Tests"
       language: java
-      jdk: openjdk8
+      jdk: openjdk13
       install:
         - cd server
         - make test
