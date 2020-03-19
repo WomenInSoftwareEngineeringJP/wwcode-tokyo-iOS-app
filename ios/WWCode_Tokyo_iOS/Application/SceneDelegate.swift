@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         
-        let router = Router(navigationController: navigationController)
+        let router = AppRouter(navigationController: navigationController)
         
         let http = NetworkHttp(baseUrl: Configuration.environment.baseURL, networkSession: URLSession.shared)
         let eventRepo = NetworkEventRepository(http: http)

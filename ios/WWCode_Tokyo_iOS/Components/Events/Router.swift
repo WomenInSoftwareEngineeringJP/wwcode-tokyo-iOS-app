@@ -1,14 +1,7 @@
 import UIKit
 
-class Router {
-    var navigationController: UINavigationController!
+protocol Router {
+    var navigationController: UINavigationController { get }
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    func showEventDetail(event: Event) {
-        let viewController = EventViewController(event: event)
-        navigationController?.pushViewController(viewController, animated: false)
-    }
+    func showEventDetail(event: Event)
 }
