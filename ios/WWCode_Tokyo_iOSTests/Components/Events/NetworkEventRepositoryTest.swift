@@ -37,13 +37,15 @@ class NetworkEventRepositoryTest: QuickSpec {
                             "name": "Tokyo Livehouse",
                             "startDateTime": "2021-06-12T18:30:00",
                             "endDateTime": "2021-06-12T21:30:00",
+                            "description": "some description",
                             "venueName": "Tokyo Dome"
                           },
                           {
-                          "name": "Future Event",
-                          "startDateTime": "2020-06-12T10:30:00",
-                          "endDateTime": "2020-06-12T18:30:00",
-                          "venueName": "Yokohama Park"
+                            "name": "Future Event",
+                            "startDateTime": "2020-06-12T10:30:00",
+                            "endDateTime": "2020-06-12T18:30:00",
+                            "description": "some description",
+                            "venueName": "Yokohama Park"
                           }
                         ]
                        """
@@ -54,6 +56,7 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(events?.first?.name).to(equal("Tokyo Livehouse"))
                 expect(events?.first?.startDateTime).to(equal("2021-06-12T18:30:00"))
                 expect(events?.first?.endDateTime).to(equal("2021-06-12T21:30:00"))
+                expect(events?.first?.description).to(equal("some description"))
                 expect(events?.first?.venueName).to(equal("Tokyo Dome"))
 
             }
@@ -81,6 +84,7 @@ class NetworkEventRepositoryTest: QuickSpec {
                             "name": "PAL training",
                             "startDateTime": "2020-02-29T19:30:00",
                             "endDateTime": "2020-02-29T21:30:00",
+                            "description": "description",
                             "venueName": "Code Chrysalis"
                           }
                         ]
@@ -92,6 +96,7 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(events?.first?.name).to(equal("PAL training"))
                 expect(events?.first?.startDateTime).to(equal("2020-02-29T19:30:00"))
                 expect(events?.first?.endDateTime).to(equal("2020-02-29T21:30:00"))
+                expect(events?.first?.description).to(equal("description"))
                 expect(events?.first?.venueName).to(equal("Code Chrysalis"))
             }
         }

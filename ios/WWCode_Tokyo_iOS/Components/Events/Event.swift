@@ -4,6 +4,7 @@ struct Event: Codable {
     let name: String
     let startDateTime: String
     let endDateTime: String
+    let description: String
     let venueName: String
 }
 
@@ -13,6 +14,7 @@ extension Event: Equatable {
             lhs.name == rhs.name &&
             lhs.startDateTime == rhs.startDateTime &&
             lhs.endDateTime == rhs.endDateTime &&
+            lhs.description == rhs.description &&
             lhs.venueName == rhs.venueName
     }
 }
