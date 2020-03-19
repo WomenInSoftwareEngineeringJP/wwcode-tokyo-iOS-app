@@ -18,6 +18,8 @@ final class EventViewControllerTest: QuickSpec {
                 expect(subject.hasLabel(withExactText: "18:30 - 21:30")).to(beTrue())
                 expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).to(beTrue())
                 expect(subject.hasLabel(withExactText: "description")).to(beTrue())
+                expect(subject.hasLabel(withExactText: "Code Chrysalis")).to(beTrue())
+                expect(subject.hasLabel(withExactText: "venue address venue city")).to(beTrue())
             }
         }
     }

@@ -4,9 +4,13 @@ import PureLayout
 class EventViewController: UIViewController {
     
     private var dateLabel: UILabel!
-    private var titleLabel: UILabel!
     private var timeLabel: UILabel!
+    
+    private var titleLabel: UILabel!
     private var descriptionLabel: UILabel!
+    
+    private var venueName: UILabel!
+    private var venueAddress: UILabel!
 
     private var didSetupConstraints = false
     private var event: Event!
@@ -48,7 +52,15 @@ class EventViewController: UIViewController {
             descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel)
             descriptionLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
             descriptionLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            
+            venueName.autoPinEdge(.top, to: .bottom, of: descriptionLabel)
+            venueName.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+            venueName.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
 
+            venueAddress.autoPinEdge(.top, to: .bottom, of: venueName)
+            venueAddress.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+            venueAddress.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            
             didSetupConstraints = true
         }
         
@@ -60,6 +72,8 @@ class EventViewController: UIViewController {
         timeLabel = UILabel.newAutoLayout()
         titleLabel = UILabel.newAutoLayout()
         descriptionLabel = UILabel.newAutoLayout()
+        venueName = UILabel.newAutoLayout()
+        venueAddress = UILabel.newAutoLayout()
     }
     
     func configureNavigationBar() {
@@ -80,6 +94,9 @@ class EventViewController: UIViewController {
         
         titleLabel.text = event.name
         descriptionLabel.text = event.description
+        
+        venueName.text = event.venue.name
+        venueAddress.text = "\(event.venue.address) \(event.venue.city)"
     }
     
     func addSubviews() {
@@ -87,6 +104,8 @@ class EventViewController: UIViewController {
         view.addSubview(timeLabel)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
+        view.addSubview(venueName)
+        view.addSubview(venueAddress)
     }
     
     func configureSubviews() {
