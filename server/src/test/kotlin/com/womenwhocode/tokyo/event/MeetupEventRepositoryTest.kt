@@ -63,7 +63,11 @@ internal class MeetupEventRepositoryTest {
         assertThat(response[0].date, equalTo("local_date"))
         assertThat(response[0].duration, equalTo(7200000))
         assertThat(response[0].time, equalTo("local_time"))
-        assertThat(response[0].venueName, equalTo("venueName"))
+        assertThat(response[0].venue.name, equalTo("venueName"))
+        assertThat(response[0].venue.lat, equalTo(1.23))
+        assertThat(response[0].venue.lon, equalTo(4.56))
+        assertThat(response[0].venue.address, equalTo("address_1"))
+        assertThat(response[0].venue.city, equalTo("city"))
     }
 
     @Test
@@ -74,7 +78,11 @@ internal class MeetupEventRepositoryTest {
         assertThat(response[0].date, equalTo("2020-02-15"))
         assertThat(response[0].duration, equalTo(10800000))
         assertThat(response[0].time, equalTo("10:00"))
-        assertThat(response[0].venueName, equalTo("venueName"))
+        assertThat(response[0].venue.name, equalTo("venueName"))
+        assertThat(response[0].venue.lat, equalTo(1.23))
+        assertThat(response[0].venue.lon, equalTo(4.56))
+        assertThat(response[0].venue.address, equalTo("address_1"))
+        assertThat(response[0].venue.city, equalTo("city"))
     }
 
 }

@@ -9,12 +9,21 @@ class EventService(val repo: MeetupEventRepository) {
     fun getEvents(status: EventType): List<WWCEvent> {
         return repo.getEvents(status)
                 .map {
+                    val venue = WWCEvent.Venue(
+                            it.venue.name,
+                            it.venue.lat,
+                            it.venue.lon,
+                            it.venue.address,
+                            it.venue.city
+                    )
+
                     WWCEvent(
                             it.name,
                             parseStartDateTime(it.date, it.time),
                             parseEndDateTime(it.duration, it.date, it.time),
                             it.description,
-                            it.venueName)
+                            venue
+                            )
                 }
     }
 

@@ -24,14 +24,22 @@ class EventServiceTest {
 
     @Test
     fun `get events return upcoming WWCEvents`() {
-        val eventList = listOf<RepositoryEvent>(
-                RepositoryEvent("PAL training!",
-                        "2020-12-24",
-                        "19:30",
-                        7200000,
-                        "description",
-                        "Pivotal Japan")
-        )
+        val venue = RepositoryEvent.Venue(
+                "venue name",
+                1.23,
+                4.56,
+                "venue address",
+                "venue city")
+
+        val event = RepositoryEvent("PAL training!",
+                "2020-12-24",
+                "19:30",
+                7200000,
+                "description",
+                venue)
+
+        val eventList = listOf<RepositoryEvent>(event)
+
         whenever(meetupEventRepository.getEvents(UPCOMING)).thenReturn(eventList)
         val events = subject.getEvents(UPCOMING)
 
@@ -39,28 +47,44 @@ class EventServiceTest {
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2020, 12, 24, 21, 30)))
         assertThat(events[0].name, equalTo("PAL training!"))
         assertThat(events[0].description, equalTo("description"))
-        assertThat(events[0].venueName, equalTo("Pivotal Japan"))
+        assertThat(events[0].venue.name, equalTo("venue name"))
+        assertThat(events[0].venue.lat, equalTo(1.23))
+        assertThat(events[0].venue.lon, equalTo(4.56))
+        assertThat(events[0].venue.address, equalTo("venue address"))
+        assertThat(events[0].venue.city, equalTo("venue city"))
     }
 
     @Test
     fun `get events return past WWCEvents`() {
-        val pastEvents = listOf(
-                RepositoryEvent(
-                        "past event name",
-                        "2019-10-31",
-                        "18:00",
-                        10800000,
-                        "description",
-                        "past event venue"
-                )
-        )
+        val venue = RepositoryEvent.Venue(
+                "venue name",
+                1.23,
+                4.56,
+                "venue address",
+                "venue city")
+
+        val event = RepositoryEvent(
+                "past event name",
+                "2019-10-31",
+                "18:00",
+                10800000,
+                "description",
+                venue)
+
+        val pastEvents = listOf(event)
+
         whenever(meetupEventRepository.getEvents(PAST)).thenReturn(pastEvents)
+
         val events = subject.getEvents(PAST)
 
         assertThat(events[0].startDateTime, equalTo(LocalDateTime.of(2019, 10, 31, 18, 0)))
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2019, 10, 31, 21, 0)))
         assertThat(events[0].name, equalTo("past event name"))
         assertThat(events[0].description, equalTo("description"))
-        assertThat(events[0].venueName, equalTo("past event venue"))
+        assertThat(events[0].venue.name, equalTo("venue name"))
+        assertThat(events[0].venue.lat, equalTo(1.23))
+        assertThat(events[0].venue.lon, equalTo(4.56))
+        assertThat(events[0].venue.address, equalTo("venue address"))
+        assertThat(events[0].venue.city, equalTo("venue city"))
     }
 }

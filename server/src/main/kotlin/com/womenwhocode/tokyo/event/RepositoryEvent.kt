@@ -6,5 +6,12 @@ data class RepositoryEvent(
         val time: String,
         val duration: Int,
         val description: String,
-        val venueName: String
-)
+        val venue: Venue
+) {
+    data class Venue(
+            val name: String,
+            val lat: Double,
+            val lon: Double,
+            val address: String,
+            val city: String)
+}
