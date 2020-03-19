@@ -13,6 +13,7 @@ class EventService(val repo: MeetupEventRepository) {
                             it.name,
                             parseStartDateTime(it.date, it.time),
                             parseEndDateTime(it.duration, it.date, it.time),
+                            it.description,
                             it.venueName)
                 }
     }

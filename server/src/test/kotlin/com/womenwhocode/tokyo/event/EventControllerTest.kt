@@ -15,8 +15,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
 
 @WebMvcTest
 class EventControllerTest {
@@ -34,6 +32,7 @@ class EventControllerTest {
                         "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic",
                         LocalDateTime.of(2020, 6, 2, 19, 30),
                         LocalDateTime.of(2020, 6, 2, 21, 30),
+                        "What is this upcoming event about",
                         "Code Chrysalis"))
 
         val pastEvents = listOf(
@@ -41,6 +40,7 @@ class EventControllerTest {
                         "Past Event",
                         LocalDateTime.of(2019, 4, 1, 19, 0),
                         LocalDateTime.of(2019, 4, 1, 21, 0),
+                        "What is this past event about",
                         "Mercari")
         )
 
@@ -65,6 +65,7 @@ class EventControllerTest {
                 .andExpect(jsonPath("$[0].name", `is`("WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")))
                 .andExpect(jsonPath("$[0].startDateTime", `is`("2020-06-02T19:30:00")))
                 .andExpect(jsonPath("$[0].endDateTime", `is`("2020-06-02T21:30:00")))
+                .andExpect(jsonPath("$[0].description", `is`("What is this upcoming event about")))
                 .andExpect(jsonPath("$[0].venueName", `is`("Code Chrysalis")))
     }
 
@@ -85,6 +86,7 @@ class EventControllerTest {
                 .andExpect(jsonPath("$[0].name", `is`("Past Event")))
                 .andExpect(jsonPath("$[0].startDateTime", `is`("2019-04-01T19:00:00")))
                 .andExpect(jsonPath("$[0].endDateTime", `is`("2019-04-01T21:00:00")))
+                .andExpect(jsonPath("$[0].description", `is`("What is this past event about")))
                 .andExpect(jsonPath("$[0].venueName", `is`("Mercari")))
     }
 }

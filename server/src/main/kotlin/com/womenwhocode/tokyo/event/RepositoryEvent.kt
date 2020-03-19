@@ -5,5 +5,6 @@ data class RepositoryEvent(
         val date: String,
         val time: String,
         val duration: Int,
+        val description: String,
         val venueName: String
 )
