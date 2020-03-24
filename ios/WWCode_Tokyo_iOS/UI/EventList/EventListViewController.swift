@@ -1,15 +1,19 @@
 import UIKit
 
 class EventListViewController: UIViewController {
+    // MARK: - Injected Properties
+    private var router: Router
+    private var eventRepository: EventRepository
+
+    // MARK: - Properties
+    private var didSetupConstraints: Bool = false
     private var upcomingEvents: [Event] = []
     private var pastEvents: [Event] = []
-    private var eventRepository: EventRepository
-    private var router: Router
-    var tableView: UITableView!
-    private var didSetupConstraints: Bool = false
-    private var eventSegments: UISegmentedControl!
-
+    
+    // MARK: - View Elements
     private var eventsLabel: UILabel!
+    private var eventSegments: UISegmentedControl!
+    private(set) var tableView: UITableView!
 
     init(router: Router, eventRepository: EventRepository) {
         self.eventRepository = eventRepository
@@ -25,9 +29,11 @@ class EventListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initializeViews()
         addSubview()
         configureSubviews()
+        
         eventRepository.getUpcomingEvents().onSuccess { events in
                 self.upcomingEvents = events
                 self.tableView.reloadData()
@@ -39,70 +45,66 @@ class EventListViewController: UIViewController {
     }
     
     override func updateViewConstraints() {
-          if (!didSetupConstraints) {
-              eventsLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
-              eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-              eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
-              
+        if (!didSetupConstraints) {
+            eventsLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
+            eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+            eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            
             eventSegments.autoPinEdge(.top, to: .bottom, of: eventsLabel)
-
+            
             tableView.autoPinEdge(.top, to: .bottom, of: eventSegments)
             tableView.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
             tableView.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
             tableView.autoPinEdge(toSuperviewEdge: .bottom, withInset: 15.0)
             
-              didSetupConstraints = true
-          }
-
-          super.updateViewConstraints()
-      }
+            didSetupConstraints = true
+        }
+        
+        super.updateViewConstraints()
+    }
 }
 
 // MARK: - View Setup
 fileprivate extension EventListViewController {
     func initializeViews() {
-        tableView = UITableView(frame: CGRect.zero)
         eventsLabel = UILabel.newAutoLayout()
+        
         let upcomingSegmentTitle = NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title")
         let pastSegmentTitle = NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
         eventSegments = UISegmentedControl.init(items: [upcomingSegmentTitle, pastSegmentTitle])
+
+        tableView = UITableView(frame: CGRect.zero)
     }
     
     func addSubview() {
-        view.addSubview(tableView)
         view.addSubview(eventsLabel)
         view.addSubview(eventSegments)
+        view.addSubview(tableView)
     }
     
     func configureSubviews() {
+        self.view.backgroundColor = .white
+        
+        eventsLabel.text = "Events"
+        
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(
-                   EventTableViewCell.self,
-                   forCellReuseIdentifier: String(describing: EventTableViewCell.self)
-               )
-
-        eventsLabel.text = "Events"
-
-        self.view.backgroundColor = .white
+            EventTableViewCell.self,
+            forCellReuseIdentifier: String(describing: EventTableViewCell.self)
+        )
     }
 }
 
 // MARK: - Table view data source
 extension EventListViewController: UITableViewDataSource {
-    enum Sections: Int {
-        case upcoming
-        case past
-        static let count = 2
-    }
-
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == Sections.upcoming.rawValue ? upcomingEvents.count : pastEvents.count
+        return upcomingEvents.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -113,15 +115,8 @@ extension EventListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventTableViewCell.self)) as? EventTableViewCell else {
             return EventTableViewCell()
         }
-        
-        var event: Event
-        
-        if (indexPath.section == Sections.upcoming.rawValue) {
-            event = upcomingEvents[indexPath.row]
-        } else {
-            event = pastEvents[indexPath.row]
-        }
-        
+
+        let event = upcomingEvents[indexPath.row]
         cell.configure(event: event)
 
         return cell
@@ -130,24 +125,9 @@ extension EventListViewController: UITableViewDataSource {
 
 // MARK: - Table view delegate
 extension EventListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = EventListHeaderView()
-        let title = section == Sections.upcoming.rawValue ?
-            NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title") :
-            NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
-        headerView.configure(title: title)
-        return headerView
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var event: Event
-        
-        if (indexPath.section == Sections.upcoming.rawValue) {
-            event = upcomingEvents[indexPath.row]
-        } else {
-            event = pastEvents[indexPath.row]
-        }
-        
+        let event = upcomingEvents[indexPath.row]
+
         router.showEventDetail(event: event)
     }
 }

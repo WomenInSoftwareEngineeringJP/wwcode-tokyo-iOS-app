@@ -27,8 +27,8 @@ struct EventFixture {
         
         return Event(
             name: "Hackathon 101 with Junction Tokyo",
-            startDateTime: "2021-06-12T18:30:00",
-            endDateTime: "2021-06-12T21:30:00",
+            startDateTime: "2020-04-12T19:00:00",
+            endDateTime: "2020-04-12T21:00:00",
             description: "description",
             venue: venue)
     }

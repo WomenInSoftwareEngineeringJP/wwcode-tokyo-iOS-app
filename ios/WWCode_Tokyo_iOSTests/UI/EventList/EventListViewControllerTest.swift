@@ -10,8 +10,22 @@ final class EventListViewControllerTest: QuickSpec {
         var subject: EventListViewController!
         var eventRepoSpyStub: SpyStubEventRepo!
         
-        let upcomingEvents = [EventFixture.JavaScript()]
-        let pastEvents = [EventFixture.Hackathon()]
+        let upcomingEvents: [Event] = [
+            Event(
+                name: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic",
+                startDateTime: "2021-06-12T18:30:00",
+                endDateTime: "2021-06-12T21:30:00",
+                description: "",
+                venue: Venue(
+                    name: "Code Chrysalis",
+                    lat: 0,
+                    lon: 0,
+                    address: "",
+                    city: ""
+                )
+            )
+        ]
+        
         
         var navigationController: UINavigationController!
 
@@ -24,7 +38,6 @@ final class EventListViewControllerTest: QuickSpec {
                 
                 eventRepoSpyStub = SpyStubEventRepo()
                 eventRepoSpyStub.getUpcomingEvents_returnUpcomingEvents.success(upcomingEvents)
-                eventRepoSpyStub.getPastEvents_returnPastEvents.success(pastEvents)
 
                 subject = EventListViewController(router: spyRouter, eventRepository: eventRepoSpyStub)
 
@@ -38,28 +51,32 @@ final class EventListViewControllerTest: QuickSpec {
             it("displays screen title") {
                 expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
             }
-
-            it("displays section titles") {
+            
+            it("displays a segmented control with options for upcoming and past") {
                 expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Past")).toEventually(beTrue())
             }
 
-            it("display upcoming events from repo") {
-               expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "18:30 - 21:30")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "Jun 12, Sat")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "Code Chrysalis")).toEventually(beTrue())
+            describe("displaying upcoming events") {
+                it("displays the event name") {
+                    expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
+                }
+
+                it("displays the event venue name") {
+                    expect(subject.hasLabel(withExactText: "Code Chrysalis")).toEventually(beTrue())
+                }
+
+                it("displays the day of the event based on the start date") {
+                    expect(subject.hasLabel(withExactText: "Jun 12, Sat")).toEventually(beTrue())
+                }
+
+                it("displays the start and end time of the event formatted for display") {
+                    expect(subject.hasLabel(withExactText: "18:30 - 21:30")).toEventually(beTrue())
+                }
             }
             
             it("get past events from repo") {
                 expect(eventRepoSpyStub.getPastEvents_wasCalled).to(beTrue())
-            }
-
-            it("display past events from repo") {
-                expect(subject.hasLabel(withExactText: "Hackathon 101 with Junction Tokyo")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "18:30 - 21:30")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "Jun 12, Sat")).toEventually(beTrue())
-                expect(subject.hasLabel(withExactText: "Mercari")).toEventually(beTrue())
             }
             
             it("tapping on an event shows its detail page") {
