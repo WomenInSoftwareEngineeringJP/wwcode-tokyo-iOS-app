@@ -4,6 +4,7 @@ class EventListViewController: UIViewController {
     // MARK: - Injected Properties
     private var router: Router
     private var eventRepository: EventRepository
+    private var reloader: Reloader?
 
     // MARK: - Properties
     private var didSetupConstraints: Bool = false
@@ -15,9 +16,10 @@ class EventListViewController: UIViewController {
     private var eventSegments: UISegmentedControl!
     private(set) var tableView: UITableView!
 
-    init(router: Router, eventRepository: EventRepository) {
+    init(router: Router, eventRepository: EventRepository, reloader: Reloader? = nil) {
         self.eventRepository = eventRepository
         self.router = router
+        self.reloader = reloader
         super.init(nibName: nil, bundle: nil)
         
         view.setNeedsUpdateConstraints()
@@ -35,12 +37,12 @@ class EventListViewController: UIViewController {
         configureSubviews()
         
         eventRepository.getUpcomingEvents().onSuccess { events in
-                self.upcomingEvents = events
-                self.tableView.reloadData()
+            self.upcomingEvents = events
+            self.reloader?.reload(reloadable: self.tableView)
         }
         eventRepository.getPastEvents().onSuccess { events in
-                self.pastEvents = events
-                self.tableView.reloadData()
+            self.pastEvents = events
+            self.tableView.reloadData()
         }
     }
     

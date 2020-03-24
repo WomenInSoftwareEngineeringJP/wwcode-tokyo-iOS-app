@@ -11,6 +11,7 @@ final class EventListViewControllerTest: QuickSpec {
         var spyStubEventRepo: SpyStubEventRepo!
         
         var spyRouter: SpyRouter!
+        var spyReloader: SpyReloader!
         
         describe("EventsListViewController") {
             beforeEach {
@@ -18,8 +19,13 @@ final class EventListViewControllerTest: QuickSpec {
                 spyRouter = SpyRouter(navigationController: navigationController)
                 
                 spyStubEventRepo = SpyStubEventRepo()
+                spyReloader = SpyReloader()
 
-                subject = EventListViewController(router: spyRouter, eventRepository: spyStubEventRepo)
+                subject = EventListViewController(
+                    router: spyRouter,
+                    eventRepository: spyStubEventRepo,
+                    reloader: spyReloader
+                )
                 subject.loadViewControllerForUnitTest()
             }
             
@@ -59,6 +65,14 @@ final class EventListViewControllerTest: QuickSpec {
                     ]
 
                     spyStubEventRepo.getUpcomingEvents_returnUpcomingEvents.success(upcomingEvents)
+                }
+                
+                it("reloads the table view") {
+                    expect(spyReloader.reload_wasCalled).toEventually(beTrue())
+                    expect(spyReloader.reload_argument_reloadable)
+                        .toEventually(beAKindOf(UITableView.self))
+                    expect(spyReloader.reload_argument_reloadable)
+                        .toEventually(be(subject.tableView))
                 }
                 
                 it("displays the event name") {
