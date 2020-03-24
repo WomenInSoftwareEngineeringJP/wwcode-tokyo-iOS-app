@@ -13,12 +13,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let navigationController = UINavigationController()
-        
         let router = AppRouter(navigationController: navigationController)
         
         let http = NetworkHttp(baseUrl: Configuration.environment.baseURL, networkSession: URLSession.shared)
         let eventRepo = NetworkEventRepository(http: http)
-        let viewController = EventListViewController(router: router, eventRepository: eventRepo)
+
+        let viewController = EventListViewController(
+            router: router,
+            eventRepository: eventRepo,
+            reloader: DefaultReloader()
+        )
 
         navigationController.viewControllers = [viewController]
         
