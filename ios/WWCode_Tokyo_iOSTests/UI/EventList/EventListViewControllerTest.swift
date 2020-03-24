@@ -8,46 +8,29 @@ final class EventListViewControllerTest: QuickSpec {
     override func spec() {
         
         var subject: EventListViewController!
-        var eventRepoSpyStub: SpyStubEventRepo!
+        var spyStubEventRepo: SpyStubEventRepo!
         
-        let upcomingEvents: [Event] = [
-            Event(
-                name: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic",
-                startDateTime: "2021-06-12T18:30:00",
-                endDateTime: "2021-06-12T21:30:00",
-                description: "",
-                venue: Venue(
-                    name: "Code Chrysalis",
-                    lat: 0,
-                    lon: 0,
-                    address: "",
-                    city: ""
-                )
-            )
-        ]
-        
-        
-        var navigationController: UINavigationController!
-
         var spyRouter: SpyRouter!
         
         describe("EventsListViewController") {
             beforeEach {
-                navigationController = UINavigationController()
+                let navigationController = UINavigationController()
                 spyRouter = SpyRouter(navigationController: navigationController)
                 
-                eventRepoSpyStub = SpyStubEventRepo()
-                eventRepoSpyStub.getUpcomingEvents_returnUpcomingEvents.success(upcomingEvents)
+                spyStubEventRepo = SpyStubEventRepo()
 
-                subject = EventListViewController(router: spyRouter, eventRepository: eventRepoSpyStub)
-
-                subject.viewDidLoad()
+                subject = EventListViewController(router: spyRouter, eventRepository: spyStubEventRepo)
+                subject.loadViewControllerForUnitTest()
             }
             
             it("get upcoming events from repo") {
-                expect(eventRepoSpyStub.getUpcomingEvents_wasCalled).to(beTrue())
+                expect(spyStubEventRepo.getUpcomingEvents_wasCalled).to(beTrue())
             }
 
+            it("get past events from repo") {
+                expect(spyStubEventRepo.getPastEvents_wasCalled).to(beTrue())
+            }
+            
             it("displays screen title") {
                 expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
             }
@@ -58,8 +41,28 @@ final class EventListViewControllerTest: QuickSpec {
             }
 
             describe("displaying upcoming events") {
+                beforeEach {
+                    let upcomingEvents: [Event] = [
+                        Event(
+                            name: "WTF is JavaScript",
+                            startDateTime: "2021-06-12T18:30:00",
+                            endDateTime: "2021-06-12T21:30:00",
+                            description: "",
+                            venue: Venue(
+                                name: "Code Chrysalis",
+                                lat: 0,
+                                lon: 0,
+                                address: "",
+                                city: ""
+                            )
+                        )
+                    ]
+
+                    spyStubEventRepo.getUpcomingEvents_returnUpcomingEvents.success(upcomingEvents)
+                }
+                
                 it("displays the event name") {
-                    expect(subject.hasLabel(withExactText: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")).toEventually(beTrue())
+                    expect(subject.hasLabel(withExactText: "WTF is JavaScript")).toEventually(beTrue())
                 }
 
                 it("displays the event venue name") {
@@ -73,16 +76,21 @@ final class EventListViewControllerTest: QuickSpec {
                 it("displays the start and end time of the event formatted for display") {
                     expect(subject.hasLabel(withExactText: "18:30 - 21:30")).toEventually(beTrue())
                 }
-            }
-            
-            it("get past events from repo") {
-                expect(eventRepoSpyStub.getPastEvents_wasCalled).to(beTrue())
-            }
-            
-            it("tapping on an event shows its detail page") {
-                expect(subject.hasLabel(withExactText: "Hackathon 101 with Junction Tokyo")).toEventuallyNot(beNil())
-                subject.tableView(subject.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
-                expect(spyRouter.showEventDetail_wasCalled).to(beTrue())
+
+                describe("tapping on an event cell") {
+                    it("navigates to the detail page") {
+                        let waitForTableViewToFinishReloading: () -> Void = {
+                            expect(subject.hasLabel(withExactText: "WTF is JavaScript")).toEventuallyNot(beNil())
+                        }
+                        waitForTableViewToFinishReloading()
+
+
+                        subject.tapCell(withExactText: "WTF is JavaScript")
+
+
+                        expect(spyRouter.showEventDetail_wasCalled).to(beTrue())
+                    }
+                }
             }
         }
     }
