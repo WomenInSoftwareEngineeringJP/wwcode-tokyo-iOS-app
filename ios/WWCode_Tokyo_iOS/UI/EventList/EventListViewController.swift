@@ -55,10 +55,10 @@ class EventListViewController: UIViewController {
             eventSegments.autoPinEdge(.top, to: .bottom, of: eventsLabel)
             
             tableView.autoPinEdge(.top, to: .bottom, of: eventSegments)
-            tableView.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-            tableView.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
-            tableView.autoPinEdge(toSuperviewEdge: .bottom, withInset: 15.0)
-            
+            tableView.autoPinEdge(toSuperviewEdge: .left)
+            tableView.autoPinEdge(toSuperviewEdge: .right)
+            tableView.autoPinEdge(toSuperviewEdge: .bottom)
+
             didSetupConstraints = true
         }
         
@@ -110,7 +110,7 @@ extension EventListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 234
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

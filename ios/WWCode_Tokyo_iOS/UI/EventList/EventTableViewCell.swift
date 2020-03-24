@@ -2,7 +2,7 @@ import UIKit
 import PureLayout
 
 class EventTableViewCell: UITableViewCell {
-    private var containerView: UIView!
+    private var cardView: UIView!
     private var titleLabel: UILabel!
     private var dateLabel: UILabel!
     private var timeLabel: UILabel!
@@ -44,8 +44,8 @@ class EventTableViewCell: UITableViewCell {
 fileprivate extension EventTableViewCell {
     
     func initializeViews() {
-        containerView = UIView()
-        containerView.configureForAutoLayout()
+        cardView = UIView()
+        cardView.configureForAutoLayout()
         
         dateLabel = UILabel()
         dateLabel.configureForAutoLayout()
@@ -61,42 +61,50 @@ fileprivate extension EventTableViewCell {
     }
     
     func addSubviews() {
-        containerView.addSubview(dateLabel)
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(timeLabel)
-        containerView.addSubview(venueNameLabel)
-        addSubview(containerView)
+        cardView.addSubview(dateLabel)
+        cardView.addSubview(titleLabel)
+        cardView.addSubview(timeLabel)
+        cardView.addSubview(venueNameLabel)
+        addSubview(cardView)
     }
     
     func configureSubviews() {
-        containerView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+        cardView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20))
 
-        dateLabel.autoPinEdge(.top, to: .top, of: containerView, withOffset: 20)
-        dateLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
-        dateLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
-        
+        dateLabel.autoPinEdge(.top, to: .top, of: cardView, withOffset: 30)
+        dateLabel.autoPinEdge(.left, to: .left, of: cardView, withOffset: 20)
+        dateLabel.autoPinEdge(.right, to: .right, of: cardView, withOffset: -20)
+
         titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 10)
-        titleLabel.autoPinEdge(.bottom, to: .top, of: timeLabel, withOffset: -20)
         titleLabel.autoPinEdge(.left, to: .left, of: dateLabel)
         titleLabel.autoPinEdge(.right, to: .right, of: dateLabel)
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
 
-        timeLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
-        timeLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
+        timeLabel.autoPinEdge(.left, to: .left, of: cardView, withOffset: 20)
+        timeLabel.autoPinEdge(.right, to: .right, of: cardView, withOffset: -20)
         timeLabel.autoPinEdge(.bottom, to: .top, of: venueNameLabel, withOffset: -4)
 
-        venueNameLabel.autoPinEdge(.left, to: .left, of: containerView, withOffset: 20)
-        venueNameLabel.autoPinEdge(.right, to: .right, of: containerView, withOffset: -20)
-        venueNameLabel.autoPinEdge(.bottom, to: .bottom, of: containerView, withOffset: -20)
+        venueNameLabel.autoPinEdge(.left, to: .left, of: cardView, withOffset: 20)
+        venueNameLabel.autoPinEdge(.right, to: .right, of: cardView, withOffset: -20)
+        venueNameLabel.autoPinEdge(.bottom, to: .bottom, of: cardView, withOffset: -20)
     }
     
     func styleSubviews() {
-        backgroundColor = UIColor.white
-        containerView.backgroundColor = UIColor.white
+        backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
+        cardView.backgroundColor = UIColor.white
 
-        containerView.layer.cornerRadius = 10.0
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        containerView.layer.shadowRadius = 12.0
-        containerView.layer.shadowOpacity = 0.7
+        cardView.layer.cornerRadius = 4
+        cardView.layer.shadowColor = UIColor.darkGray.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        cardView.layer.shadowRadius = 2.0
+        cardView.layer.shadowOpacity = 0.3
+        
+        dateLabel.textColor = UIColor(red:0.20, green:0.47, blue:0.48, alpha:1.00)
+        
+        timeLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
+        
+        venueNameLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
     }
 }
