@@ -2,25 +2,25 @@ import UIKit
 import PureLayout
 
 class EventViewController: UIViewController {
+    // MARK: - Injected Properties
+    private var event: Event!
     
+    // MARK: - Properties
+    private var scrollView: UIScrollView!
+    private var contentView: UIView!
+    private var didSetupConstraints = false
+    
+    // MARK: - View Elements
     private var dateLabel: UILabel!
     private var timeLabel: UILabel!
-    
     private var titleLabel: UILabel!
     private var descriptionLabel: UILabel!
-    
     private var venueName: UILabel!
     private var venueAddress: UILabel!
     
-    private var scrollView: UIScrollView!
-    private var contentView: UIView!
-
-    private var didSetupConstraints = false
-    private var event: Event!
-    
     init(event: Event) {
-        super.init(nibName: nil, bundle: nil)
         self.event = event
+        super.init(nibName: nil, bundle: nil)
         view.setNeedsUpdateConstraints()
     }
     
@@ -33,9 +33,11 @@ class EventViewController: UIViewController {
         super.viewDidLoad()
         
         initializeViews()
-        configureNavigationBar()
         addSubviews()
         configureSubviews()
+        configureDateAndTime()
+        configureTitleAndDescription()
+        configureVenue()
     }
     
     override func updateViewConstraints() {
@@ -55,6 +57,7 @@ class EventViewController: UIViewController {
             titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel)
             titleLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
             titleLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            titleLabel.numberOfLines = 0
             
             descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel)
             descriptionLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
@@ -75,7 +78,10 @@ class EventViewController: UIViewController {
         
         super.updateViewConstraints()
     }
-    
+}
+
+// MARK: - View Setup
+fileprivate extension EventViewController {
     func initializeViews() {
         scrollView = UIScrollView.newAutoLayout()
         contentView = UIView.newAutoLayout()
@@ -105,7 +111,7 @@ class EventViewController: UIViewController {
         contentView.backgroundColor = .white
     }
     
-    func configureNavigationBar() {
+    func configureDateAndTime() {
         let startDateFormatter = DateFormatter()
         startDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let startDateTime = startDateFormatter.date(from: event.startDateTime)!
@@ -120,23 +126,29 @@ class EventViewController: UIViewController {
         timeLabelFormatter.dateFormat = "HH:mm"
         
         timeLabel.text = "\(timeLabelFormatter.string(from: startDateTime)) - \(timeLabelFormatter.string(from: endDateTime))"
-        
+    }
+    
+    func configureTitleAndDescription() {
         titleLabel.text = event.name
-        descriptionLabel.text = event.description
-        
-        venueName.text = event.venue.name
-        venueAddress.text = "\(event.venue.address) \(event.venue.city)"
         
         do {
             let data = event.description.data(using: .utf8)!
             let description = try NSAttributedString(
-                data: data,
-                options: [ .documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue ],
-                documentAttributes: nil)
+                    data: data,
+                    options: [
+                        .documentType: NSAttributedString.DocumentType.html,
+                        .characterEncoding: String.Encoding.utf8.rawValue
+                    ],
+                    documentAttributes: nil)
             
             descriptionLabel.attributedText = description
         } catch {
             // noop
         }
+    }
+    
+    func configureVenue() {
+        venueName.text = event.venue.name
+        venueAddress.text = "\(event.venue.address) \(event.venue.city)"
     }
 }
