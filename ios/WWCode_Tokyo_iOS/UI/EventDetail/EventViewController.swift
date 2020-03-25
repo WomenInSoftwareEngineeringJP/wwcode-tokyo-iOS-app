@@ -11,6 +11,9 @@ class EventViewController: UIViewController {
     
     private var venueName: UILabel!
     private var venueAddress: UILabel!
+    
+    private var scrollView: UIScrollView!
+    private var contentView: UIView!
 
     private var didSetupConstraints = false
     private var event: Event!
@@ -37,30 +40,35 @@ class EventViewController: UIViewController {
     
     override func updateViewConstraints() {
         if (!didSetupConstraints) {
-            dateLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
-            dateLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
+            scrollView.autoPinEdgesToSuperviewSafeArea()
+            contentView.autoPinEdgesToSuperviewEdges()
+            contentView.autoMatch(.width, to: .width, of: view)
+            
+            dateLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15.0)
+            dateLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
             dateLabel.autoPinEdge(.right, to: .left, of: timeLabel)
-            
-            timeLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
+
+            timeLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15.0)
             timeLabel.autoPinEdge(.left, to: .right, of: dateLabel)
-            timeLabel.autoPinEdge(toSuperviewSafeArea: .right, withInset: 15.0)
-            
+            timeLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+
             titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel)
-            titleLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-            titleLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            titleLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
+            titleLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
             
             descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel)
-            descriptionLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-            descriptionLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            descriptionLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
+            descriptionLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
             descriptionLabel.numberOfLines = 0
             
             venueName.autoPinEdge(.top, to: .bottom, of: descriptionLabel)
-            venueName.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-            venueName.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
-
+            venueName.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
+            venueName.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            
             venueAddress.autoPinEdge(.top, to: .bottom, of: venueName)
-            venueAddress.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-            venueAddress.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            venueAddress.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
+            venueAddress.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            venueAddress.autoPinEdge(toSuperviewEdge: .bottom, withInset: 60, relation: .greaterThanOrEqual)
             
             didSetupConstraints = true
         }
@@ -69,12 +77,32 @@ class EventViewController: UIViewController {
     }
     
     func initializeViews() {
+        scrollView = UIScrollView.newAutoLayout()
+        contentView = UIView.newAutoLayout()
+        
         dateLabel = UILabel.newAutoLayout()
         timeLabel = UILabel.newAutoLayout()
         titleLabel = UILabel.newAutoLayout()
         descriptionLabel = UILabel.newAutoLayout()
         venueName = UILabel.newAutoLayout()
         venueAddress = UILabel.newAutoLayout()
+    }
+    
+    func addSubviews() {
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(timeLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(venueName)
+        contentView.addSubview(venueAddress)
+        
+        scrollView.addSubview(contentView)
+        view.addSubview(scrollView)
+    }
+    
+    func configureSubviews() {
+        view.backgroundColor = .white
+        contentView.backgroundColor = .white
     }
     
     func configureNavigationBar() {
@@ -110,18 +138,5 @@ class EventViewController: UIViewController {
         } catch {
             // noop
         }
-    }
-    
-    func addSubviews() {
-        view.addSubview(dateLabel)
-        view.addSubview(timeLabel)
-        view.addSubview(titleLabel)
-        view.addSubview(descriptionLabel)
-        view.addSubview(venueName)
-        view.addSubview(venueAddress)
-    }
-    
-    func configureSubviews() {
-        view.backgroundColor = .white
     }
 }
