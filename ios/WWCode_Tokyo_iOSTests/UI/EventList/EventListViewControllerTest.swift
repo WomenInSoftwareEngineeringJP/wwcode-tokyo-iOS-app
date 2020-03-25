@@ -41,7 +41,7 @@ final class EventListViewControllerTest: QuickSpec {
                 expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
             }
             
-            it("displays a segmented control with options for upcoming and past") {
+            xit("displays a segmented control with options for upcoming and past") {
                 expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Past")).toEventually(beTrue())
             }
