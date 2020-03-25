@@ -17,6 +17,7 @@ class EventViewController: UIViewController {
     private var descriptionLabel: UILabel!
     private var venueName: UILabel!
     private var venueAddress: UILabel!
+    private var registerButton: UIButton!
     
     init(event: Event) {
         self.event = event
@@ -35,9 +36,7 @@ class EventViewController: UIViewController {
         initializeViews()
         addSubviews()
         configureSubviews()
-        configureDateAndTime()
-        configureTitleAndDescription()
-        configureVenue()
+        styleSubviews()
     }
     
     override func updateViewConstraints() {
@@ -46,32 +45,37 @@ class EventViewController: UIViewController {
             contentView.autoPinEdgesToSuperviewEdges()
             contentView.autoMatch(.width, to: .width, of: view)
             
-            dateLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15.0)
-            dateLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
+            dateLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 20.0)
+            dateLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20.0)
             dateLabel.autoPinEdge(.right, to: .left, of: timeLabel)
 
-            timeLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15.0)
+            timeLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 20.0)
             timeLabel.autoPinEdge(.left, to: .right, of: dateLabel)
-            timeLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            timeLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20.0)
 
-            titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel)
-            titleLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
-            titleLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 10.0)
+            titleLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20.0)
+            titleLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20.0)
             titleLabel.numberOfLines = 0
             
-            descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel)
-            descriptionLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
-            descriptionLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel, withOffset: 10.0)
+            descriptionLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20.0)
+            descriptionLabel.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20.0)
             descriptionLabel.numberOfLines = 0
             
-            venueName.autoPinEdge(.top, to: .bottom, of: descriptionLabel)
-            venueName.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
-            venueName.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
+            venueName.autoPinEdge(.top, to: .bottom, of: descriptionLabel, withOffset: 10.0)
+            venueName.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20.0)
+            venueName.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20.0)
             
             venueAddress.autoPinEdge(.top, to: .bottom, of: venueName)
-            venueAddress.autoPinEdge(.left, to: .left, of: contentView, withOffset: 15.0)
-            venueAddress.autoPinEdge(.right, to: .right, of: contentView, withOffset: -15.0)
-            venueAddress.autoPinEdge(toSuperviewEdge: .bottom, withInset: 60, relation: .greaterThanOrEqual)
+            venueAddress.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20.0)
+            venueAddress.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20.0)
+            
+            registerButton.autoSetDimension(.height, toSize: 50)
+            registerButton.autoPinEdge(.top, to: .bottom, of: venueAddress, withOffset: 20.0)
+            registerButton.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20.0)
+            registerButton.autoPinEdge(.right, to: .right, of: contentView, withOffset: -20.0)
+            registerButton.autoPinEdge(toSuperviewEdge: .bottom, withInset: 60, relation: .greaterThanOrEqual)
             
             didSetupConstraints = true
         }
@@ -92,6 +96,7 @@ fileprivate extension EventViewController {
         descriptionLabel = UILabel.newAutoLayout()
         venueName = UILabel.newAutoLayout()
         venueAddress = UILabel.newAutoLayout()
+        registerButton = UIButton.newAutoLayout()
     }
     
     func addSubviews() {
@@ -101,14 +106,28 @@ fileprivate extension EventViewController {
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(venueName)
         contentView.addSubview(venueAddress)
+        contentView.addSubview(registerButton)
         
         scrollView.addSubview(contentView)
         view.addSubview(scrollView)
     }
     
     func configureSubviews() {
+        configureDateAndTime()
+        configureTitleAndDescription()
+        configureVenue()
+        configureRegistration()
+    }
+    
+    func styleSubviews() {
         view.backgroundColor = .white
         contentView.backgroundColor = .white
+        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        titleLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        dateLabel.textColor = UIColor(red:0.20, green:0.47, blue:0.48, alpha:1.00)
+        timeLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
     }
     
     func configureDateAndTime() {
@@ -150,5 +169,12 @@ fileprivate extension EventViewController {
     func configureVenue() {
         venueName.text = event.venue.name
         venueAddress.text = "\(event.venue.address) \(event.venue.city)"
+    }
+    
+    func configureRegistration() {
+        registerButton.setTitle("Register", for: .normal)
+        registerButton.setTitleColor(.white, for: .normal)
+        registerButton.backgroundColor = UIColor(red:0.93, green:0.33, blue:0.16, alpha:1.00)
+        registerButton.layer.cornerRadius = 4
     }
 }

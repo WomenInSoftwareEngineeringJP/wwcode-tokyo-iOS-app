@@ -89,9 +89,7 @@ fileprivate extension EventTableViewCell {
         titleLabel.autoPinEdge(.left, to: .left, of: dateLabel)
         titleLabel.autoPinEdge(.right, to: .right, of: dateLabel)
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        titleLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
-
+        
         clockIcon.autoPinEdge(.left, to: .left, of: cardView, withOffset: 20)
         clockIcon.autoPinEdge(.bottom, to: .top, of: venueNameLabel, withOffset: -4)
         clockIcon.autoSetDimensions(to: CGSize(width: 18, height: 18))
@@ -117,8 +115,9 @@ fileprivate extension EventTableViewCell {
         cardView.layer.shadowRadius = 2.0
         cardView.layer.shadowOpacity = 0.3
         
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
         dateLabel.textColor = UIColor(red:0.20, green:0.47, blue:0.48, alpha:1.00)
-        
         clockIcon.tintColor = UIColor(red:0.74, green:0.75, blue:0.76, alpha:1.00)
         timeLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
         
