@@ -52,6 +52,7 @@ class EventViewController: UIViewController {
             descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel)
             descriptionLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
             descriptionLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            descriptionLabel.numberOfLines = 0
             
             venueName.autoPinEdge(.top, to: .bottom, of: descriptionLabel)
             venueName.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
@@ -97,6 +98,18 @@ class EventViewController: UIViewController {
         
         venueName.text = event.venue.name
         venueAddress.text = "\(event.venue.address) \(event.venue.city)"
+        
+        do {
+            let data = event.description.data(using: .utf8)!
+            let description = try NSAttributedString(
+                data: data,
+                options: [ .documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue ],
+                documentAttributes: nil)
+            
+            descriptionLabel.attributedText = description
+        } catch {
+            // noop
+        }
     }
     
     func addSubviews() {
