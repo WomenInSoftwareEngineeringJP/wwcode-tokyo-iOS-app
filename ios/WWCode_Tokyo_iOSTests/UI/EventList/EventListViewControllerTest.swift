@@ -155,6 +155,32 @@ final class EventListViewControllerTest: QuickSpec {
                 it("displays the start and end time of the event formatted for display") {
                     expect(subject.hasLabel(withExactText: "18:00 - 21:00")).toEventually(beTrue())
                 }
+                
+                it("show upcoming event when upcoming segment is selected") {
+                    let upcomingEvents: [Event] = [
+                        Event(
+                            name: "WTF is JavaScript",
+                            startDateTime: "2021-06-12T18:30:00",
+                            endDateTime: "2021-06-12T21:30:00",
+                            description: "",
+                            venue: Venue(
+                                name: "Code Chrysalis",
+                                lat: 0,
+                                lon: 0,
+                                address: "",
+                                city: ""
+                            )
+                        )
+                    ]
+
+                    spyStubEventRepo.getUpcomingEvents_returnUpcomingEvents.success(upcomingEvents)
+                    
+                    
+                    subject.selectSegment(withTitleText: "Upcoming")
+                    
+                    expect(subject.hasLabel(withExactText: "WTF is JavaScript")).toEventually(beTrue())
+                    expect(subject.hasLabel(withExactText: "Past Event")).toEventually(beFalse())
+                }
 
             }
         }

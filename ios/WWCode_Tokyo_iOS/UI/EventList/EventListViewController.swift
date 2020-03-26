@@ -103,9 +103,16 @@ fileprivate extension EventListViewController {
 
 fileprivate extension EventListViewController {
     @objc func didSelectEventSegment(_ sender: UISegmentedControl) {
-        eventRepository.getPastEvents().onSuccess { pastEvents in
-            self.events = pastEvents
-            self.reloader.reload(reloadable: self.tableView)
+        if (sender.selectedSegmentIndex == 0) {
+            eventRepository.getUpcomingEvents().onSuccess { upcomingEvents in
+                self.events = upcomingEvents
+                self.reloader.reload(reloadable: self.tableView)
+            }
+        } else {
+            eventRepository.getPastEvents().onSuccess { pastEvents in
+                self.events = pastEvents
+                self.reloader.reload(reloadable: self.tableView)
+            }
         }
     }
 }
