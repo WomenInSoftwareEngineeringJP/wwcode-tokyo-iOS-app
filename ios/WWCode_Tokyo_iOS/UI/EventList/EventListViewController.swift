@@ -1,6 +1,11 @@
 import UIKit
 
 class EventListViewController: UIViewController {
+    private struct i18n {
+        static let UpcomingTitle: String = NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title")
+        static let PastTitle: String = NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
+    }
+    
     // MARK: - Injected Properties
     private var router: Router
     private var eventRepository: EventRepository
@@ -65,12 +70,7 @@ class EventListViewController: UIViewController {
 fileprivate extension EventListViewController {
     func initializeViews() {
         eventsLabel = UILabel.newAutoLayout()
-        
-        let upcomingSegmentTitle = NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title")
-        let pastSegmentTitle = NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
-        eventSegments = UISegmentedControl.init(items: [upcomingSegmentTitle, pastSegmentTitle])
-        eventSegments.selectedSegmentIndex = 0
-
+        eventSegments = UISegmentedControl()
         tableView = UITableView(frame: CGRect.zero)
     }
     
@@ -85,6 +85,17 @@ fileprivate extension EventListViewController {
         
         eventsLabel.text = "Events"
         
+        eventSegments.insertSegment(
+            withTitle: i18n.UpcomingTitle,
+            at: 0,
+            animated: false
+        )
+        eventSegments.insertSegment(
+            withTitle: i18n.PastTitle,
+            at: 1,
+            animated: false
+        )
+        eventSegments.selectedSegmentIndex = 0
         eventSegments.addTarget(
             self,
             action: #selector(didSelectEventSegment),
@@ -103,7 +114,9 @@ fileprivate extension EventListViewController {
 
 fileprivate extension EventListViewController {
     @objc func didSelectEventSegment(_ sender: UISegmentedControl) {
-        if (sender.selectedSegmentIndex == 0) {
+        let selectedTitle = sender.titleForSegment(at: sender.selectedSegmentIndex)
+        
+        if (selectedTitle == i18n.UpcomingTitle) {
             eventRepository.getUpcomingEvents().onSuccess { upcomingEvents in
                 self.events = upcomingEvents
                 self.reloader.reload(reloadable: self.tableView)
