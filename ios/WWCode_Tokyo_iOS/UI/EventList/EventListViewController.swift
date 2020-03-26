@@ -8,8 +8,7 @@ class EventListViewController: UIViewController {
 
     // MARK: - Properties
     private var didSetupConstraints: Bool = false
-    private var upcomingEvents: [Event] = []
-    private var pastEvents: [Event] = []
+    private var events: [Event] = []
     
     // MARK: - View Elements
     private var eventsLabel: UILabel!
@@ -36,13 +35,9 @@ class EventListViewController: UIViewController {
         addSubview()
         configureSubviews()
         
-        eventRepository.getUpcomingEvents().onSuccess { events in
-            self.upcomingEvents = events
+        eventRepository.getUpcomingEvents().onSuccess { upcomingEvents in
+            self.events = upcomingEvents
             self.reloader.reload(reloadable: self.tableView)
-        }
-        eventRepository.getPastEvents().onSuccess { events in
-            self.pastEvents = events
-            self.tableView.reloadData()
         }
     }
     
@@ -74,6 +69,7 @@ fileprivate extension EventListViewController {
         let upcomingSegmentTitle = NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title")
         let pastSegmentTitle = NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
         eventSegments = UISegmentedControl.init(items: [upcomingSegmentTitle, pastSegmentTitle])
+        eventSegments.selectedSegmentIndex = 0
 
         tableView = UITableView(frame: CGRect.zero)
     }
@@ -89,6 +85,12 @@ fileprivate extension EventListViewController {
         
         eventsLabel.text = "Events"
         
+        eventSegments.addTarget(
+            self,
+            action: #selector(didSelectEventSegment),
+            for: .valueChanged
+        )
+        
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.dataSource = self
         tableView.delegate = self
@@ -99,6 +101,15 @@ fileprivate extension EventListViewController {
     }
 }
 
+fileprivate extension EventListViewController {
+    @objc func didSelectEventSegment(_ sender: UISegmentedControl) {
+        eventRepository.getPastEvents().onSuccess { pastEvents in
+            self.events = pastEvents
+            self.reloader.reload(reloadable: self.tableView)
+        }
+    }
+}
+
 // MARK: - Table view data source
 extension EventListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -106,7 +117,7 @@ extension EventListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return upcomingEvents.count
+        return events.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,7 +129,7 @@ extension EventListViewController: UITableViewDataSource {
             return EventTableViewCell()
         }
 
-        let event = upcomingEvents[indexPath.row]
+        let event = events[indexPath.row]
         cell.configure(event: event)
 
         return cell
@@ -128,7 +139,7 @@ extension EventListViewController: UITableViewDataSource {
 // MARK: - Table view delegate
 extension EventListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let event = upcomingEvents[indexPath.row]
+        let event = events[indexPath.row]
 
         router.showEventDetail(event: event)
     }

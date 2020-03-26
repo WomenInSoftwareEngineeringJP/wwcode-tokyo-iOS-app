@@ -33,10 +33,6 @@ final class EventListViewControllerTest: QuickSpec {
                 expect(spyStubEventRepo.getUpcomingEvents_wasCalled).to(beTrue())
             }
 
-            it("get past events from repo") {
-                expect(spyStubEventRepo.getPastEvents_wasCalled).to(beTrue())
-            }
-            
             it("displays screen title") {
                 expect(subject.hasLabel(withExactText: "Events")).toEventually(beTrue())
             }
@@ -44,6 +40,10 @@ final class EventListViewControllerTest: QuickSpec {
             xit("displays a segmented control with options for upcoming and past") {
                 expect(subject.hasLabel(withExactText: "Upcoming")).toEventually(beTrue())
                 expect(subject.hasLabel(withExactText: "Past")).toEventually(beTrue())
+            }
+            
+            it("defaults to showing upcoming events") {
+                expect(subject.hasSegmentedControlSegmentSelected(withExactText: "Upcoming")).to(beTrue())
             }
 
             describe("displaying upcoming events") {
@@ -105,6 +105,57 @@ final class EventListViewControllerTest: QuickSpec {
                         expect(spyRouter.showEventDetail_wasCalled).to(beTrue())
                     }
                 }
+            }
+            
+            describe("displaying past events when past segment selected") {
+                beforeEach {
+                    let pastEvents: [Event] = [
+                        Event(
+                            name: "Past Event",
+                            startDateTime: "2020-02-12T18:00:00",
+                            endDateTime: "2020-02-12T21:00:00",
+                            description: "",
+                            venue: Venue(
+                                name: "Indeed",
+                                lat: 0,
+                                lon: 0,
+                                address: "",
+                                city: ""
+                            )
+                        )
+                    ]
+                    spyStubEventRepo.getPastEvents_returnPastEvents.success(pastEvents)
+
+
+                    subject.selectSegment(withTitleText: "Past")
+                }
+
+                it("get past events from repo") {
+                    expect(spyStubEventRepo.getPastEvents_wasCalled).to(beTrue())
+                }
+
+                it("reloads the table view") {
+                    expect(spyReloader.reload_wasCalled).toEventually(beTrue())
+                    expect(spyReloader.reload_argument_reloadable)
+                        .toEventually(beAKindOf(UITableView.self))
+                }
+
+                it("displays the event name") {
+                    expect(subject.hasLabel(withExactText: "Past Event")).toEventually(beTrue())
+                }
+
+                it("displays the event venue name") {
+                    expect(subject.hasLabel(withExactText: "Indeed")).toEventually(beTrue())
+                }
+
+                it("displays the day of the event based on the start date") {
+                    expect(subject.hasLabel(withExactText: "Feb 12, Wed")).toEventually(beTrue())
+                }
+
+                it("displays the start and end time of the event formatted for display") {
+                    expect(subject.hasLabel(withExactText: "18:00 - 21:00")).toEventually(beTrue())
+                }
+
             }
         }
     }
