@@ -22,6 +22,7 @@
 		F12EDECD2429B634002E7CD4 /* Reloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDECC2429B633002E7CD4 /* Reloader.swift */; };
 		F12EDED02429D05F002E7CD4 /* DefaultReloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDECF2429D05F002E7CD4 /* DefaultReloaderTest.swift */; };
 		F12EDED22429D181002E7CD4 /* SpyReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDED12429D181002E7CD4 /* SpyReloadable.swift */; };
+		F12EDED4242D966C002E7CD4 /* EventSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */; };
 		F14B0B8A240F9761004E277A /* NetworkEventRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */; };
 		F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */; };
 		F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8F240F9C4D004E277A /* SpyHttp.swift */; };
@@ -115,6 +116,7 @@
 		F12EDECC2429B633002E7CD4 /* Reloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reloader.swift; sourceTree = "<group>"; };
 		F12EDECF2429D05F002E7CD4 /* DefaultReloaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReloaderTest.swift; sourceTree = "<group>"; };
 		F12EDED12429D181002E7CD4 /* SpyReloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyReloadable.swift; sourceTree = "<group>"; };
+		F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSegmentedControl.swift; sourceTree = "<group>"; };
 		F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepositoryTest.swift; sourceTree = "<group>"; };
 		F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepository.swift; sourceTree = "<group>"; };
 		F14B0B8F240F9C4D004E277A /* SpyHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyHttp.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				F174F5092408A4210070C353 /* EventListViewController.swift */,
+				F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */,
 				F1291752240DE953002B0352 /* EventTableViewCell.swift */,
 				F14F4DB72419E3FC0045426E /* EventListHeaderView.swift */,
 				F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */,
@@ -558,6 +561,7 @@
 				F14F4E082420C04B0045426E /* UpcomingEventsViewController.swift in Sources */,
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
 				F14F4E0A2420C09F0045426E /* PastEventsViewController.swift in Sources */,
+				F12EDED4242D966C002E7CD4 /* EventSegmentedControl.swift in Sources */,
 				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
 				F12EDECD2429B634002E7CD4 /* Reloader.swift in Sources */,

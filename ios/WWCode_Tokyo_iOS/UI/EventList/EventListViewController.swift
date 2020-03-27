@@ -1,11 +1,6 @@
 import UIKit
 
 class EventListViewController: UIViewController {
-    private struct i18n {
-        static let UpcomingTitle: String = NSLocalizedString("UPCOMING_EVENTS_TITLE", comment: "Section Title")
-        static let PastTitle: String = NSLocalizedString("PAST_EVENTS_TITLE", comment: "Section Title")
-    }
-    
     // MARK: - Injected Properties
     private var router: Router
     private var eventRepository: EventRepository
@@ -16,8 +11,7 @@ class EventListViewController: UIViewController {
     private var events: [Event] = []
     
     // MARK: - View Elements
-    private var eventsLabel: UILabel!
-    private var eventSegments: UISegmentedControl!
+    private var eventSegmentsTab: EventSegmentedControl!
     private(set) var tableView: UITableView!
 
     init(router: Router, eventRepository: EventRepository, reloader: Reloader) {
@@ -48,13 +42,9 @@ class EventListViewController: UIViewController {
     
     override func updateViewConstraints() {
         if (!didSetupConstraints) {
-            eventsLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
-            eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-            eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+            eventSegmentsTab.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
             
-            eventSegments.autoPinEdge(.top, to: .bottom, of: eventsLabel)
-            
-            tableView.autoPinEdge(.top, to: .bottom, of: eventSegments)
+            tableView.autoPinEdge(.top, to: .bottom, of: eventSegmentsTab)
             tableView.autoPinEdge(toSuperviewEdge: .left)
             tableView.autoPinEdge(toSuperviewEdge: .right)
             tableView.autoPinEdge(toSuperviewEdge: .bottom)
@@ -69,34 +59,19 @@ class EventListViewController: UIViewController {
 // MARK: - View Setup
 fileprivate extension EventListViewController {
     func initializeViews() {
-        eventsLabel = UILabel.newAutoLayout()
-        eventSegments = UISegmentedControl()
+        eventSegmentsTab = EventSegmentedControl()
         tableView = UITableView(frame: CGRect.zero)
     }
     
     func addSubview() {
-        view.addSubview(eventsLabel)
-        view.addSubview(eventSegments)
+        view.addSubview(eventSegmentsTab)
         view.addSubview(tableView)
     }
     
     func configureSubviews() {
         self.view.backgroundColor = .white
         
-        eventsLabel.text = "Events"
-        
-        eventSegments.insertSegment(
-            withTitle: i18n.UpcomingTitle,
-            at: 0,
-            animated: false
-        )
-        eventSegments.insertSegment(
-            withTitle: i18n.PastTitle,
-            at: 1,
-            animated: false
-        )
-        eventSegments.selectedSegmentIndex = 0
-        eventSegments.addTarget(
+        eventSegmentsTab.eventSegments.addTarget(
             self,
             action: #selector(didSelectEventSegment),
             for: .valueChanged
@@ -116,7 +91,7 @@ fileprivate extension EventListViewController {
     @objc func didSelectEventSegment(_ sender: UISegmentedControl) {
         let selectedTitle = sender.titleForSegment(at: sender.selectedSegmentIndex)
         
-        if (selectedTitle == i18n.UpcomingTitle) {
+        if (selectedTitle == EventSegments.upcoming.sectionTitle) {
             eventRepository.getUpcomingEvents().onSuccess { upcomingEvents in
                 self.events = upcomingEvents
                 self.reloader.reload(reloadable: self.tableView)
