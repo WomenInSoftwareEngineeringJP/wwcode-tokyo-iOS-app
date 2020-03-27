@@ -27,7 +27,6 @@
 		F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */; };
 		F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8F240F9C4D004E277A /* SpyHttp.swift */; };
 		F14B0B92240F9DF4004E277A /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B91240F9DF4004E277A /* Http.swift */; };
-		F14F4DB82419E3FC0045426E /* EventListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4DB72419E3FC0045426E /* EventListHeaderView.swift */; };
 		F14F4DBE241A278D0045426E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14F4DBC241A278D0045426E /* Localizable.strings */; };
 		F14F4DC0241A2B620045426E /* EventFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4DBF241A2B620045426E /* EventFixture.swift */; };
 		F14F4E042420BD810045426E /* UpcomingViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E032420BD810045426E /* UpcomingViewControllerTest.swift */; };
@@ -121,7 +120,6 @@
 		F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepository.swift; sourceTree = "<group>"; };
 		F14B0B8F240F9C4D004E277A /* SpyHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyHttp.swift; sourceTree = "<group>"; };
 		F14B0B91240F9DF4004E277A /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
-		F14F4DB72419E3FC0045426E /* EventListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListHeaderView.swift; sourceTree = "<group>"; };
 		F14F4DBD241A278D0045426E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		F14F4DBF241A2B620045426E /* EventFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFixture.swift; sourceTree = "<group>"; };
 		F14F4E032420BD810045426E /* UpcomingViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewControllerTest.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				F174F5092408A4210070C353 /* EventListViewController.swift */,
 				F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */,
 				F1291752240DE953002B0352 /* EventTableViewCell.swift */,
-				F14F4DB72419E3FC0045426E /* EventListHeaderView.swift */,
 				F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */,
 				F14F4E092420C09F0045426E /* PastEventsViewController.swift */,
 			);
@@ -573,7 +570,6 @@
 				F174F5102408A84D0070C353 /* EventViewController.swift in Sources */,
 				F14F4E102422F3F00045426E /* AppRouter.swift in Sources */,
 				F16B44B9241088CE001E37C7 /* NetworkHttp.swift in Sources */,
-				F14F4DB82419E3FC0045426E /* EventListHeaderView.swift in Sources */,
 				F1BC49D4240F4E4300D26637 /* EventRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
