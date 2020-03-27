@@ -174,7 +174,7 @@ fileprivate extension EventViewController {
     func configureRegistration() {
         registerButton.setTitle("Register", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
-        registerButton.backgroundColor = UIColor(red:0.93, green:0.33, blue:0.16, alpha:1.00)
+        registerButton.backgroundColor = UIColor.registerButtonNormal
         registerButton.layer.cornerRadius = 4
     }
 }

@@ -9,7 +9,7 @@ class EventTableViewCell: UITableViewCell {
     private var venueNameLabel: UILabel!
     private var clockIcon: UIImageView!
     private var mappinIcon: UIImageView!
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initializeViews()
@@ -51,13 +51,13 @@ fileprivate extension EventTableViewCell {
         
         dateLabel = UILabel()
         dateLabel.configureForAutoLayout()
-
+        
         titleLabel = UILabel()
         titleLabel.configureForAutoLayout()
         
         timeLabel = UILabel()
         timeLabel.configureForAutoLayout()
-
+        
         venueNameLabel = UILabel()
         venueNameLabel.configureForAutoLayout()
         
@@ -80,11 +80,11 @@ fileprivate extension EventTableViewCell {
     
     func configureSubviews() {
         cardView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20))
-
+        
         dateLabel.autoPinEdge(.top, to: .top, of: cardView, withOffset: 30)
         dateLabel.autoPinEdge(.left, to: .left, of: cardView, withOffset: 20)
         dateLabel.autoPinEdge(.right, to: .right, of: cardView, withOffset: -20)
-
+        
         titleLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 10)
         titleLabel.autoPinEdge(.left, to: .left, of: dateLabel)
         titleLabel.autoPinEdge(.right, to: .right, of: dateLabel)
@@ -96,7 +96,7 @@ fileprivate extension EventTableViewCell {
         timeLabel.autoPinEdge(.left, to: .right, of: clockIcon, withOffset: 4)
         timeLabel.autoPinEdge(.right, to: .right, of: cardView, withOffset: -20)
         timeLabel.autoPinEdge(.bottom, to: .top, of: venueNameLabel, withOffset: -4)
-
+        
         mappinIcon.autoPinEdge(.left, to: .left, of: cardView, withOffset: 20)
         mappinIcon.autoPinEdge(.bottom, to: .bottom, of: cardView, withOffset: -20)
         mappinIcon.autoSetDimensions(to: CGSize(width: 18, height: 18))
@@ -106,9 +106,9 @@ fileprivate extension EventTableViewCell {
     }
     
     func styleSubviews() {
-        backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
+        backgroundColor = UIColor.backgroundPaleGray
         cardView.backgroundColor = UIColor.white
-
+        
         cardView.layer.cornerRadius = 4
         cardView.layer.shadowColor = UIColor.darkGray.cgColor
         cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
@@ -116,12 +116,12 @@ fileprivate extension EventTableViewCell {
         cardView.layer.shadowOpacity = 0.3
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        titleLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
-        dateLabel.textColor = UIColor(red:0.20, green:0.47, blue:0.48, alpha:1.00)
-        clockIcon.tintColor = UIColor(red:0.74, green:0.75, blue:0.76, alpha:1.00)
-        timeLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
+        titleLabel.textColor = UIColor.eventTitleColor
+        dateLabel.textColor = UIColor.wwcPrimaryColorDark
+        clockIcon.tintColor = UIColor.iconColorNormal
+        timeLabel.textColor = UIColor.textColor
         
-        mappinIcon.tintColor = UIColor(red:0.74, green:0.75, blue:0.76, alpha:1.00)
-        venueNameLabel.textColor = UIColor(red:0.24, green:0.25, blue:0.26, alpha:1.00)
+        mappinIcon.tintColor = UIColor.iconColorNormal
+        venueNameLabel.textColor = UIColor.textColor
     }
 }

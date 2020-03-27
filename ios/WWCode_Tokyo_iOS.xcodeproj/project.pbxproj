@@ -23,6 +23,7 @@
 		F12EDED02429D05F002E7CD4 /* DefaultReloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDECF2429D05F002E7CD4 /* DefaultReloaderTest.swift */; };
 		F12EDED22429D181002E7CD4 /* SpyReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDED12429D181002E7CD4 /* SpyReloadable.swift */; };
 		F12EDED4242D966C002E7CD4 /* EventSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */; };
+		F12EDED6242DA028002E7CD4 /* WWCode-UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EDED5242DA028002E7CD4 /* WWCode-UIColors.swift */; };
 		F14B0B8A240F9761004E277A /* NetworkEventRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */; };
 		F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */; };
 		F14B0B90240F9C4D004E277A /* SpyHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B8F240F9C4D004E277A /* SpyHttp.swift */; };
@@ -116,6 +117,7 @@
 		F12EDECF2429D05F002E7CD4 /* DefaultReloaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReloaderTest.swift; sourceTree = "<group>"; };
 		F12EDED12429D181002E7CD4 /* SpyReloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyReloadable.swift; sourceTree = "<group>"; };
 		F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSegmentedControl.swift; sourceTree = "<group>"; };
+		F12EDED5242DA028002E7CD4 /* WWCode-UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WWCode-UIColors.swift"; sourceTree = "<group>"; };
 		F14B0B89240F9761004E277A /* NetworkEventRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepositoryTest.swift; sourceTree = "<group>"; };
 		F14B0B8B240F9B9C004E277A /* NetworkEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventRepository.swift; sourceTree = "<group>"; };
 		F14B0B8F240F9C4D004E277A /* SpyHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyHttp.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			children = (
 				F1291755240F403F002B0352 /* EventDetail */,
 				F1291754240F402D002B0352 /* EventList */,
+				F12EDED5242DA028002E7CD4 /* WWCode-UIColors.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				F174F50A2408A4210070C353 /* EventListViewController.swift in Sources */,
 				F14F4E082420C04B0045426E /* UpcomingEventsViewController.swift in Sources */,
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
+				F12EDED6242DA028002E7CD4 /* WWCode-UIColors.swift in Sources */,
 				F14F4E0A2420C09F0045426E /* PastEventsViewController.swift in Sources */,
 				F12EDED4242D966C002E7CD4 /* EventSegmentedControl.swift in Sources */,
 				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
