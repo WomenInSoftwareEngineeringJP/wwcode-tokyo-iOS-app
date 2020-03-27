@@ -30,10 +30,6 @@
 		F14B0B92240F9DF4004E277A /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B0B91240F9DF4004E277A /* Http.swift */; };
 		F14F4DBE241A278D0045426E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14F4DBC241A278D0045426E /* Localizable.strings */; };
 		F14F4DC0241A2B620045426E /* EventFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4DBF241A2B620045426E /* EventFixture.swift */; };
-		F14F4E042420BD810045426E /* UpcomingViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E032420BD810045426E /* UpcomingViewControllerTest.swift */; };
-		F14F4E062420BDB60045426E /* PastViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E052420BDB60045426E /* PastViewControllerTest.swift */; };
-		F14F4E082420C04B0045426E /* UpcomingEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */; };
-		F14F4E0A2420C09F0045426E /* PastEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E092420C09F0045426E /* PastEventsViewController.swift */; };
 		F14F4E0C2421BB6F0045426E /* SpyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E0B2421BB6F0045426E /* SpyRouter.swift */; };
 		F14F4E0E2421BBA40045426E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E0D2421BBA40045426E /* Router.swift */; };
 		F14F4E102422F3F00045426E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F4E0F2422F3F00045426E /* AppRouter.swift */; };
@@ -124,10 +120,6 @@
 		F14B0B91240F9DF4004E277A /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		F14F4DBD241A278D0045426E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		F14F4DBF241A2B620045426E /* EventFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFixture.swift; sourceTree = "<group>"; };
-		F14F4E032420BD810045426E /* UpcomingViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewControllerTest.swift; sourceTree = "<group>"; };
-		F14F4E052420BDB60045426E /* PastViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastViewControllerTest.swift; sourceTree = "<group>"; };
-		F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsViewController.swift; sourceTree = "<group>"; };
-		F14F4E092420C09F0045426E /* PastEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventsViewController.swift; sourceTree = "<group>"; };
 		F14F4E0B2421BB6F0045426E /* SpyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRouter.swift; sourceTree = "<group>"; };
 		F14F4E0D2421BBA40045426E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F14F4E0F2422F3F00045426E /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
@@ -200,8 +192,6 @@
 				F174F5092408A4210070C353 /* EventListViewController.swift */,
 				F12EDED3242D966C002E7CD4 /* EventSegmentedControl.swift */,
 				F1291752240DE953002B0352 /* EventTableViewCell.swift */,
-				F14F4E072420C04B0045426E /* UpcomingEventsViewController.swift */,
-				F14F4E092420C09F0045426E /* PastEventsViewController.swift */,
 			);
 			path = EventList;
 			sourceTree = "<group>";
@@ -259,8 +249,6 @@
 			children = (
 				F174F50D2408A5E10070C353 /* EventListViewControllerTest.swift */,
 				F12EDEC92429B5BA002E7CD4 /* SpyReloader.swift */,
-				F14F4E032420BD810045426E /* UpcomingViewControllerTest.swift */,
-				F14F4E052420BDB60045426E /* PastViewControllerTest.swift */,
 			);
 			path = EventList;
 			sourceTree = "<group>";
@@ -558,10 +546,8 @@
 				F1BF0E4B2404B58E00ED1639 /* AppDelegate.swift in Sources */,
 				F1BF0E4D2404B58E00ED1639 /* SceneDelegate.swift in Sources */,
 				F174F50A2408A4210070C353 /* EventListViewController.swift in Sources */,
-				F14F4E082420C04B0045426E /* UpcomingEventsViewController.swift in Sources */,
 				F1BF0E502404BE8800ED1639 /* main.swift in Sources */,
 				F12EDED6242DA028002E7CD4 /* WWCode-UIColors.swift in Sources */,
-				F14F4E0A2420C09F0045426E /* PastEventsViewController.swift in Sources */,
 				F12EDED4242D966C002E7CD4 /* EventSegmentedControl.swift in Sources */,
 				F14B0B92240F9DF4004E277A /* Http.swift in Sources */,
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
@@ -582,8 +568,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14F4E042420BD810045426E /* UpcomingViewControllerTest.swift in Sources */,
-				F14F4E062420BDB60045426E /* PastViewControllerTest.swift in Sources */,
 				F16B44C1241090C7001E37C7 /* FakeNetworkSession.swift in Sources */,
 				F16B44BF24109011001E37C7 /* SpySessionDataTask.swift in Sources */,
 				F14F4DC0241A2B620045426E /* EventFixture.swift in Sources */,
