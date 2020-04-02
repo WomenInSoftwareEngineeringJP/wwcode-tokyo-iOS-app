@@ -42,7 +42,10 @@ class EventListViewController: UIViewController {
     
     override func updateViewConstraints() {
         if (!didSetupConstraints) {
-            eventSegmentsTab.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
+            eventSegmentsTab.autoPinEdge(toSuperviewSafeArea: .top)
+            eventSegmentsTab.autoPinEdge(toSuperviewEdge: .left)
+            eventSegmentsTab.autoPinEdge(toSuperviewEdge: .right)
+            eventSegmentsTab.autoSetDimension(.height, toSize: 160)
             
             tableView.autoPinEdge(.top, to: .bottom, of: eventSegmentsTab)
             tableView.autoPinEdge(toSuperviewEdge: .left)

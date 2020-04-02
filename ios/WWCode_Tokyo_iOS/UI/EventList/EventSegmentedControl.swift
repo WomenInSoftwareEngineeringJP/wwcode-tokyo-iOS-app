@@ -25,6 +25,7 @@ class EventSegmentedControl: UIView {
         addSubviews()
         constrainSubviews()
         configureSubviews()
+        styleSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -57,6 +58,7 @@ fileprivate extension EventSegmentedControl {
     
     func configureSubviews() {
         eventsLabel.text = "Events"
+        eventsLabel.textAlignment = .center
         
         eventSegments.insertSegment(
             withTitle: EventSegments.upcoming.sectionTitle,
@@ -69,5 +71,22 @@ fileprivate extension EventSegmentedControl {
             animated: false
         )
         eventSegments.selectedSegmentIndex = 0
+    }
+    
+    func styleSubviews() {
+        backgroundColor = UIColor.wwcPrimaryColorDark
+        
+        eventsLabel.textColor = UIColor.wwcPrimaryColorLight
+        eventsLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        
+        eventSegments.backgroundColor = .clear
+        eventSegments.selectedSegmentTintColor = .clear
+        eventSegments.setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white],
+            for: UIControl.State.normal)
+        eventSegments.setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)],
+            for: UIControl.State.selected)
+        
     }
 }
