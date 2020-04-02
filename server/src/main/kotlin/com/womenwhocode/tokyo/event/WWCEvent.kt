@@ -7,8 +7,10 @@ data class WWCEvent(
         val startDateTime: LocalDateTime,
         val endDateTime: LocalDateTime,
         val description: String,
-        val venue: Venue
+        val venue: Venue,
+        val link: String
 ) {
+
     data class Venue(
             val name: String,
             val lat: Double,

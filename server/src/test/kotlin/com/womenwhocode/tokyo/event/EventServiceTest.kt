@@ -36,7 +36,8 @@ class EventServiceTest {
                 "19:30",
                 7200000,
                 "description",
-                venue)
+                venue,
+                "upcoming-example.com")
 
         val eventList = listOf<RepositoryEvent>(event)
 
@@ -47,6 +48,7 @@ class EventServiceTest {
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2020, 12, 24, 21, 30)))
         assertThat(events[0].name, equalTo("PAL training!"))
         assertThat(events[0].description, equalTo("description"))
+        assertThat(events[0].link, equalTo("upcoming-example.com"))
         assertThat(events[0].venue.name, equalTo("venue name"))
         assertThat(events[0].venue.lat, equalTo(1.23))
         assertThat(events[0].venue.lon, equalTo(4.56))
@@ -69,7 +71,8 @@ class EventServiceTest {
                 "18:00",
                 10800000,
                 "description",
-                venue)
+                venue,
+                "past-example.com")
 
         val pastEvents = listOf(event)
 
@@ -81,6 +84,7 @@ class EventServiceTest {
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2019, 10, 31, 21, 0)))
         assertThat(events[0].name, equalTo("past event name"))
         assertThat(events[0].description, equalTo("description"))
+        assertThat(events[0].link, equalTo("past-example.com"))
         assertThat(events[0].venue.name, equalTo("venue name"))
         assertThat(events[0].venue.lat, equalTo(1.23))
         assertThat(events[0].venue.lon, equalTo(4.56))

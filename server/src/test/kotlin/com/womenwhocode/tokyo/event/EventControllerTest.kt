@@ -41,7 +41,8 @@ class EventControllerTest {
                         LocalDateTime.of(2020, 6, 2, 19, 30),
                         LocalDateTime.of(2020, 6, 2, 21, 30),
                         "What is this upcoming event about",
-                        eventVenue))
+                        eventVenue,
+                        "upcoming-example.com"))
 
         val pastEvents = listOf(
                 WWCEvent(
@@ -49,7 +50,8 @@ class EventControllerTest {
                         LocalDateTime.of(2019, 4, 1, 19, 0),
                         LocalDateTime.of(2019, 4, 1, 21, 0),
                         "What is this past event about",
-                        eventVenue)
+                        eventVenue,
+                        "past-example.com")
         )
 
         whenever(service.getEvents(UPCOMING)).thenReturn(upcomingEvents)
@@ -74,6 +76,7 @@ class EventControllerTest {
                 .andExpect(jsonPath("$[0].startDateTime", `is`("2020-06-02T19:30:00")))
                 .andExpect(jsonPath("$[0].endDateTime", `is`("2020-06-02T21:30:00")))
                 .andExpect(jsonPath("$[0].description", `is`("What is this upcoming event about")))
+                .andExpect(jsonPath("$[0].link", `is`("upcoming-example.com")))
                 .andExpect(jsonPath("$[0].venue.name", `is`("venue name")))
                 .andExpect(jsonPath("$[0].venue.lat", `is`(1.23)))
                 .andExpect(jsonPath("$[0].venue.lon", `is`(4.56)))
@@ -100,6 +103,7 @@ class EventControllerTest {
                 .andExpect(jsonPath("$[0].startDateTime", `is`("2019-04-01T19:00:00")))
                 .andExpect(jsonPath("$[0].endDateTime", `is`("2019-04-01T21:00:00")))
                 .andExpect(jsonPath("$[0].description", `is`("What is this past event about")))
+                .andExpect(jsonPath("$[0].link", `is`("past-example.com")))
                 .andExpect(jsonPath("$[0].venue.name", `is`("venue name")))
                 .andExpect(jsonPath("$[0].venue.lat", `is`(1.23)))
                 .andExpect(jsonPath("$[0].venue.lon", `is`(4.56)))

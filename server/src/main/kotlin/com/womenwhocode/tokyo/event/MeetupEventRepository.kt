@@ -29,7 +29,8 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
                     event.local_time,
                     event.duration,
                     event.description,
-                    venue)
+                    venue,
+                    event.link)
         }
     }
 }

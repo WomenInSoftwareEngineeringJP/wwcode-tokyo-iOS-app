@@ -22,8 +22,8 @@ class EventService(val repo: MeetupEventRepository) {
                             parseStartDateTime(it.date, it.time),
                             parseEndDateTime(it.duration, it.date, it.time),
                             it.description,
-                            venue
-                            )
+                            venue,
+                            it.link)
                 }
     }
 
