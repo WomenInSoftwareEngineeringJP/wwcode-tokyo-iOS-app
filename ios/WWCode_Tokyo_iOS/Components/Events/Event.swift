@@ -23,6 +23,7 @@ struct Event: Codable {
     let endDateTime: String
     let description: String
     let venue: Venue
+    let link: String
 }
 
 extension Event: Equatable {
@@ -32,6 +33,7 @@ extension Event: Equatable {
             lhs.startDateTime == rhs.startDateTime &&
             lhs.endDateTime == rhs.endDateTime &&
             lhs.description == rhs.description &&
-            lhs.venue == rhs.venue
+            lhs.venue == rhs.venue &&
+            lhs.link == rhs.link
     }
 }

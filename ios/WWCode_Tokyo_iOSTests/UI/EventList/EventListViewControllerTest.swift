@@ -60,7 +60,8 @@ final class EventListViewControllerTest: QuickSpec {
                                 lon: 0,
                                 address: "",
                                 city: ""
-                            )
+                            ),
+                            link: "upcoming-example.com"
                         )
                     ]
 
@@ -121,7 +122,8 @@ final class EventListViewControllerTest: QuickSpec {
                                 lon: 0,
                                 address: "",
                                 city: ""
-                            )
+                            ),
+                            link: "past-example.com"
                         )
                     ]
                     spyStubEventRepo.getPastEvents_returnPastEvents.success(pastEvents)
@@ -169,7 +171,8 @@ final class EventListViewControllerTest: QuickSpec {
                                 lon: 0,
                                 address: "",
                                 city: ""
-                            )
+                            ),
+                            link: "upcoming-example.com"
                         )
                     ]
 

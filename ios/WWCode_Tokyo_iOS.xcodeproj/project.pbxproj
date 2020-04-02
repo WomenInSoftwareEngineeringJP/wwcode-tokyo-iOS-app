@@ -41,6 +41,8 @@
 		F16B44C4241097EA001E37C7 /* AsyncExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C3241097EA001E37C7 /* AsyncExpectation.swift */; };
 		F16B44C72410C5AC001E37C7 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C62410C5AC001E37C7 /* Configuration.swift */; };
 		F16B44C92410C5D9001E37C7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B44C82410C5D9001E37C7 /* Environment.swift */; };
+		F16F595C2435D2E4002916D5 /* SpyUrlOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F595B2435D2E4002916D5 /* SpyUrlOpener.swift */; };
+		F16F595E2435D35D002916D5 /* UrlOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F595D2435D35D002916D5 /* UrlOpener.swift */; };
 		F174F50A2408A4210070C353 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F5092408A4210070C353 /* EventListViewController.swift */; };
 		F174F50C2408A4330070C353 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50B2408A4330070C353 /* Event.swift */; };
 		F174F50E2408A5E10070C353 /* EventListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174F50D2408A5E10070C353 /* EventListViewControllerTest.swift */; };
@@ -131,6 +133,8 @@
 		F16B44C3241097EA001E37C7 /* AsyncExpectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncExpectation.swift; sourceTree = "<group>"; };
 		F16B44C62410C5AC001E37C7 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		F16B44C82410C5D9001E37C7 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F16F595B2435D2E4002916D5 /* SpyUrlOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyUrlOpener.swift; sourceTree = "<group>"; };
+		F16F595D2435D35D002916D5 /* UrlOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlOpener.swift; sourceTree = "<group>"; };
 		F174F5092408A4210070C353 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		F174F50B2408A4330070C353 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F174F50D2408A5E10070C353 /* EventListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewControllerTest.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F174F50F2408A84D0070C353 /* EventViewController.swift */,
+				F16F595D2435D35D002916D5 /* UrlOpener.swift */,
 			);
 			path = EventDetail;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				F174F5112408A8650070C353 /* EventViewControllerTest.swift */,
+				F16F595B2435D2E4002916D5 /* SpyUrlOpener.swift */,
 			);
 			path = EventDetail;
 			sourceTree = "<group>";
@@ -553,6 +559,7 @@
 				F1291753240DE953002B0352 /* EventTableViewCell.swift in Sources */,
 				F12EDECD2429B634002E7CD4 /* Reloader.swift in Sources */,
 				F16B44C72410C5AC001E37C7 /* Configuration.swift in Sources */,
+				F16F595E2435D35D002916D5 /* UrlOpener.swift in Sources */,
 				F14B0B8C240F9B9C004E277A /* NetworkEventRepository.swift in Sources */,
 				F14F4E0E2421BBA40045426E /* Router.swift in Sources */,
 				F16B44C92410C5D9001E37C7 /* Environment.swift in Sources */,
@@ -573,6 +580,7 @@
 				F14F4DC0241A2B620045426E /* EventFixture.swift in Sources */,
 				F174F50E2408A5E10070C353 /* EventListViewControllerTest.swift in Sources */,
 				F16B44BD24108FE1001E37C7 /* SpyNetworkSession.swift in Sources */,
+				F16F595C2435D2E4002916D5 /* SpyUrlOpener.swift in Sources */,
 				F12EDED02429D05F002E7CD4 /* DefaultReloaderTest.swift in Sources */,
 				F12EDED22429D181002E7CD4 /* SpyReloadable.swift in Sources */,
 				F12EDECA2429B5BA002E7CD4 /* SpyReloader.swift in Sources */,

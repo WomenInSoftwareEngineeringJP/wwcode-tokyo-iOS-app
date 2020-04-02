@@ -4,6 +4,7 @@ import PureLayout
 class EventViewController: UIViewController {
     // MARK: - Injected Properties
     private var event: Event!
+    private var urlOpener: UrlOpener!
     
     // MARK: - Properties
     private var scrollView: UIScrollView!
@@ -19,8 +20,9 @@ class EventViewController: UIViewController {
     private var venueAddress: UILabel!
     private var registerButton: UIButton!
     
-    init(event: Event) {
+    init(event: Event, urlOpener: UrlOpener = UrlOpenerImpl()) {
         self.event = event
+        self.urlOpener = urlOpener
         super.init(nibName: nil, bundle: nil)
         view.setNeedsUpdateConstraints()
     }
@@ -176,5 +178,10 @@ fileprivate extension EventViewController {
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.backgroundColor = UIColor.registerButtonNormal
         registerButton.layer.cornerRadius = 4
+        registerButton.addTarget(self, action: #selector(registerButtonWasTapped), for: .touchUpInside)
+    }
+    
+    @objc func registerButtonWasTapped() {
+        urlOpener.openUrl(url: event.link)
     }
 }

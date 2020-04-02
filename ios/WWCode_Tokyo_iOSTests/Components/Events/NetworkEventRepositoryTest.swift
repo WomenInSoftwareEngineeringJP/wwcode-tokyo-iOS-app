@@ -44,7 +44,8 @@ class NetworkEventRepositoryTest: QuickSpec {
                                 "lon": 4.56,
                                 "address": "venue address",
                                 "city": "venue city"
-                            }
+                            },
+                            "link": "example.com"
                           },
                           {
                             "name": "Future Event",
@@ -57,7 +58,8 @@ class NetworkEventRepositoryTest: QuickSpec {
                                 "lon": 4.56,
                                 "address": "venue address",
                                 "city": "venue city"
-                            }
+                            },
+                            "link": "example2.com"
                           }
                         ]
                        """
@@ -74,6 +76,7 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(events?.first?.venue.lon).to(equal(4.56))
                 expect(events?.first?.venue.address).to(equal("venue address"))
                 expect(events?.first?.venue.city).to(equal("venue city"))
+                expect(events?.first?.link).to(equal("example.com"))
             }
             
             it("getPastEvents requests GET /api/events/past") {
@@ -106,7 +109,8 @@ class NetworkEventRepositoryTest: QuickSpec {
                                 "lon": 4.56,
                                 "address": "venue address",
                                 "city": "venue city"
-                            }
+                            },
+                            "link": "example.com"
                           }
                         ]
                        """
@@ -123,6 +127,7 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(events?.first?.venue.lon).to(equal(4.56))
                 expect(events?.first?.venue.address).to(equal("venue address"))
                 expect(events?.first?.venue.city).to(equal("venue city"))
+                expect(events?.first?.link).to(equal("example.com"))
             }
         }
     }

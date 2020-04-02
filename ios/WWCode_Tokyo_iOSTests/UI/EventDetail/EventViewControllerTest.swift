@@ -8,8 +8,11 @@ final class EventViewControllerTest: QuickSpec {
     override func spec() {
         var subject: EventViewController!
         
+        var spyUrlOpener: SpyUrlOpener!
+        
         beforeEach {
-            subject = EventViewController(event: EventFixture.JavaScript())
+            spyUrlOpener = SpyUrlOpener()
+            subject = EventViewController(event: EventFixture.JavaScript(), urlOpener: spyUrlOpener)
         }
         
         describe("EventViewController") {
@@ -20,6 +23,13 @@ final class EventViewControllerTest: QuickSpec {
                 expect(subject.hasLabel(withExactText: "description")).to(beTrue())
                 expect(subject.hasLabel(withExactText: "Code Chrysalis")).to(beTrue())
                 expect(subject.hasLabel(withExactText: "venue address venue city")).to(beTrue())
+            }
+            
+            it("directs to Meetup event page when register button clicked") {
+                expect(subject.hasButton(withExactText: "Register")).to(beTrue())
+                subject.findButton(withExactText: "Register")?.tapAndFireTargetEvent()
+            
+                expect(spyUrlOpener.opened_url).to(equal("example.com"))
             }
         }
     }
