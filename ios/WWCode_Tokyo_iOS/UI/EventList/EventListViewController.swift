@@ -45,7 +45,8 @@ class EventListViewController: UIViewController {
             eventSegmentsTab.autoPinEdge(toSuperviewSafeArea: .top)
             eventSegmentsTab.autoPinEdge(toSuperviewEdge: .left)
             eventSegmentsTab.autoPinEdge(toSuperviewEdge: .right)
-            eventSegmentsTab.autoSetDimension(.height, toSize: 160)
+            let navigationBarHeight = self.router.navigationController.navigationBar.frame.height
+            eventSegmentsTab.autoSetDimension(.height, toSize: 160 - navigationBarHeight)
             
             tableView.autoPinEdge(.top, to: .bottom, of: eventSegmentsTab)
             tableView.autoPinEdge(toSuperviewEdge: .left)

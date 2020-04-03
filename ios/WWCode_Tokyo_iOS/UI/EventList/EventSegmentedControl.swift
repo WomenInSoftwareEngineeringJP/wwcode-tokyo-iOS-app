@@ -46,14 +46,14 @@ fileprivate extension EventSegmentedControl {
     }
     
     func constrainSubviews() {
-        eventsLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 15.0)
-        eventsLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 15.0)
-        eventsLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 15.0)
+        eventsLabel.autoPinEdge(toSuperviewSafeArea: .top)
+        eventsLabel.autoPinEdge(toSuperviewEdge: .left)
+        eventsLabel.autoPinEdge(toSuperviewEdge: .right)
         
         eventSegments.autoPinEdge(.top, to: .bottom, of: eventsLabel)
         eventSegments.autoPinEdge(toSuperviewEdge: .left)
         eventSegments.autoPinEdge(toSuperviewEdge: .right)
-        eventSegments.autoPinEdge(toSuperviewEdge: .bottom)
+        eventSegments.autoPinEdge(toSuperviewEdge: .bottom, withInset: 15.0)
     }
     
     func configureSubviews() {

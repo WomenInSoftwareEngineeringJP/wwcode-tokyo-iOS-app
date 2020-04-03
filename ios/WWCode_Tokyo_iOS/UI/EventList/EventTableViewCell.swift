@@ -64,7 +64,7 @@ fileprivate extension EventTableViewCell {
         clockIcon = UIImageView(image: UIImage(named: "clock"))
         clockIcon.configureForAutoLayout()
         
-        mappinIcon = UIImageView(image: UIImage(named: "mappin.circle"))
+        mappinIcon = UIImageView(image: UIImage(named: "mappin"))
         mappinIcon.configureForAutoLayout()
     }
     
