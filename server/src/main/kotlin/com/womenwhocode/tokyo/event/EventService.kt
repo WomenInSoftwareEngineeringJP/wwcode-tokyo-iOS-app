@@ -18,6 +18,7 @@ class EventService(val repo: MeetupEventRepository) {
                     )
 
                     WWCEvent(
+                            it.id,
                             it.name,
                             parseStartDateTime(it.date, it.time),
                             parseEndDateTime(it.duration, it.date, it.time),

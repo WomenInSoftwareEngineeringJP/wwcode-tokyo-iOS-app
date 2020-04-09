@@ -24,6 +24,7 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
                     event.venue.city)
 
             RepositoryEvent(
+                    event.id,
                     event.name,
                     event.local_date,
                     event.local_time,

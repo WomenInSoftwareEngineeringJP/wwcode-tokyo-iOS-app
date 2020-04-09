@@ -1,6 +1,7 @@
 package com.womenwhocode.tokyo.event
 
 data class RepositoryEvent(
+        val id: Int,
         val name: String,
         val date: String,
         val time: String,

@@ -18,6 +18,7 @@ enum EventSegments {
 class EventSegmentedControl: UIView {
     private var eventsLabel: UILabel!
     var eventSegments: UISegmentedControl!
+    private var segmentBottomBar: UIView!
     
     init() {
         super.init(frame: CGRect.zero)
@@ -38,11 +39,13 @@ fileprivate extension EventSegmentedControl {
     func initializeViews() {
         eventsLabel = UILabel.newAutoLayout()
         eventSegments = UISegmentedControl()
+        segmentBottomBar = UIView.newAutoLayout()
     }
     
     func addSubviews() {
         addSubview(eventsLabel)
         addSubview(eventSegments)
+        addSubview(segmentBottomBar)
     }
     
     func constrainSubviews() {

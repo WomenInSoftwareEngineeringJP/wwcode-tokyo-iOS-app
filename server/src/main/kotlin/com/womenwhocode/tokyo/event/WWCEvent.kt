@@ -3,6 +3,7 @@ package com.womenwhocode.tokyo.event
 import java.time.LocalDateTime
 
 data class WWCEvent(
+        val id: Int,
         val name: String,
         val startDateTime: LocalDateTime,
         val endDateTime: LocalDateTime,

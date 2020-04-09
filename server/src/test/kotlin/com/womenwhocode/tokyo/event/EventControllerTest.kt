@@ -37,6 +37,7 @@ class EventControllerTest {
 
         val upcomingEvents = listOf(
                 WWCEvent(
+                        1,
                         "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic",
                         LocalDateTime.of(2020, 6, 2, 19, 30),
                         LocalDateTime.of(2020, 6, 2, 21, 30),
@@ -46,6 +47,7 @@ class EventControllerTest {
 
         val pastEvents = listOf(
                 WWCEvent(
+                        2,
                         "Past Event",
                         LocalDateTime.of(2019, 4, 1, 19, 0),
                         LocalDateTime.of(2019, 4, 1, 21, 0),
@@ -72,6 +74,7 @@ class EventControllerTest {
                 .get("/api/events/upcoming")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$").isArray)
+                .andExpect(jsonPath("$[0].id", `is`(1)))
                 .andExpect(jsonPath("$[0].name", `is`("WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic")))
                 .andExpect(jsonPath("$[0].startDateTime", `is`("2020-06-02T19:30:00")))
                 .andExpect(jsonPath("$[0].endDateTime", `is`("2020-06-02T21:30:00")))
@@ -99,6 +102,7 @@ class EventControllerTest {
                 .get("/api/events/past")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$").isArray)
+                .andExpect(jsonPath("$[0].id", `is`(2)))
                 .andExpect(jsonPath("$[0].name", `is`("Past Event")))
                 .andExpect(jsonPath("$[0].startDateTime", `is`("2019-04-01T19:00:00")))
                 .andExpect(jsonPath("$[0].endDateTime", `is`("2019-04-01T21:00:00")))

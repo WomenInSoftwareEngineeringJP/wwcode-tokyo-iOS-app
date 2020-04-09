@@ -2,7 +2,8 @@ package com.womenwhocode.tokyo.event
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import com.womenwhocode.tokyo.meetupapi.EventType.*
+import com.womenwhocode.tokyo.meetupapi.EventType.PAST
+import com.womenwhocode.tokyo.meetupapi.EventType.UPCOMING
 import com.womenwhocode.tokyo.meetupapi.MeetupAPIClient
 import com.womenwhocode.tokyo.meetupapi.MeetupAPIEvent
 import org.hamcrest.CoreMatchers.equalTo
@@ -26,6 +27,7 @@ internal class MeetupEventRepositoryTest {
                 "city")
 
         val upcomingMeetupEvent = MeetupAPIEvent(
+                1,
                 7200000,
                 "eventName",
                 "local_date",
@@ -37,6 +39,7 @@ internal class MeetupEventRepositoryTest {
                 "description")
 
         val pastMeetupEvent = MeetupAPIEvent(
+                2,
                 10800000,
                 "Strawberry Festival",
                 "2020-02-15",
@@ -56,9 +59,10 @@ internal class MeetupEventRepositoryTest {
     }
 
     @Test
-    fun `get events returns upcoming events from meetup if status is upcoming`() {
+    fun `get events returns upcoming events from meetup api if status is upcoming`() {
         val response = subject.getEvents(UPCOMING)
 
+        assertThat(response[0].id, equalTo(1))
         assertThat(response[0].name, equalTo("eventName"))
         assertThat(response[0].date, equalTo("local_date"))
         assertThat(response[0].duration, equalTo(7200000))
@@ -72,9 +76,10 @@ internal class MeetupEventRepositoryTest {
     }
 
     @Test
-    fun `get events returns past events from meetup if status is past`() {
+    fun `get events returns past events from meetup api if status is past`() {
         val response = subject.getEvents(PAST)
 
+        assertThat(response[0].id, equalTo(2))
         assertThat(response[0].name, equalTo("Strawberry Festival"))
         assertThat(response[0].date, equalTo("2020-02-15"))
         assertThat(response[0].duration, equalTo(10800000))
