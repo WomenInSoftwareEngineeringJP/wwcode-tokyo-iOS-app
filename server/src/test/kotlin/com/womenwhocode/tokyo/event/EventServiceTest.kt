@@ -32,7 +32,7 @@ class EventServiceTest {
                 "venue city")
 
         val event = RepositoryEvent(
-                1,
+                "1",
                 "PAL training!",
                 "2020-12-24",
                 "19:30",
@@ -46,7 +46,7 @@ class EventServiceTest {
         whenever(meetupEventRepository.getEvents(UPCOMING)).thenReturn(eventList)
         val events = subject.getEvents(UPCOMING)
 
-        assertThat(events[0].id, equalTo(1))
+        assertThat(events[0].id, equalTo("1"))
         assertThat(events[0].name, equalTo("PAL training!"))
         assertThat(events[0].startDateTime, equalTo(LocalDateTime.of(2020, 12, 24, 19, 30)))
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2020, 12, 24, 21, 30)))
@@ -69,7 +69,7 @@ class EventServiceTest {
                 "venue city")
 
         val event = RepositoryEvent(
-                2,
+                "2",
                 "past event name",
                 "2019-10-31",
                 "18:00",
@@ -84,7 +84,7 @@ class EventServiceTest {
 
         val events = subject.getEvents(PAST)
 
-        assertThat(events[0].id, equalTo(2))
+        assertThat(events[0].id, equalTo("2"))
         assertThat(events[0].name, equalTo("past event name"))
         assertThat(events[0].startDateTime, equalTo(LocalDateTime.of(2019, 10, 31, 18, 0)))
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2019, 10, 31, 21, 0)))
