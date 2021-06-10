@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class EventController(val service: EventService) {
-
     @GetMapping("/api/events/upcoming")
     fun upcomingEvents(): List<WWCEvent> {
         return service.getEvents(UPCOMING)

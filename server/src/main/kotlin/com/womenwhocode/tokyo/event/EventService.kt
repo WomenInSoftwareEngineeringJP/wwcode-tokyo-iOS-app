@@ -1,5 +1,6 @@
 package com.womenwhocode.tokyo.event
 
+import com.womenwhocode.tokyo.event.WWCEvent.*
 import com.womenwhocode.tokyo.meetupapi.EventType
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
@@ -8,24 +9,27 @@ import java.time.LocalDateTime
 class EventService(val repo: MeetupEventRepository) {
     fun getEvents(status: EventType): List<WWCEvent> {
         return repo.getEvents(status)
-                .map {
-                    val venue = WWCEvent.Venue(
-                            it.venue.name,
-                            it.venue.lat,
-                            it.venue.lon,
-                            it.venue.address,
-                            it.venue.city
-                    )
+            .map {
+                val venue = Venue(
+                    it.venue.name,
+                    if (it.venue.location != null) Location(
+                        it.venue.location.lat,
+                        it.venue.location.lon,
+                        it.venue.location.address,
+                        it.venue.location.city
+                    ) else null
+                )
 
-                    WWCEvent(
-                            it.id,
-                            it.name,
-                            parseStartDateTime(it.date, it.time),
-                            parseEndDateTime(it.duration, it.date, it.time),
-                            it.description,
-                            venue,
-                            it.link)
-                }
+                WWCEvent(
+                    it.id,
+                    it.name,
+                    parseStartDateTime(it.date, it.time),
+                    parseEndDateTime(it.duration, it.date, it.time),
+                    it.description,
+                    venue,
+                    it.link
+                )
+            }
     }
 
     private fun parseStartDateTime(date: String, time: String): LocalDateTime {

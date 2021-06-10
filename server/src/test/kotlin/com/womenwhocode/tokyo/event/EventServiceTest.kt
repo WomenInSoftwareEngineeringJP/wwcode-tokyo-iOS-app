@@ -2,6 +2,7 @@ package com.womenwhocode.tokyo.event
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
+import com.womenwhocode.tokyo.event.RepositoryEvent.Location
 import com.womenwhocode.tokyo.meetupapi.EventType.PAST
 import com.womenwhocode.tokyo.meetupapi.EventType.UPCOMING
 import org.hamcrest.CoreMatchers.equalTo
@@ -12,7 +13,6 @@ import java.time.LocalDateTime
 
 
 class EventServiceTest {
-
     private lateinit var meetupEventRepository: MeetupEventRepository
     private lateinit var subject: EventService
 
@@ -25,21 +25,20 @@ class EventServiceTest {
     @Test
     fun `get events return upcoming WWCEvents`() {
         val venue = RepositoryEvent.Venue(
-                "venue name",
-                1.23,
-                4.56,
-                "venue address",
-                "venue city")
+            "venue name",
+            Location(1.23, 4.56, "venue address", "venue city")
+        )
 
         val event = RepositoryEvent(
-                "1",
-                "PAL training!",
-                "2020-12-24",
-                "19:30",
-                7200000,
-                "description",
-                venue,
-                "upcoming-example.com")
+            "1",
+            "PAL training!",
+            "2020-12-24",
+            "19:30",
+            7200000,
+            "description",
+            venue,
+            "upcoming-example.com"
+        )
 
         val eventList = listOf<RepositoryEvent>(event)
 
@@ -53,30 +52,29 @@ class EventServiceTest {
         assertThat(events[0].description, equalTo("description"))
         assertThat(events[0].link, equalTo("upcoming-example.com"))
         assertThat(events[0].venue.name, equalTo("venue name"))
-        assertThat(events[0].venue.lat, equalTo(1.23))
-        assertThat(events[0].venue.lon, equalTo(4.56))
-        assertThat(events[0].venue.address, equalTo("venue address"))
-        assertThat(events[0].venue.city, equalTo("venue city"))
+        assertThat(events[0].venue.location?.lat, equalTo(1.23))
+        assertThat(events[0].venue.location?.lon, equalTo(4.56))
+        assertThat(events[0].venue.location?.address, equalTo("venue address"))
+        assertThat(events[0].venue.location?.city, equalTo("venue city"))
     }
 
     @Test
     fun `get events return past WWCEvents`() {
         val venue = RepositoryEvent.Venue(
-                "venue name",
-                1.23,
-                4.56,
-                "venue address",
-                "venue city")
+            "venue name",
+            Location(1.23, 4.56, "venue address", "venue city")
+        )
 
         val event = RepositoryEvent(
-                "2",
-                "past event name",
-                "2019-10-31",
-                "18:00",
-                10800000,
-                "description",
-                venue,
-                "past-example.com")
+            "2",
+            "past event name",
+            "2019-10-31",
+            "18:00",
+            10800000,
+            "description",
+            venue,
+            "past-example.com"
+        )
 
         val pastEvents = listOf(event)
 
@@ -91,9 +89,9 @@ class EventServiceTest {
         assertThat(events[0].description, equalTo("description"))
         assertThat(events[0].link, equalTo("past-example.com"))
         assertThat(events[0].venue.name, equalTo("venue name"))
-        assertThat(events[0].venue.lat, equalTo(1.23))
-        assertThat(events[0].venue.lon, equalTo(4.56))
-        assertThat(events[0].venue.address, equalTo("venue address"))
-        assertThat(events[0].venue.city, equalTo("venue city"))
+        assertThat(events[0].venue.location?.lat, equalTo(1.23))
+        assertThat(events[0].venue.location?.lon, equalTo(4.56))
+        assertThat(events[0].venue.location?.address, equalTo("venue address"))
+        assertThat(events[0].venue.location?.city, equalTo("venue city"))
     }
 }
