@@ -6,7 +6,6 @@ import Succinct
 
 final class EventListViewControllerTest: QuickSpec {
     override func spec() {
-        
         var subject: EventListViewController!
         var spyStubEventRepo: SpyStubEventRepo!
         
@@ -48,19 +47,22 @@ final class EventListViewControllerTest: QuickSpec {
 
             describe("displaying upcoming events") {
                 beforeEach {
+                    let venue = Venue(
+                        name: "Code Chrysalis",
+                        location: Location(
+                            lat: 0,
+                            lon: 0,
+                            address: "",
+                            city: ""
+                        )
+                    )
                     let upcomingEvents: [Event] = [
                         Event(
                             name: "WTF is JavaScript",
                             startDateTime: "2021-06-12T18:30:00",
                             endDateTime: "2021-06-12T21:30:00",
                             description: "",
-                            venue: Venue(
-                                name: "Code Chrysalis",
-                                lat: 0,
-                                lon: 0,
-                                address: "",
-                                city: ""
-                            ),
+                            venue: venue,
                             link: "upcoming-example.com"
                         )
                     ]
@@ -118,10 +120,12 @@ final class EventListViewControllerTest: QuickSpec {
                             description: "",
                             venue: Venue(
                                 name: "Indeed",
-                                lat: 0,
-                                lon: 0,
-                                address: "",
-                                city: ""
+                                location: Location(
+                                    lat: 0,
+                                    lon: 0,
+                                    address: "",
+                                    city: ""
+                                )
                             ),
                             link: "past-example.com"
                         )
@@ -167,10 +171,12 @@ final class EventListViewControllerTest: QuickSpec {
                             description: "",
                             venue: Venue(
                                 name: "Code Chrysalis",
-                                lat: 0,
-                                lon: 0,
-                                address: "",
-                                city: ""
+                                location: Location(
+                                    lat: 0,
+                                    lon: 0,
+                                    address: "",
+                                    city: ""
+                                )
                             ),
                             link: "upcoming-example.com"
                         )
@@ -184,7 +190,6 @@ final class EventListViewControllerTest: QuickSpec {
                     expect(subject.hasLabel(withExactText: "WTF is JavaScript")).toEventually(beTrue())
                     expect(subject.hasLabel(withExactText: "Past Event")).toEventually(beFalse())
                 }
-
             }
         }
     }

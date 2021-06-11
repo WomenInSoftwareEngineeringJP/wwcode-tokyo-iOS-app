@@ -169,8 +169,10 @@ fileprivate extension EventViewController {
     }
     
     func configureVenue() {
-        venueName.text = event.venue.name
-        venueAddress.text = "\(event.venue.address) \(event.venue.city)"
+        venueName.text = event.venue?.name
+        if let location = event.venue?.location {
+            venueAddress.text = "\(location.address) \(location.city)"
+        }
     }
     
     func configureRegistration() {

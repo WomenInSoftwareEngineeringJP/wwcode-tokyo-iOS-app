@@ -2,12 +2,14 @@
 
 struct EventFixture {
     static func JavaScript() -> Event {
-        let venue = Venue(
-            name: "Code Chrysalis",
+        let location = Location(
             lat: 1.23,
             lon: 4.56,
             address: "venue address",
             city: "venue city")
+        let venue = Venue(
+            name: "Code Chrysalis",
+            location: location)
         
         return Event(
             name: "WTF is JavaScript?! Talk + Workshop for Beginners with WWCode & Automattic",
@@ -19,12 +21,14 @@ struct EventFixture {
     }
 
     static func Hackathon() -> Event {
-        let venue = Venue(
-            name: "Mercari",
+        let location = Location(
             lat: 1.23,
             lon: 4.56,
             address: "venue address",
             city: "venue city")
+        let venue = Venue(
+            name: "Mercari",
+            location: location)
         
         return Event(
             name: "Hackathon 101 with Junction Tokyo",

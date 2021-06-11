@@ -20,7 +20,7 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(spyHttp.get_argument_endpoint).to(equal("/api/events/upcoming"))
             }
             
-            it("get upcoming events return upcoming events") {
+            it("returns events for in person events") {
                 var events: [Event]? = nil
                 AsyncExpectation.execute() { expectation in
                     eventRepository
@@ -30,7 +30,6 @@ class NetworkEventRepositoryTest: QuickSpec {
                             expectation.fulfill()
                         }
 
-                    // We can use a multi-string literal
                     let jsonResponse = """
                         [
                           {
@@ -40,10 +39,12 @@ class NetworkEventRepositoryTest: QuickSpec {
                             "description": "some description",
                             "venue": {
                                 "name": "venue name",
-                                "lat": 1.23,
-                                "lon": 4.56,
-                                "address": "venue address",
-                                "city": "venue city"
+                                "location": {
+                                    "lat": 1.23,
+                                    "lon": 4.56,
+                                    "address": "venue address",
+                                    "city": "venue city"
+                                }
                             },
                             "link": "example.com"
                           },
@@ -54,10 +55,12 @@ class NetworkEventRepositoryTest: QuickSpec {
                             "description": "some description",
                             "venue": {
                                 "name": "venue name",
-                                "lat": 1.23,
-                                "lon": 4.56,
-                                "address": "venue address",
-                                "city": "venue city"
+                                "location": {
+                                    "lat": 1.23,
+                                    "lon": 4.56,
+                                    "address": "venue address",
+                                    "city": "venue city"
+                                }
                             },
                             "link": "example2.com"
                           }
@@ -71,14 +74,86 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(events?.first?.startDateTime).to(equal("2021-06-12T18:30:00"))
                 expect(events?.first?.endDateTime).to(equal("2021-06-12T21:30:00"))
                 expect(events?.first?.description).to(equal("some description"))
-                expect(events?.first?.venue.name).to(equal("venue name"))
-                expect(events?.first?.venue.lat).to(equal(1.23))
-                expect(events?.first?.venue.lon).to(equal(4.56))
-                expect(events?.first?.venue.address).to(equal("venue address"))
-                expect(events?.first?.venue.city).to(equal("venue city"))
+                expect(events?.first?.venue?.name).to(equal("venue name"))
+                expect(events?.first?.venue?.location?.lat).to(equal(1.23))
+                expect(events?.first?.venue?.location?.lon).to(equal(4.56))
+                expect(events?.first?.venue?.location?.address).to(equal("venue address"))
+                expect(events?.first?.venue?.location?.city).to(equal("venue city"))
                 expect(events?.first?.link).to(equal("example.com"))
             }
-            
+
+            it("returns events for in online events") {
+                var events: [Event]? = nil
+                AsyncExpectation.execute() { expectation in
+                    eventRepository
+                        .getUpcomingEvents()
+                        .onSuccess { returnedEvents in
+                            events = returnedEvents
+                            expectation.fulfill()
+                        }
+
+                    let jsonResponse = """
+                        [
+                          {
+                            "name": "Online Livehouse",
+                            "startDateTime": "2021-06-12T18:30:00",
+                            "endDateTime": "2021-06-12T21:30:00",
+                            "description": "some description",
+                            "venue": {
+                                "name": "Online event",
+                                "location": null
+                            },
+                            "link": "example.com"
+                          }
+                        ]
+                       """
+                    spyHttp.get_returnPromise.success(jsonResponse.data(using: .utf8)!)
+                }
+
+                expect(events?.count).to(equal(1))
+                expect(events?.first?.name).to(equal("Online Livehouse"))
+                expect(events?.first?.startDateTime).to(equal("2021-06-12T18:30:00"))
+                expect(events?.first?.endDateTime).to(equal("2021-06-12T21:30:00"))
+                expect(events?.first?.description).to(equal("some description"))
+                expect(events?.first?.venue?.name).to(equal("Online event"))
+                expect(events?.first?.venue?.location).to(beNil())
+                expect(events?.first?.link).to(equal("example.com"))
+            }
+
+            it("returns events events with no venue") {
+                var events: [Event]? = nil
+                AsyncExpectation.execute() { expectation in
+                    eventRepository
+                        .getUpcomingEvents()
+                        .onSuccess { returnedEvents in
+                            events = returnedEvents
+                            expectation.fulfill()
+                        }
+
+                    let jsonResponse = """
+                        [
+                          {
+                            "name": "Online Livehouse",
+                            "startDateTime": "2021-06-12T18:30:00",
+                            "endDateTime": "2021-06-12T21:30:00",
+                            "description": "some description",
+                            "venue": null,
+                            "link": "example.com"
+                          }
+                        ]
+                       """
+                    spyHttp.get_returnPromise.success(jsonResponse.data(using: .utf8)!)
+                }
+
+                expect(events?.count).to(equal(1))
+                expect(events?.first?.name).to(equal("Online Livehouse"))
+                expect(events?.first?.startDateTime).to(equal("2021-06-12T18:30:00"))
+                expect(events?.first?.endDateTime).to(equal("2021-06-12T21:30:00"))
+                expect(events?.first?.description).to(equal("some description"))
+                expect(events?.first?.venue).to(beNil())
+                expect(events?.first?.link).to(equal("example.com"))
+            }
+
             it("getPastEvents requests GET /api/events/past") {
                 let _ = eventRepository.getPastEvents()
                 
@@ -95,7 +170,6 @@ class NetworkEventRepositoryTest: QuickSpec {
                             expectation.fulfill()
                         }
 
-                    // We can use a multi-string literal
                     let jsonResponse = """
                         [
                           {
@@ -105,10 +179,12 @@ class NetworkEventRepositoryTest: QuickSpec {
                             "description": "description",
                             "venue": {
                                 "name": "venue name",
-                                "lat": 1.23,
-                                "lon": 4.56,
-                                "address": "venue address",
-                                "city": "venue city"
+                                "location": {
+                                    "lat": 1.23,
+                                    "lon": 4.56,
+                                    "address": "venue address",
+                                    "city": "venue city"
+                                }
                             },
                             "link": "example.com"
                           }
@@ -122,11 +198,11 @@ class NetworkEventRepositoryTest: QuickSpec {
                 expect(events?.first?.startDateTime).to(equal("2020-02-29T19:30:00"))
                 expect(events?.first?.endDateTime).to(equal("2020-02-29T21:30:00"))
                 expect(events?.first?.description).to(equal("description"))
-                expect(events?.first?.venue.name).to(equal("venue name"))
-                expect(events?.first?.venue.lat).to(equal(1.23))
-                expect(events?.first?.venue.lon).to(equal(4.56))
-                expect(events?.first?.venue.address).to(equal("venue address"))
-                expect(events?.first?.venue.city).to(equal("venue city"))
+                expect(events?.first?.venue?.name).to(equal("venue name"))
+                expect(events?.first?.venue?.location?.lat).to(equal(1.23))
+                expect(events?.first?.venue?.location?.lon).to(equal(4.56))
+                expect(events?.first?.venue?.location?.address).to(equal("venue address"))
+                expect(events?.first?.venue?.location?.city).to(equal("venue city"))
                 expect(events?.first?.link).to(equal("example.com"))
             }
         }

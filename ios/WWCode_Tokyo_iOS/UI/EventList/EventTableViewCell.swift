@@ -39,7 +39,7 @@ class EventTableViewCell: UITableViewCell {
         
         timeLabel.text = "\(timeLabelFormatter.string(from: startDateTime)) - \(timeLabelFormatter.string(from: endDateTime))"
         
-        venueNameLabel.text = event.venue.name
+        venueNameLabel.text = event.venue?.name
     }
 }
 
