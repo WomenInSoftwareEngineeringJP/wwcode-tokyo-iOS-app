@@ -8,7 +8,7 @@ data class MeetupAPIEvent(
     val local_time: String,
     val waitlist_count: Int,
     val yes_rsvp_count: Int,
-    val venue: MeetupAPIEventVenue,
+    val venue: MeetupAPIEventVenue?,
     val link: String,
     val description: String
 ) {

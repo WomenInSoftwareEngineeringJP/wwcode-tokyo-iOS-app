@@ -7,7 +7,7 @@ data class RepositoryEvent(
     val time: String,
     val duration: Int,
     val description: String,
-    val venue: Venue,
+    val venue: Venue?,
     val link: String
 ) {
     data class Venue(

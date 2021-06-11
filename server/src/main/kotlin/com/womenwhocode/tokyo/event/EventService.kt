@@ -10,7 +10,7 @@ class EventService(val repo: MeetupEventRepository) {
     fun getEvents(status: EventType): List<WWCEvent> {
         return repo.getEvents(status)
             .map {
-                val venue = Venue(
+                val venue = if (it.venue?.name != null) Venue(
                     it.venue.name,
                     if (it.venue.location != null) Location(
                         it.venue.location.lat,
@@ -18,7 +18,7 @@ class EventService(val repo: MeetupEventRepository) {
                         it.venue.location.address,
                         it.venue.location.city
                     ) else null
-                )
+                ) else null
 
                 WWCEvent(
                     it.id,

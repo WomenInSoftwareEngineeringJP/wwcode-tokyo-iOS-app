@@ -51,11 +51,11 @@ class EventServiceTest {
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2020, 12, 24, 21, 30)))
         assertThat(events[0].description, equalTo("description"))
         assertThat(events[0].link, equalTo("upcoming-example.com"))
-        assertThat(events[0].venue.name, equalTo("venue name"))
-        assertThat(events[0].venue.location?.lat, equalTo(1.23))
-        assertThat(events[0].venue.location?.lon, equalTo(4.56))
-        assertThat(events[0].venue.location?.address, equalTo("venue address"))
-        assertThat(events[0].venue.location?.city, equalTo("venue city"))
+        assertThat(events[0].venue?.name, equalTo("venue name"))
+        assertThat(events[0].venue?.location?.lat, equalTo(1.23))
+        assertThat(events[0].venue?.location?.lon, equalTo(4.56))
+        assertThat(events[0].venue?.location?.address, equalTo("venue address"))
+        assertThat(events[0].venue?.location?.city, equalTo("venue city"))
     }
 
     @Test
@@ -88,10 +88,10 @@ class EventServiceTest {
         assertThat(events[0].endDateTime, equalTo(LocalDateTime.of(2019, 10, 31, 21, 0)))
         assertThat(events[0].description, equalTo("description"))
         assertThat(events[0].link, equalTo("past-example.com"))
-        assertThat(events[0].venue.name, equalTo("venue name"))
-        assertThat(events[0].venue.location?.lat, equalTo(1.23))
-        assertThat(events[0].venue.location?.lon, equalTo(4.56))
-        assertThat(events[0].venue.location?.address, equalTo("venue address"))
-        assertThat(events[0].venue.location?.city, equalTo("venue city"))
+        assertThat(events[0].venue?.name, equalTo("venue name"))
+        assertThat(events[0].venue?.location?.lat, equalTo(1.23))
+        assertThat(events[0].venue?.location?.lon, equalTo(4.56))
+        assertThat(events[0].venue?.location?.address, equalTo("venue address"))
+        assertThat(events[0].venue?.location?.city, equalTo("venue city"))
     }
 }

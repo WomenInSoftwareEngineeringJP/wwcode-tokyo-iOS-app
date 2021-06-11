@@ -17,7 +17,7 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
             30
         )
         return events.map { event ->
-            val venue = RepositoryEvent.Venue(
+            val venue = if (event.venue?.name != null) RepositoryEvent.Venue(
                 event.venue.name,
                 if (event.venue.address_1 != null) Location(
                     event.venue.lat!!,
@@ -25,7 +25,7 @@ class MeetupEventRepository(val meetupAPIClient: MeetupAPIClient) {
                     event.venue.address_1,
                     event.venue.city!!
                 ) else null
-            )
+            ) else null
 
             RepositoryEvent(
                 event.id,
